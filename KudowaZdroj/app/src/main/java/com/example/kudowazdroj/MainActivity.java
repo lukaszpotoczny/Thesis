@@ -10,7 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new OKudowieFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutKudowaFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_message);
         }
    }
@@ -44,13 +43,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_message:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new OKudowieFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutKudowaFragment()).commit();
                 break;
             case R.id.nav_message2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AktualnosciFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit();
                 break;
             case R.id.nav_message3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AtrakcjeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AttractionsFragment()).commit();
+                break;
+            case R.id.nav_message4:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
+                break;
+            case R.id.nav_message5:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TripsFragment()).commit();
+                break;
+            case R.id.nav_message6:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AdFragment()).commit();
+                break;
+            case R.id.nav_message7:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RestaurantsFragment()).commit();
+                break;
+            case R.id.nav_message8:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccomodationFragment()).commit();
                 break;
         }
 

@@ -3,4 +3,16 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="nav_menu_1">O Kudowie</string>
+    <string name="nav_menu_2">Aktualności</string>
+    <string name="nav_menu_3">Atrakcje</string>
+    <string name="nav_menu_4">Mapa</string>
+    <string name="nav_menu_5">Wycieczki</string>
+    <string name="nav_menu_6">Ogłoszenia</string>
+    <string name="nav_menu_7">Restauracje</string>
+    <string name="nav_menu_8">Zakwaterowanie</string>
+
+
 </resources>

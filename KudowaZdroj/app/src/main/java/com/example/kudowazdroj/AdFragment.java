@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class AktualnosciFragment extends Fragment {
+public class AdFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.aktualnosci_fragment, container, false);
+        return inflater.inflate(R.layout.ad_fragment, container, false);
         
     }
 }

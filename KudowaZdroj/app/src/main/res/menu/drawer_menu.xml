@@ -6,21 +6,36 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_message"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="O Kudowie" />
+            android:title="@string/nav_menu_1" />
         <item android:id="@+id/nav_message2"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="O Kudowie2" />
+            android:title="@string/nav_menu_2" />
         <item android:id="@+id/nav_message3"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="O Kudowie3" />
+            android:title="@string/nav_menu_3" />
+        <item android:id="@+id/nav_message4"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/nav_menu_4" />
+        <item android:id="@+id/nav_message5"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/nav_menu_5" />
+        <item android:id="@+id/nav_message6"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/nav_menu_6" />
+        <item android:id="@+id/nav_message7"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/nav_menu_7" />
+        <item android:id="@+id/nav_message8"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/nav_menu_8" />
     </group>
 
     <item android:title="Comm">
         <menu>
-            <item android:id="@+id/nav_message4"
+            <item android:id="@+id/nav_message9"
                 android:icon="@drawable/ic_baseline_info_24"
                 android:title="O Kudowie4" />
-            <item android:id="@+id/nav_message5"
+            <item android:id="@+id/nav_message10"
                 android:icon="@drawable/ic_baseline_info_24"
                 android:title="O Kudowie5" />
         </menu>
