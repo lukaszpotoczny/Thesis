@@ -1,14 +1,17 @@
 package com.example.kudowazdroj;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import java.io.BufferedReader;
@@ -35,6 +38,8 @@ public class AttractionsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.attractions_fragment, container, false);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_3);
+
         gridView = root.findViewById(R.id.gridAttractions);
         attractions = new ArrayList<>();
        // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
@@ -47,6 +52,16 @@ public class AttractionsFragment extends Fragment {
 
         attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
         gridView.setAdapter(attractionsAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Attraction attraction = attractions.get(i);
+                Intent intent = new Intent(getActivity(), AttractionsActivity.class);
+                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_ID, attraction.getId());
+                startActivity(intent);
+            }
+        });
 
         return root;
     }
