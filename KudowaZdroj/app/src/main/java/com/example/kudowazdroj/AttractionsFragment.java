@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +18,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class AttractionsFragment extends Fragment {
 
     String JSON_STRING;
+
+    ArrayList<Attraction> attractions;
+    AttractionsAdapter attractionsAdapter;
+    GridView gridView;
 
 
     @Nullable
@@ -31,14 +35,18 @@ public class AttractionsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.attractions_fragment, container, false);
 
-        Button button = (Button) root.findViewById(R.id.atrButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getJSON(view);
-            }
-        });
+        gridView = root.findViewById(R.id.gridAttractions);
+        attractions = new ArrayList<>();
+       // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
 
+        attractions.add(new Attraction(1, "ABC"));
+        attractions.add(new Attraction(2, "AB2"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+
+        attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
+        gridView.setAdapter(attractionsAdapter);
 
         return root;
     }
@@ -89,9 +97,9 @@ public class AttractionsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            TextView textView = (TextView) getView().findViewById(R.id.atrakcjeTxt);
+          //  TextView textView = (TextView) getView().findViewById(R.id.atrakcjeTxt);
             System.out.println(result);
-            textView.setText(result);
+          //  textView.setText(result);
         }
     }
 
