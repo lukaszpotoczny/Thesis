@@ -3,13 +3,16 @@ package com.example.kudowazdroj.database;
 public class Ad {
 
     private int id;
-    private String name;
+    private String title;
+    private String author;
+    private String content;
 
-    public Ad(int id, String name){
+    public Ad(int id, String title, String author, String content){
         setId(id);
-        setName(name);
+        setTitle(title);
+        setAuthor(author);
+        setContent(content);
     }
-
 
     public int getId() {
         return id;
@@ -19,13 +22,27 @@ public class Ad {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public String getAuthor() {
+        return author;
+    }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

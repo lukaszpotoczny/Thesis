@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.kudowazdroj.database.Attraction;
+
 import java.util.ArrayList;
 
 public class AttractionsAdapter extends BaseAdapter {

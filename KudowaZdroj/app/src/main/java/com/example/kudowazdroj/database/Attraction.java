@@ -1,4 +1,4 @@
-package com.example.kudowazdroj;
+package com.example.kudowazdroj.database;
 
 public class Attraction {
 

@@ -13,6 +13,11 @@
     <string name="nav_menu_6">Ogłoszenia</string>
     <string name="nav_menu_7">Restauracje</string>
     <string name="nav_menu_8">Noclegi</string>
+    <string name="nav_menu_9">Ustawienia</string>
+
+    <string name="title_1">Informacje</string>
+    <string name="title_2">Pobyt</string>
+    <string name="title_3">Inne</string>
 
 
 </resources>

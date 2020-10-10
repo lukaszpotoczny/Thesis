@@ -35,7 +35,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemIconSize="30dp"
+        app:itemIconPadding="16dp"
+        android:background="@color/colorNavigationBackground"
         app:headerLayout="@layout/nav_header"
+        android:theme="@style/NavigationDrawerStyle"
         app:menu="@menu/drawer_menu"/>
 
 

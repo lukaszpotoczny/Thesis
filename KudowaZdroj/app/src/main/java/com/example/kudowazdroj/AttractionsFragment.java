@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.kudowazdroj.database.Attraction;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
