@@ -12,7 +12,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardRestaurants"
+            android:id="@+id/cardAccommodation"
             app:cardCornerRadius="20dp"
             app:cardMaxElevation="20dp"
             android:layout_margin="8dp"
@@ -26,37 +26,50 @@
                 >
 
                 <ImageView
-                    android:id="@+id/imageRestaurants"
+                    android:id="@+id/imageAccommodation"
                     android:scaleType="centerCrop"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/restauracja" />
+                    android:src="@drawable/verde" />
 
                 <TextView
-                    android:id="@+id/restaurant_text_1"
+                    android:id="@+id/accommodation_text_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/imageRestaurants"
+                    android:layout_toRightOf="@+id/imageAccommodation"
                     android:layout_marginLeft="16dp"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
                     android:layout_marginTop="30dp"
                     android:textSize="18sp"
                     android:textColor="#000000"
-                    android:text="Czeska Restauracja Zdrojowa"/>
+                    android:text="Verde Montana"/>
 
                 <TextView
-                    android:id="@+id/restaurant_text_2"
+                    android:id="@+id/accommodation_text_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/restaurant_text_1"
-                    android:layout_toRightOf="@id/imageRestaurants"
+                    android:layout_below="@+id/accommodation_text_1"
+                    android:layout_toRightOf="@id/imageAccommodation"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="32dp"
+                    android:gravity="end"
                     android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="14sp"
-                    android:text="ul. Zdrojowa 8"/>
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:text="4,3 / 5"/>
+
+                <ImageView
+                    android:id="@+id/imageStar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_below="@+id/accommodation_text_1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/star_icon" />
 
             </RelativeLayout>
 

@@ -35,7 +35,6 @@ public class AttractionsFragment extends Fragment {
     AttractionsAdapter attractionsAdapter;
     GridView gridView;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

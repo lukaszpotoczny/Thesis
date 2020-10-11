@@ -1,4 +1,4 @@
-package com.example.kudowazdroj.ui.attractions;
+package com.example.kudowazdroj.ui.news;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,14 +7,14 @@ import android.view.WindowManager;
 
 import com.example.kudowazdroj.R;
 
-public class AttractionsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
-    public static final String ARG_ATTRACTION_ID = "id";
+    public static final String ARG_NEWS_ID = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attractions);
+        setContentView(R.layout.activity_news);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
