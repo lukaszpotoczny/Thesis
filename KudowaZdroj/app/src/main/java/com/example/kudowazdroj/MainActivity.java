@@ -9,7 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
+import com.example.kudowazdroj.ui.accommodation.AccommodationFragment;
+import com.example.kudowazdroj.ui.attractions.AttractionsFragment;
+import com.example.kudowazdroj.ui.main.AboutKudowaFragment;
+import com.example.kudowazdroj.ui.restaurants.RestaurantsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

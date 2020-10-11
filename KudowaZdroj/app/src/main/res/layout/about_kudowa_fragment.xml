@@ -1,14 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" 
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_light">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="O Kudowie"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/about_kudowa_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/mystery_quest"
+                android:text="O Kudowie"
+                android:textColor="#1E70D3"
+                android:textSize="36sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/about_kudowa_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_kudowa_1"
+                android:layout_below="@id/about_kudowa_title"
+                android:justificationMode="inter_word"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"/>
+
+            <ImageView
+                android:id="@+id/about_kudowa_image_1"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:layout_below="@+id/about_kudowa_text_1"
+                android:src="@drawable/about_kudowa_image_1"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/about_kudowa_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_kudowa_2"
+                android:layout_below="@id/about_kudowa_image_1"
+                android:justificationMode="inter_word"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"/>
+
+            <ImageView
+                android:id="@+id/about_kudowa_image_2"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:layout_below="@+id/about_kudowa_text_2"
+                android:src="@drawable/about_kudowa_image_2"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/about_kudowa_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_kudowa_3"
+                android:layout_below="@id/about_kudowa_image_2"
+                android:justificationMode="inter_word"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"/>
+
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+
 
 </RelativeLayout>

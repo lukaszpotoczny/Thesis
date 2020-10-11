@@ -1,4 +1,4 @@
-package com.example.kudowazdroj;
+package com.example.kudowazdroj.ui.attractions;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
+import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
 
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package com.example.kudowazdroj;
+package com.example.kudowazdroj.ui.accommodation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.kudowazdroj.R;
 
 public class AccommodationFragment extends Fragment {
 

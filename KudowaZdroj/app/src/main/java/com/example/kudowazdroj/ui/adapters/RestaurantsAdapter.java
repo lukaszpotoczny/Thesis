@@ -1,4 +1,4 @@
-package com.example.kudowazdroj;
+package com.example.kudowazdroj.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,30 +7,32 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.database.Restaurant;
 
 import java.util.ArrayList;
 
-public class AttractionsAdapter extends BaseAdapter {
+public class RestaurantsAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Attraction> attractions;
+    ArrayList<Restaurant> restaurants;
     LayoutInflater inflater;
 
-    public AttractionsAdapter(Context context, ArrayList<Attraction> attractions){
+    public RestaurantsAdapter(Context context, ArrayList<Restaurant> restaurants){
         this.context = context;
-        this.attractions = attractions;
+        this.restaurants = restaurants;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return attractions.size();
+        return restaurants.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return attractions.get(position);
+        return restaurants.get(position);
     }
 
     @Override
@@ -41,9 +43,9 @@ public class AttractionsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = inflater.inflate(R.layout.attraction, null);
+        View view = inflater.inflate(R.layout.restaurant, null);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageAttraction);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageRestaurants);
         //TextView textView = (TextView) view.findViewById(R.id.competitionName);
 
 /*        String s = Utility.getCompetitionLogoFleName(competitions.get(position).getName());
@@ -53,7 +55,7 @@ public class AttractionsAdapter extends BaseAdapter {
         imageView.setImageResource(resID);
         textView.setText(competitions.get(position).getName());*/
 
-        imageView.setImageResource(R.drawable.kaplica_czaszek);
+        imageView.setImageResource(R.drawable.restauracja);
 
         return view;
 
