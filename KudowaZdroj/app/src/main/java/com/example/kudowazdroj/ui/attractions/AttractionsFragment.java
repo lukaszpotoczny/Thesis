@@ -52,6 +52,11 @@ public class AttractionsFragment extends Fragment {
         attractions.add(new Attraction(3, "AB3"));
         attractions.add(new Attraction(3, "AB3"));
         attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
+        attractions.add(new Attraction(3, "AB3"));
 
         attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
         gridView.setAdapter(attractionsAdapter);

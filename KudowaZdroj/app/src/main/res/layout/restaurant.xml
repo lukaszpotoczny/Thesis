@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="116dp"
-        android:background="#E8ECF6"
+        android:background="@color/colorCardBackground"
         >
 
         <androidx.cardview.widget.CardView
@@ -40,7 +40,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:textSize="18sp"
                     android:textColor="#000000"
                     android:text="Czeska Restauracja Zdrojowa"/>
@@ -57,6 +57,21 @@
                     android:layout_marginLeft="16dp"
                     android:textSize="14sp"
                     android:text="ul. Zdrojowa 8"/>
+
+                <TextView
+                    android:id="@+id/restaurant_text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/restaurant_text_1"
+                    android:layout_toRightOf="@id/restaurant_text_2"
+                    android:gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:textStyle="italic"
+                    android:textColor="#33CC09"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="30dp"
+                    android:textSize="16sp"
+                    android:text="Otwarte"/>
 
             </RelativeLayout>
 

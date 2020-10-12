@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.news.NewsActivity"></activity>
+        <activity android:name=".ui.trips.TripsActivity"></activity>
+        <activity android:name=".ui.news.NewsActivity" />
         <activity android:name=".ui.attractions.AttractionsActivity" />
         <activity android:name=".ui.accommodation.AccommodationActivity" />
         <activity android:name=".ui.restaurants.RestaurantsActivity" />
