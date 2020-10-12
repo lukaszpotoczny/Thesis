@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.example.kudowazdroj.ui.accommodation.AccommodationFragment;
+import com.example.kudowazdroj.ui.ad.AdFragment;
 import com.example.kudowazdroj.ui.attractions.AttractionsFragment;
 import com.example.kudowazdroj.ui.main.AboutKudowaFragment;
 import com.example.kudowazdroj.ui.news.NewsFragment;

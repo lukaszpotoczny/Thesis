@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="116dp"
+        android:layout_height="126dp"
         android:background="@color/colorCardBackground"
         >
 
@@ -18,7 +18,7 @@
             android:layout_margin="8dp"
             android:elevation="10dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="110dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:layout_toRightOf="@id/imageRestaurants"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="22dp"
                     android:layout_marginLeft="16dp"
                     android:textSize="14sp"
                     android:text="ul. Zdrojowa 8"/>
@@ -68,7 +68,7 @@
                     android:layout_alignParentRight="true"
                     android:textStyle="italic"
                     android:textColor="#33CC09"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="22dp"
                     android:layout_marginRight="30dp"
                     android:textSize="16sp"
                     android:text="Otwarte"/>

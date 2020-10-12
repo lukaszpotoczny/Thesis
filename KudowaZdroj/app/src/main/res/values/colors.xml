@@ -7,4 +7,5 @@
     <color name="colorToolbar">#1E70D3</color>
     <color name="colorNavigationBackground">#E9EBFE</color>
     <color name="colorCardBackground">#E8ECF6</color>
+    <color name="colorCardBackgroundDark">#D5DEF4</color>
 </resources>
