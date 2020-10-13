@@ -34,4 +34,21 @@
     <string name="trips_button">Zaplanuj wycieczkę</string>
 
 
+    <string name="rest_txt">Znajdziesz tu przyjemne, klimatyczne miejsce i pyszne jedzenie oraz miłą, fachową obsługę.
+Restauracja Cafe Domek to nowoczesna, dwupoziomowa restauracja, która jest połączeniem restauracji - pizzerii - kawiarni.
+Naszą specjalnością są dania regionalne !
+Tylko u nas znajdziesz dania obiadowe, pizzę prosto z pieca, gyrosa, a także różnego rodzaju sałatki oraz masz możliwość delektowania się wspaniałymi deserami, aromatyczną kawą oraz przeróżnymi drinkami. Do każdego dania podchodzimy z pasją do gotowania, aby jak najlepiej trafić w Państwa gusta.</string>
+
+    <string name="news_txt">28 września 2020 roku w Wałbrzychu w Starej Kopalni spotkali się reprezentanci samorządów subregionu Wałbrzyskiego. Naszą Gminę reprezentowała Burmistrz Miasta Aneta Potoczna.
+
+Celem spotkania było podpisanie deklaracji o wspólnych działaniach na rzecz pozbycia się węgla z gmin. Deklaracja „Dekarbonizacja 2030” zawiera w sobie strategiczne cele tj:
+
+rozwój odnawialnych źródeł energii
+dążenie do samowystarczalności energetycznej gmin subregionu
+likwidacja ogrzewania opartego na węglu w budynkach użyteczności publicznej oraz w budynkach mieszkalnych
+wdrożenie zeroemisyjnego transportu publicznego z wykorzystaniem energii elektrycznej i wodoru
+stworzenie magazynów energii odnawialnej
+Autorem i pomysłodawcą deklaracji jest prezydent Wałbrzycha Roman Szełemej i w założeniu ma wykorzystać działania podejmowane w ramach Funduszu Sprawiedliwej Transformacji ustanowionego przez Unię Europejską.</string>
+
+
 </resources>

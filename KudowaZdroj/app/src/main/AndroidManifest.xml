@@ -13,10 +13,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.ad.AdActivity"></activity>
         <activity android:name=".ui.trips.TripsActivity" />
-        <activity android:name=".ui.news.NewsActivity" />
+        <activity android:name=".ui.news.NewsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".ui.attractions.AttractionsActivity" />
         <activity android:name=".ui.accommodation.AccommodationActivity" />
-        <activity android:name=".ui.restaurants.RestaurantsActivity" />
+        <activity android:name=".ui.restaurants.RestaurantsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

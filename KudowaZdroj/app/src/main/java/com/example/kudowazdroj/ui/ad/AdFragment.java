@@ -19,6 +19,7 @@ import com.example.kudowazdroj.database.Attraction;
 import com.example.kudowazdroj.ui.adapters.AdAdapter;
 import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
+import com.example.kudowazdroj.ui.restaurants.RestaurantsFragment;
 
 import java.util.ArrayList;
 
@@ -54,10 +55,12 @@ public class AdFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Ad ad = ads.get(i);
+/*                Ad ad = ads.get(i);
                 Intent intent = new Intent(getActivity(), AdActivity.class);
                 intent.putExtra(AdActivity.ARG_AD_ID, ad.getId());
-                startActivity(intent);
+                startActivity(intent);*/
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SingleAdFragment()).commit();
             }
         });
 
