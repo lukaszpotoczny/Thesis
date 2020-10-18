@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:background="@color/colorCardBackground"
+        android:layout_height="160dp"
+        android:background="@drawable/corkboard"
         >
 
         <androidx.cardview.widget.CardView
@@ -18,7 +18,7 @@
             android:layout_margin="8dp"
             android:elevation="10dp"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="140dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="22dp"
                     android:textSize="14sp"
                     android:text="Poprzedniej soboty zgubiono czerwony szalik w okolicach ..."/>
 
@@ -80,7 +80,7 @@
                     android:layout_height="24dp"
                     android:layout_below="@+id/imageAuthor"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="14dp"
                     android:src="@drawable/phone_icon" />
 
                 <TextView
@@ -104,7 +104,7 @@
                     android:layout_toRightOf="@id/imageContact"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginLeft="4dp"
                     android:textSize="14sp"
                     android:text="501 231 123"/>

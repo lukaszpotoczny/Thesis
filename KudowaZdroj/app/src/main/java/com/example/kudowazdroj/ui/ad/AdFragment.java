@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,8 @@ public class AdFragment extends Fragment {
     ArrayList<Ad> ads;
     AdAdapter adAdapter;
     GridView gridView;
+
+    Button addButton;
 
     @Nullable
     @Override
@@ -55,12 +58,22 @@ public class AdFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-/*                Ad ad = ads.get(i);
+                Ad ad = ads.get(i);
                 Intent intent = new Intent(getActivity(), AdActivity.class);
                 intent.putExtra(AdActivity.ARG_AD_ID, ad.getId());
-                startActivity(intent);*/
+                startActivity(intent);
 
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SingleAdFragment()).commit();
+              //  getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SingleAdFragment()).commit();
+            }
+        });
+
+        addButton = root.findViewById(R.id.ad_button);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddAdActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -44,8 +44,8 @@
 
     <ImageView
         android:id="@+id/imageLocation"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_below="@+id/rest_layout_1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
@@ -58,18 +58,18 @@
         android:layout_below="@+id/rest_layout_1"
         android:layout_toRightOf="@id/imageLocation"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="ul. Zdrojowa 8"/>
 
     <ImageView
         android:id="@+id/imageTime"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_below="@+id/imageLocation"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/time_icon" />
 
     <TextView
@@ -79,18 +79,18 @@
         android:layout_below="@+id/restaurant_info_1"
         android:layout_toRightOf="@id/imageTime"
         android:textStyle="bold"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="23dp"
         android:layout_marginLeft="10dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="12:00 - 23:00"/>
 
     <ImageView
         android:id="@+id/imageWebsite"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_below="@+id/imageTime"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/www_icon" />
 
     <TextView
@@ -100,18 +100,18 @@
         android:layout_below="@+id/restaurant_info_2"
         android:layout_toRightOf="@id/imageWebsite"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="22dp"
         android:layout_marginLeft="10dp"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:text="www.restauracja.pl"/>
 
     <ImageView
         android:id="@+id/imagePhone"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_below="@+id/imageWebsite"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/call_icon" />
 
     <TextView
@@ -121,9 +121,9 @@
         android:layout_below="@+id/restaurant_info_3"
         android:layout_toRightOf="@id/imagePhone"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="22dp"
         android:layout_marginLeft="10dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="721 231 341"/>
 
     <TextView
@@ -132,8 +132,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imagePhone"
         android:justificationMode="inter_word"
-        android:layout_marginTop="20dp"
-        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"
         android:textSize="16sp"
         android:text="@string/rest_txt"/>
 

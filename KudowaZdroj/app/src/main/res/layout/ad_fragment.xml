@@ -4,10 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/ad_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <GridView
         android:id="@+id/gridAd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="1"></GridView>
+
+
+
 
 </LinearLayout>

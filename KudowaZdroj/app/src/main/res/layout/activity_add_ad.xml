@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corkboard"
+    tools:context=".ui.ad.AddAdActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAddAdActivity"
+                app:cardCornerRadius="10dp"
+                app:cardMaxElevation="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                app:cardBackgroundColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/add_ad_info_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:textSize="23sp"
+                        android:text="Dodaj ogłoszenie"/>
+
+                    <TextView
+                        android:id="@+id/add_ad_info_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/add_ad_info_1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:text="Tytuł:"/>
+
+                    <EditText
+                        android:id="@+id/add_ad_edit_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:layout_below="@id/add_ad_info_2"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="1dp" />
+
+                    <TextView
+                        android:id="@+id/add_ad_info_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/add_ad_edit_1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:text="Treść ogłoszenia:"/>
+
+                    <EditText
+                        android:id="@+id/add_ad_edit_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:layout_below="@id/add_ad_info_3"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:inputType="textMultiLine" />
+
+                    <TextView
+                        android:id="@+id/add_ad_info_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/add_ad_edit_2"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:text="Autor:"/>
+
+                    <EditText
+                        android:id="@+id/add_ad_edit_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:layout_below="@id/add_ad_info_4"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="1dp" />
+
+                    <TextView
+                        android:id="@+id/add_ad_info_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/add_ad_edit_3"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:text="Dane kontaktowe:"/>
+
+                    <EditText
+                        android:id="@+id/add_ad_edit_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:layout_below="@id/add_ad_info_5"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="32dp"
+                        android:layout_marginTop="1dp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardAddAdActivity"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="32dp"
+                android:text="Dodaj"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
