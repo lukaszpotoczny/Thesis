@@ -11,17 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ad.AddAdActivity"
+        <activity
+            android:name=".ui.ad.AddAdActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".ui.ad.AdActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.trips.TripsActivity" />
+        <activity
+            android:name=".ui.trips.TripsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".ui.news.NewsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.attractions.AttractionsActivity" />
-        <activity android:name=".ui.accommodation.AccommodationActivity" />
+        <activity
+            android:name=".ui.attractions.AttractionsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".ui.accommodation.AccommodationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".ui.restaurants.RestaurantsActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -39,13 +39,15 @@ public class NewsFragment extends Fragment {
         news = new ArrayList<>();
         // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
 
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
-        news.add(new News(1, "ABC"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+        news.add(new News(1, "ABC", "a"));
+
 
         newsAdapter = new NewsAdapter(getActivity().getApplicationContext(), news);
         gridView.setAdapter(newsAdapter);
