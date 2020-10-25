@@ -1,5 +1,6 @@
 package com.example.kudowazdroj.database;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class News {
@@ -8,6 +9,7 @@ public class News {
     private String title;
     private Date date;
     private String content;
+    private ArrayList<String> images;
 
 
     public News(int id, String title, Date date, String content){
@@ -15,12 +17,14 @@ public class News {
         this.title = title;
         this.date = date;
         this.content = content;
+        images = new ArrayList<String>();
     }
 
     public News(int id, String title, String content){
         this.id = id;
         this.title = title;
         this.content = content;
+        images = new ArrayList<String>();
     }
 
 
@@ -54,5 +58,13 @@ public class News {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
     }
 }

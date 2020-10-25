@@ -13,13 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +31,6 @@ public class MapFragment extends Fragment {
 
     TextView textView;
     Button button;
-    private RequestQueue mQueue;
 
     @Nullable
     @Override
@@ -50,13 +42,11 @@ public class MapFragment extends Fragment {
         textView = root.findViewById(R.id.json_text);
         button = root.findViewById(R.id.json_button);
 
-        mQueue = Volley.newRequestQueue(getContext());
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // downloadJSON("https://kudowa.pl/get_json_data.php");
-                jsonParse();
+                downloadJSON("https://kudowa.pl/get_news.php");
+               // jsonParse();
             }
         });
 
@@ -64,38 +54,6 @@ public class MapFragment extends Fragment {
         
     }
 
-    private void jsonParse() {
-        String url = "https://kudowa.pl/get_json_data.php";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("server_response");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject employee = jsonArray.getJSONObject(i);
-                                String firstName = employee.getString("title");
-                                //int age = employee.getInt("age");
-                                String mail = employee.getString("content");
-                                textView.append(firstName + ", " + mail + "\n\n");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mQueue.add(request);
-    }
-
-
-    public void getJSON(View view){
-        //new BackgroundWorker().execute();
-    }
 
     private void downloadJSON(final String urlWebService) {
 
@@ -122,7 +80,7 @@ public class MapFragment extends Fragment {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
                     String json;
                     while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
+                        sb.append(json + "AAAAAA" + "\n\n");
                     }
                     return sb.toString().trim();
                 } catch (Exception e) {
