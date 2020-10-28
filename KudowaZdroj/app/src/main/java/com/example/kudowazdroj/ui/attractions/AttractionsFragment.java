@@ -14,9 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.kudowazdroj.database.News;
 import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.ui.adapters.NewsAdapter;
+import com.example.kudowazdroj.ui.news.NewsActivity;
+import com.example.kudowazdroj.ui.news.NewsFragment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,8 +32,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class AttractionsFragment extends Fragment {
-
-    String JSON_STRING;
 
     ArrayList<Attraction> attractions;
     AttractionsAdapter attractionsAdapter;
@@ -44,87 +46,95 @@ public class AttractionsFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_3);
 
         gridView = root.findViewById(R.id.gridAttractions);
+
         attractions = new ArrayList<>();
-       // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
-
         attractions.add(new Attraction(1, "ABC"));
-        attractions.add(new Attraction(2, "AB2"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
-        attractions.add(new Attraction(3, "AB3"));
 
-        attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
-        gridView.setAdapter(attractionsAdapter);
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Attraction attraction = attractions.get(i);
-                Intent intent = new Intent(getActivity(), AttractionsActivity.class);
-                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_ID, attraction.getId());
-                startActivity(intent);
-            }
-        });
+        downloadJSON("https://kudowa.pl/get_attractions_list.php");
+      //  downloadJSON("https://kudowa.pl/get_images.php");
 
         return root;
     }
 
-    public void getJSON(View view) {
-        new BackgroundTask().execute();
-    }
+    private void downloadJSON(final String urlWebService) {
 
+        class DownloadJSON extends AsyncTask<Void, Void, String> {
 
-    class BackgroundTask extends AsyncTask<Void, Void, String>{
-
-        String json_url;
-
-        @Override
-        protected void onPreExecute() {
-            //json_url = "http://192.168.56.1/get_data.php";
-            json_url = "http://androidtut.comli.com/json_get_data.php";
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            try {
-                URL url = new URL(json_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuilder stringBuilder = new StringBuilder();
-                while((JSON_STRING = bufferedReader.readLine()) != null){
-                    stringBuilder.append(JSON_STRING + "\n");
+            public String fixContent(String s){
+                s = s.replaceAll("[\\[\\]\\<\\>]","SPLIT_PLACE");
+                String data[] = s.split("SPLIT_PLACE");
+                String result = "";
+                for(int i=0; i<data.length; i++){
+                    if(i%2 == 0) result += data[i];
                 }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                return stringBuilder.toString().trim();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                result = result.replaceAll("This is a custom heading element.", "");
+                result = result.replaceAll("\n", " ");
+                if(result.length() > 67) result = result.substring(0, 64) + "...";
+                return result;
+
+
             }
-            return null;
 
-        }
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
 
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
 
-        @Override
-        protected void onPostExecute(String result) {
-          //  TextView textView = (TextView) getView().findViewById(R.id.atrakcjeTxt);
-            System.out.println(result);
-          //  textView.setText(result);
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                String[] data = s.split("<br>nextPart");
+
+                int id=0;
+                String name="";
+                String photo="";
+                attractions.clear();
+
+                for(int i=0; i<data.length-1; i++){
+                    if(i%3 == 0) id = Integer.parseInt(data[i]);
+                    else if(i%3 == 1) name = data[i];
+                    else{
+                        photo = data[i];
+                        attractions.add(new Attraction(id, name, photo));
+                    }
+                }
+
+                attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
+                gridView.setAdapter(attractionsAdapter);
+
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Attraction attraction = attractions.get(i);
+                        Intent intent = new Intent(getActivity(), AttractionsActivity.class);
+                        intent.putExtra(AttractionsActivity.ARG_ATTRACTION_ID, attraction.getId());
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    con.disconnect();
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
         }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
     }
-
 
 }

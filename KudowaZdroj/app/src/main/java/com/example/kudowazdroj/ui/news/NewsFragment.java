@@ -90,18 +90,23 @@ public class NewsFragment extends Fragment {
                     int id=0;
                     String content="";
                     String title="";
+                    String date="";
                     news.clear();
                     for(int i=(data.length-2); i>1; i--){
-                        if(i%3 == 0) {
+                   // for(int i=(data.length-2); i>(data.length-32); i--){
+                        if(i%4 == 0) {
                             id = Integer.parseInt(data[i]);
-                            news.add(new News(id, title, content));
+                            news.add(new News(id, title, content, date));
                         }
-                        else if(i%3 == 1) {
+                        else if(i%4 == 1) {
                             if(data[i].length() > 47) data[i] = data[i].substring(0, 44) + "...";
                             title = data[i];
                         }
-                        else  {
+                        else if(i%4 == 2) {
                             content = fixContent(data[i]);
+                        }
+                        else{
+                            date = data[i].substring(0, 10);
                         }
                     }
                 }
@@ -114,17 +119,20 @@ public class NewsFragment extends Fragment {
                         }
                         else if(i%2 == 1) {
                             guid = data[i];
+                            if(!guid.contains("https")) guid = guid.replaceAll("http", "https");
                             images.add(new ImageInfo(id, guid));
                         }
                     }
-                    int j=images.size()-1;
                     for(int i=0; i<news.size(); i++){
-                        j=images.size()-1;
-                        while(images.get(j).getParentID() > news.get(i).getId()){
-                            j--;
+                        int j=0;
+                        boolean found = false;
+                        while(j < images.size()-1 && !found){
+                            if(images.get(j).getParentID() == news.get(i).getId()) {
+                                news.get(i).getImages().add(images.get(j).getGuid());
+                                found = true;
+                            }
+                            j++;
                         }
-                        if(images.get(j).getParentID() == news.get(i).getId()) news.get(i).getImages().add(images.get(j).getGuid());
-
                     }
 
                 }
@@ -156,6 +164,7 @@ public class NewsFragment extends Fragment {
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
+                    con.disconnect();
                     return sb.toString().trim();
                 } catch (Exception e) {
                     return null;

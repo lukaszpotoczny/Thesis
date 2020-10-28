@@ -11,9 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.LoadingDialog;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.News;
 import com.example.kudowazdroj.ui.adapters.NewsAdapter;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
@@ -31,7 +34,9 @@ public class NewsActivity extends AppCompatActivity {
     public static final String ARG_NEWS_ID = "id";
     TextView title;
     TextView content;
+    TextView date;
     ImageView imageView1, imageView2, imageView3;
+    final LoadingDialog loadingDialog = new LoadingDialog(NewsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +47,12 @@ public class NewsActivity extends AppCompatActivity {
 
         title = findViewById(R.id.news_title);
         content = findViewById(R.id.news_text_1);
+        date = findViewById(R.id.news_date);
         imageView1 = findViewById(R.id.news_image_1);
         imageView2 = findViewById(R.id.news_image_2);
         imageView3 = findViewById(R.id.news_image_3);
 
+        loadingDialog.startLoadingDialog();
         downloadJSON("https://kudowa.pl/get_news.php");
 
     }
@@ -77,18 +84,21 @@ public class NewsActivity extends AppCompatActivity {
                 String[] data = s.split("<br>nextPart");
                 title.setText(data[0]);
                 content.setText(fixContent(data[1]));
+                date.setText(data[2].substring(0, 10));
 
-                System.out.println(data.length);
                 ArrayList<String> images = new ArrayList<String>();
-                for(int i=5; i<data.length; i=i+3){
-                   images.add(data[i]);
-                   System.out.println(data[i]);
+                for(int i=7; i<data.length; i=i+4){
+                   if(data[i].contains(".jpg")) {
+                       if(!data[i].contains("https")) {
+                           data[i] = data[i].replaceAll("http", "https");
+                       }
+                       images.add(data[i]);
+                   }
                 }
+
                 if(images.size() > 2){
                     Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
                     Picasso.with(getApplicationContext()).load(images.get(1)).into(imageView2);
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
-                    System.out.println(images.get(2));
                     Picasso.with(getApplicationContext()).load(images.get(2)).into(imageView3);
                 }
                 else if(images.size() == 2){
@@ -106,6 +116,8 @@ public class NewsActivity extends AppCompatActivity {
                     imageView2.setVisibility(View.GONE);
                     imageView3.setVisibility(View.GONE);
                 }
+
+                loadingDialog.dismissDialog();
 
             }
 
@@ -132,6 +144,7 @@ public class NewsActivity extends AppCompatActivity {
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
+                    con.disconnect();
                     return sb.toString().trim();
                 } catch (Exception e) {
                     return null;

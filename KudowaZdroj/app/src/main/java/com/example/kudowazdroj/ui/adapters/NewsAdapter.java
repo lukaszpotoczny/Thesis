@@ -50,21 +50,16 @@ public class NewsAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageNews);
         TextView title = (TextView) view.findViewById(R.id.news_text_1);
         TextView content = (TextView) view.findViewById(R.id.news_text_3);
+        TextView date = (TextView) view.findViewById(R.id.news_text_2);
 
-/*        String s = Utility.getCompetitionLogoFleName(competitions.get(position).getName());
-
-        int resID = context.getResources().getIdentifier(s, "drawable", context.getPackageName());
-
-        imageView.setImageResource(resID);*/
         title.setText(news.get(position).getTitle());
         content.setText(news.get(position).getContent());
+        date.setText(news.get(position).getDate());
         String url="";
         if(news.get(position).getImages().size() > 0) {
             url = news.get(position).getImages().get(0);
-            Picasso.with(context).load(url).into(imageView);
+            if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
         }
-
-        //imageView.setImageResource(R.drawable.news);
 
         return view;
 

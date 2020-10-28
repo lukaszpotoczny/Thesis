@@ -7,12 +7,12 @@ public class News {
 
     private int id;
     private String title;
-    private Date date;
+    private String date;
     private String content;
     private ArrayList<String> images;
 
 
-    public News(int id, String title, Date date, String content){
+    public News(int id, String title, String content, String date){
         this.id = id;
         this.title = title;
         this.date = date;
@@ -44,11 +44,11 @@ public class News {
         this.title = title;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

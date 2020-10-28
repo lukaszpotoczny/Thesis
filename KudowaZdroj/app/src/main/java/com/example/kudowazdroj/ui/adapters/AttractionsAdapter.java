@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,17 +46,15 @@ public class AttractionsAdapter extends BaseAdapter {
 
         View view = inflater.inflate(R.layout.attraction, null);
 
+        TextView textView = (TextView) view.findViewById(R.id.textAttraction);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageAttraction);
-        //TextView textView = (TextView) view.findViewById(R.id.competitionName);
 
-/*        String s = Utility.getCompetitionLogoFleName(competitions.get(position).getName());
-
-        int resID = context.getResources().getIdentifier(s, "drawable", context.getPackageName());
-
-        imageView.setImageResource(resID);
-        textView.setText(competitions.get(position).getName());*/
-
-        imageView.setImageResource(R.drawable.kaplica_czaszek);
+        textView.setText(attractions.get(position).getName());
+        String url="";
+        if(attractions.get(position).getImages().size() > 0) {
+            url = attractions.get(position).getImages().get(0);
+            if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
+        }
 
         return view;
 
