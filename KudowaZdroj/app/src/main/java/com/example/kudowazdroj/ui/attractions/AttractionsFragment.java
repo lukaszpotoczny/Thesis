@@ -14,20 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.kudowazdroj.database.News;
 import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
-import com.example.kudowazdroj.ui.adapters.NewsAdapter;
-import com.example.kudowazdroj.ui.news.NewsActivity;
-import com.example.kudowazdroj.ui.news.NewsFragment;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -40,18 +33,15 @@ public class AttractionsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.attractions_fragment, container, false);
-
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_3);
 
         gridView = root.findViewById(R.id.gridAttractions);
 
         attractions = new ArrayList<>();
-        attractions.add(new Attraction(1, "ABC"));
+        attractions.add(new Attraction(1, "ABC", "a"));
 
         downloadJSON("https://kudowa.pl/get_attractions_list.php");
-      //  downloadJSON("https://kudowa.pl/get_images.php");
 
         return root;
     }
@@ -59,27 +49,10 @@ public class AttractionsFragment extends Fragment {
     private void downloadJSON(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
-
-            public String fixContent(String s){
-                s = s.replaceAll("[\\[\\]\\<\\>]","SPLIT_PLACE");
-                String data[] = s.split("SPLIT_PLACE");
-                String result = "";
-                for(int i=0; i<data.length; i++){
-                    if(i%2 == 0) result += data[i];
-                }
-                result = result.replaceAll("This is a custom heading element.", "");
-                result = result.replaceAll("\n", " ");
-                if(result.length() > 67) result = result.substring(0, 64) + "...";
-                return result;
-
-
-            }
-
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
             }
-
 
             @Override
             protected void onPostExecute(String s) {
@@ -90,13 +63,19 @@ public class AttractionsFragment extends Fragment {
                 String name="";
                 String photo="";
                 attractions.clear();
-
                 for(int i=0; i<data.length-1; i++){
                     if(i%3 == 0) id = Integer.parseInt(data[i]);
-                    else if(i%3 == 1) name = data[i];
+                    else if(i%3 == 1) {
+                        if(data[i].contains("&#8220;")) {
+                            data[i] = data[i].replaceAll("&#8220;", "''");
+                            data[i] = data[i].replaceAll("&#8221;", "''");
+                        }
+                        if(data[i].contains("&#8211;")) data[i] = data[i].replaceAll("&#8211;", "-");
+                        name = data[i];
+                    }
                     else{
                         photo = data[i];
-                        attractions.add(new Attraction(id, name, photo));
+                        attractions.add(new Attraction(id, name, "", photo));
                     }
                 }
 

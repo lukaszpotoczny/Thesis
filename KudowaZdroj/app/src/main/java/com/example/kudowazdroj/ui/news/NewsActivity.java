@@ -42,7 +42,6 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         title = findViewById(R.id.news_title);
@@ -100,21 +99,19 @@ public class NewsActivity extends AppCompatActivity {
                     Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
                     Picasso.with(getApplicationContext()).load(images.get(1)).into(imageView2);
                     Picasso.with(getApplicationContext()).load(images.get(2)).into(imageView3);
+                    imageView1.setVisibility(View.VISIBLE);
+                    imageView2.setVisibility(View.VISIBLE);
+                    imageView3.setVisibility(View.VISIBLE);
                 }
                 else if(images.size() == 2){
                     Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
                     Picasso.with(getApplicationContext()).load(images.get(1)).into(imageView2);
-                    imageView3.setVisibility(View.GONE);
+                    imageView1.setVisibility(View.VISIBLE);
+                    imageView2.setVisibility(View.VISIBLE);
                 }
                 else if(images.size() == 1){
                     Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
-                    imageView2.setVisibility(View.GONE);
-                    imageView3.setVisibility(View.GONE);
-                }
-                else{
-                    imageView1.setVisibility(View.GONE);
-                    imageView2.setVisibility(View.GONE);
-                    imageView3.setVisibility(View.GONE);
+                    imageView1.setVisibility(View.VISIBLE);
                 }
 
                 loadingDialog.dismissDialog();

@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Accommodation;
 import com.example.kudowazdroj.database.Attraction;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,22 +44,18 @@ public class AccommodationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View view = inflater.inflate(R.layout.accommodation, null);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageAccommodation);
-        //TextView textView = (TextView) view.findViewById(R.id.competitionName);
+        TextView name = view.findViewById(R.id.accommodation_text_1);
+        TextView rating = view.findViewById(R.id.accommodation_text_2);
 
-/*        String s = Utility.getCompetitionLogoFleName(competitions.get(position).getName());
+        name.setText(accommodations.get(position).getName());
+        rating.setText(accommodations.get(position).getRating());
 
-        int resID = context.getResources().getIdentifier(s, "drawable", context.getPackageName());
-
-        imageView.setImageResource(resID);
-        textView.setText(competitions.get(position).getName());*/
-
-        imageView.setImageResource(R.drawable.verde);
+        String url = accommodations.get(position).getImage();
+        if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
 
         return view;
-
     }
 }

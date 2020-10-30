@@ -1,3 +1,4 @@
+customize loading screen
 przy dodawaniu ogloszenia napis "dodaj" + ma³a pinezka
 tap again to exit
 dodaj atrakcje do ulubionych

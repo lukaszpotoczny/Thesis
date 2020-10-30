@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.kudowazdroj.LoadingDialog;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.News;
 import com.example.kudowazdroj.ui.adapters.NewsAdapter;
@@ -30,6 +31,7 @@ public class NewsFragment extends Fragment {
     ArrayList<ImageInfo> images;
     NewsAdapter newsAdapter;
     GridView gridView;
+    final LoadingDialog loadingDialog = new LoadingDialog();
 
     @Nullable
     @Override
@@ -42,16 +44,11 @@ public class NewsFragment extends Fragment {
 
         news = new ArrayList<>();
         images = new ArrayList<>();
-        // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
-
         news.add(new News(1, "ABC", "a"));
-        //news.add(new News(1, "ABC", "a"));
 
+        loadingDialog.show(getFragmentManager(), "elo");
         downloadJSON("https://kudowa.pl/get_news_list.php");
         downloadJSON("https://kudowa.pl/get_images.php");
-
-
-
 
         return root;
     }
@@ -71,15 +68,12 @@ public class NewsFragment extends Fragment {
                 result = result.replaceAll("\n", " ");
                 if(result.length() > 67) result = result.substring(0, 64) + "...";
                 return result;
-
-
             }
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
             }
-
 
             @Override
             protected void onPostExecute(String s) {
@@ -92,8 +86,7 @@ public class NewsFragment extends Fragment {
                     String title="";
                     String date="";
                     news.clear();
-                    for(int i=(data.length-2); i>1; i--){
-                   // for(int i=(data.length-2); i>(data.length-32); i--){
+                    for(int i=(data.length-2); i>9; i--){
                         if(i%4 == 0) {
                             id = Integer.parseInt(data[i]);
                             news.add(new News(id, title, content, date));
@@ -102,21 +95,15 @@ public class NewsFragment extends Fragment {
                             if(data[i].length() > 47) data[i] = data[i].substring(0, 44) + "...";
                             title = data[i];
                         }
-                        else if(i%4 == 2) {
-                            content = fixContent(data[i]);
-                        }
-                        else{
-                            date = data[i].substring(0, 10);
-                        }
+                        else if(i%4 == 2) content = fixContent(data[i]);
+                        else date = data[i].substring(0, 10);
                     }
                 }
                 else if(data[data.length-1].equals("images")){
                     int id = 0;
                     String guid = "";
                     for(int i=0; i<data.length-1; i++){
-                        if(i%2 == 0) {
-                            id = Integer.parseInt(data[i]);
-                        }
+                        if(i%2 == 0) id = Integer.parseInt(data[i]);
                         else if(i%2 == 1) {
                             guid = data[i];
                             if(!guid.contains("https")) guid = guid.replaceAll("http", "https");
@@ -126,7 +113,7 @@ public class NewsFragment extends Fragment {
                     for(int i=0; i<news.size(); i++){
                         int j=0;
                         boolean found = false;
-                        while(j < images.size()-1 && !found){
+                        while(j < images.size() && !found){
                             if(images.get(j).getParentID() == news.get(i).getId()) {
                                 news.get(i).getImages().add(images.get(j).getGuid());
                                 found = true;
@@ -135,6 +122,7 @@ public class NewsFragment extends Fragment {
                         }
                     }
 
+                    loadingDialog.dismiss();
                 }
 
 

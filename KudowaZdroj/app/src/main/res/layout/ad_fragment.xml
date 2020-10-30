@@ -32,10 +32,11 @@
                 android:layout_height="wrap_content"
                 android:elevation="15dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:gravity="center"
-                android:text="All Services"
+                android:text="DODAJ OGŁOSZENIE"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 

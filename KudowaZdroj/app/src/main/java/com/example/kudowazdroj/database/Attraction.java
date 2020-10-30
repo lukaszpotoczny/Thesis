@@ -6,17 +6,20 @@ public class Attraction {
 
     private int id;
     private String name;
+    private String content;
     private ArrayList<String> images;
 
-    public Attraction(int id, String name){
+    public Attraction(int id, String name, String c){
         this.id = id;
         this.name = name;
+        this.content = c;
         images = new ArrayList<String>();
     }
 
-    public Attraction(int id, String name, String photo){
+    public Attraction(int id, String name, String c, String photo){
         this.id = id;
         this.name = name;
+        this.content = c;
         images = new ArrayList<String>();
         images.add(photo);
     }
@@ -43,5 +46,13 @@ public class Attraction {
 
     public void setImages(ArrayList<String> images) {
         this.images = images;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

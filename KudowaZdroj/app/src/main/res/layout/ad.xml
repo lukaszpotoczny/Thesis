@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="182dp"
         android:background="@drawable/corkboard"
         >
 
@@ -27,7 +27,7 @@
             android:layout_marginTop="16dp"
             android:elevation="10dp"
             android:layout_width="match_parent"
-            android:layout_height="140dp">
+            android:layout_height="150dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -42,16 +42,16 @@
                     android:textStyle="italic"
                     android:layout_alignParentRight="true"
                     android:gravity="end"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="4dp"
-                    android:textSize="14sp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
                     android:text="11.10.2020"/>
 
                 <TextView
                     android:id="@+id/ad_text_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="70dp"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
                     android:layout_below="@+id/ad_text_2"
@@ -64,60 +64,64 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ad_text_1"
-                    android:layout_toRightOf="@+id/ad_text_5"
+                    android:layout_toRightOf="@+id/dataLayout"
                     android:layout_gravity="center_horizontal"
                     android:justificationMode="inter_word"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:textSize="14sp"
                     android:text="Poprzedniej soboty zgubiono czerwony szalik w okolicach ..."/>
 
-                <ImageView
-                    android:id="@+id/imageAuthor"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_below="@+id/ad_text_1"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/person_icon" />
-
-                <ImageView
-                    android:id="@+id/imageContact"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_below="@+id/imageAuthor"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="14dp"
-                    android:src="@drawable/phone_icon" />
-
-                <TextView
-                    android:id="@+id/ad_text_4"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/dataLayout"
+                    android:layout_width="155dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ad_text_1"
-                    android:layout_toRightOf="@id/imageAuthor"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="14sp"
-                    android:text="Adam K."/>
+                    android:layout_below="@id/ad_text_1">
 
-                <TextView
-                    android:id="@+id/ad_text_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ad_text_4"
-                    android:layout_toRightOf="@id/imageContact"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="14sp"
-                    android:text="501 231 123"/>
+                    <ImageView
+                        android:id="@+id/imageAuthor"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/person_icon" />
 
+                    <ImageView
+                        android:id="@+id/imageContact"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/imageAuthor"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="14dp"
+                        android:src="@drawable/phone_icon" />
+
+                    <TextView
+                        android:id="@+id/ad_text_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/imageAuthor"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="4dp"
+                        android:textSize="14sp"
+                        android:text="Adam K."/>
+
+                    <TextView
+                        android:id="@+id/ad_text_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ad_text_4"
+                        android:layout_toRightOf="@id/imageContact"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginLeft="4dp"
+                        android:textSize="14sp"
+                        android:text="501 231 123"/>
+                </RelativeLayout>
 
             </RelativeLayout>
 

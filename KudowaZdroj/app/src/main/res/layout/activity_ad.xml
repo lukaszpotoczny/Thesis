@@ -52,7 +52,7 @@
                         android:layout_alignParentRight="true"
                         android:gravity="end"
                         android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginLeft="16dp"
                         android:textSize="20sp"
                         android:text="11.10.2020"/>
@@ -99,11 +99,11 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="30dp"
                         android:src="@drawable/phone_icon" />
 
                     <TextView
-                        android:id="@+id/ad_text_4"
+                        android:id="@+id/ad_text_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ad_text_1"
@@ -117,10 +117,10 @@
                         android:text="Adam K."/>
 
                     <TextView
-                        android:id="@+id/ad_text_5"
+                        android:id="@+id/ad_text_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ad_text_4"
+                        android:layout_below="@+id/ad_text_2"
                         android:layout_toLeftOf="@id/imageContact"
                         android:layout_gravity="center_horizontal"
                         android:textStyle="bold"
