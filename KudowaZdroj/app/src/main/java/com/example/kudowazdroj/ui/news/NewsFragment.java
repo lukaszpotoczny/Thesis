@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.kudowazdroj.LoadingDialog;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.News;
 import com.example.kudowazdroj.ui.adapters.NewsAdapter;
@@ -31,22 +31,21 @@ public class NewsFragment extends Fragment {
     ArrayList<ImageInfo> images;
     NewsAdapter newsAdapter;
     GridView gridView;
-    final LoadingDialog loadingDialog = new LoadingDialog();
+    ProgressBar progressBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.news_fragment, container, false);
-
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_2);
 
         gridView = root.findViewById(R.id.gridNews);
+        progressBar = root.findViewById(R.id.newsProgressBar);
 
         news = new ArrayList<>();
         images = new ArrayList<>();
         news.add(new News(1, "ABC", "a"));
 
-        loadingDialog.show(getFragmentManager(), "elo");
         downloadJSON("https://kudowa.pl/get_news_list.php");
         downloadJSON("https://kudowa.pl/get_images.php");
 
@@ -66,7 +65,7 @@ public class NewsFragment extends Fragment {
                 }
                 result = result.replaceAll("This is a custom heading element.", "");
                 result = result.replaceAll("\n", " ");
-                if(result.length() > 67) result = result.substring(0, 64) + "...";
+               // if(result.length() > 67) result = result.substring(0, 64) + "...";
                 return result;
             }
 
@@ -92,7 +91,7 @@ public class NewsFragment extends Fragment {
                             news.add(new News(id, title, content, date));
                         }
                         else if(i%4 == 1) {
-                            if(data[i].length() > 47) data[i] = data[i].substring(0, 44) + "...";
+                           // if(data[i].length() > 47) data[i] = data[i].substring(0, 44) + "...";
                             title = data[i];
                         }
                         else if(i%4 == 2) content = fixContent(data[i]);
@@ -121,8 +120,7 @@ public class NewsFragment extends Fragment {
                             j++;
                         }
                     }
-
-                    loadingDialog.dismiss();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
 
 

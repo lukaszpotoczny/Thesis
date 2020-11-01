@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ public class AccommodationFragment extends Fragment {
     ArrayList<Accommodation> accommodations;
     AccommodationAdapter accommodationAdapter;
     GridView gridView;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -39,6 +41,7 @@ public class AccommodationFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_8);
 
         gridView = root.findViewById(R.id.gridAccommodation);
+        progressBar = root.findViewById(R.id.progressBar4);
         accommodations = new ArrayList<>();
 
         accommodationAdapter = new AccommodationAdapter(getActivity().getApplicationContext(), accommodations);
@@ -64,9 +67,11 @@ public class AccommodationFragment extends Fragment {
                     String key = dataSnapshot.getKey();
                     accommodation.setKey(key);
                     accommodations.add(accommodation);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
                 Collections.sort(accommodations);
                 accommodationAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.INVISIBLE);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

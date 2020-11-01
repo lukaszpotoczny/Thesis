@@ -30,7 +30,7 @@
                     android:scaleType="centerCrop"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/verde" />
+                    android:src="@drawable/about_kudowa_image_2" />
 
                 <TextView
                     android:id="@+id/accommodation_text_1"

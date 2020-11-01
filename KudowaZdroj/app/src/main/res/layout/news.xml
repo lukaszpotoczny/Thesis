@@ -60,7 +60,8 @@
                     android:layout_marginTop="2dp"
                     android:textSize="18sp"
                     android:textColor="#1E70D3"
-                    android:text="Dekarbonizacja 2030"/>
+                    android:maxLines="2"
+                    android:text="Dekarbonizacja aaaaaaa aaaaaaa aa  a aaa a aaaaaaaa a 2030"/>
 
                 <TextView
                     android:id="@+id/news_text_3"
@@ -75,7 +76,8 @@
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="16dp"
                     android:textSize="14sp"
-                    android:text="28 września 2020 roku w Wałbrzychu w Starej Kopalni spotkali się ..."/>
+                    android:maxLines="3"
+                    android:text="28 września 2020 roku w Wałbrzychu w Starej Kopalni spotkalia aaaaaaaaaaaaaa aaaaaaaaaa aaaaaa aa aaa  się ..."/>
 
 
 

@@ -90,7 +90,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/kaplica_czaszek" />
+                    android:src="@drawable/about_kudowa_image_2" />
 
                 <ImageView
                     android:id="@+id/imageTrip_2"
@@ -101,7 +101,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/bledne_skaly" />
+                    android:src="@drawable/about_kudowa_image_1" />
 
                 <ImageView
                     android:id="@+id/imageTrip_3"
@@ -112,7 +112,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/park_zdrojowy" />
+                    android:src="@drawable/about_kudowa_image_2" />
 
             </RelativeLayout>
 

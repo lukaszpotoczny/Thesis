@@ -1,12 +1,14 @@
 package com.example.kudowazdroj.ui.restaurants;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +40,7 @@ public class RestaurantsFragment extends Fragment {
     ArrayList<Restaurant> restaurants;
     RestaurantsAdapter restaurantsAdapter;
     GridView gridView;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -46,6 +49,7 @@ public class RestaurantsFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_7);
 
         gridView = root.findViewById(R.id.gridRestaurants);
+        progressBar = root.findViewById(R.id.progressBar2);
         restaurants = new ArrayList<>();
 
         restaurantsAdapter = new RestaurantsAdapter(getActivity().getApplicationContext(), restaurants);
@@ -74,10 +78,12 @@ public class RestaurantsFragment extends Fragment {
                 }
                 Collections.sort(restaurants);
                 restaurantsAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 

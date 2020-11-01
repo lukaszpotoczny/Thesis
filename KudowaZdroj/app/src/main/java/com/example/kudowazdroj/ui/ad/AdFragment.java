@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ public class AdFragment extends Fragment {
     GridView gridView;
 
     Button addButton;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -46,6 +48,7 @@ public class AdFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_6);
 
         gridView = root.findViewById(R.id.gridAd);
+        progressBar = root.findViewById(R.id.progressBar3);
         ads = new ArrayList<>();
 
         adAdapter = new AdAdapter(getActivity().getApplicationContext(), ads);
@@ -85,9 +88,11 @@ public class AdFragment extends Fragment {
                 }
                 Collections.sort(ads);
                 adAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.INVISIBLE);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 

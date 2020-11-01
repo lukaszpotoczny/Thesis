@@ -46,7 +46,7 @@
                             android:id="@+id/accommodation_image_1"
                             android:layout_width="wrap_content"
                             android:layout_height="200dp"
-                            android:src="@drawable/verde"
+                            android:src="@drawable/about_kudowa_image_1"
                             android:scaleType="centerCrop" />
 
 

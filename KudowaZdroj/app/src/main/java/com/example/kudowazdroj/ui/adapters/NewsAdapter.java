@@ -48,8 +48,8 @@ public class NewsAdapter extends BaseAdapter {
         View view = inflater.inflate(R.layout.news, null);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageNews);
-        TextView title = (TextView) view.findViewById(R.id.news_text_1);
-        TextView content = (TextView) view.findViewById(R.id.news_text_3);
+        final TextView title = (TextView) view.findViewById(R.id.news_text_1);
+        final TextView content = (TextView) view.findViewById(R.id.news_text_3);
         TextView date = (TextView) view.findViewById(R.id.news_text_2);
 
         title.setText(news.get(position).getTitle());
@@ -61,6 +61,13 @@ public class NewsAdapter extends BaseAdapter {
             if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
         }
 
+        title.post(new Runnable() {
+            @Override
+            public void run() {
+                if(title.getLineCount() > 1) content.setMaxLines(2);
+                else content.setMaxLines(3);
+            }
+        });
         return view;
 
     }

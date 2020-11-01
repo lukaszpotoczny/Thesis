@@ -2,21 +2,15 @@ package com.example.kudowazdroj.ui.news;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.kudowazdroj.LoadingDialog;
 import com.example.kudowazdroj.R;
-import com.example.kudowazdroj.database.News;
-import com.example.kudowazdroj.ui.adapters.NewsAdapter;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
@@ -36,7 +30,7 @@ public class NewsActivity extends AppCompatActivity {
     TextView content;
     TextView date;
     ImageView imageView1, imageView2, imageView3;
-    final LoadingDialog loadingDialog = new LoadingDialog(NewsActivity.this);
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +44,8 @@ public class NewsActivity extends AppCompatActivity {
         imageView1 = findViewById(R.id.news_image_1);
         imageView2 = findViewById(R.id.news_image_2);
         imageView3 = findViewById(R.id.news_image_3);
+        progressBar = findViewById(R.id.newsProgressBar2);
 
-        loadingDialog.startLoadingDialog();
         downloadJSON("https://kudowa.pl/get_news.php");
 
     }
@@ -114,8 +108,7 @@ public class NewsActivity extends AppCompatActivity {
                     imageView1.setVisibility(View.VISIBLE);
                 }
 
-                loadingDialog.dismissDialog();
-
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override

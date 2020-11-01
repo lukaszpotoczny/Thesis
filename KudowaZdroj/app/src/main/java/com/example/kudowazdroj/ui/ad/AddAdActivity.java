@@ -8,14 +8,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.kudowazdroj.MapFragment;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Ad;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
 
 public class AddAdActivity extends AppCompatActivity {

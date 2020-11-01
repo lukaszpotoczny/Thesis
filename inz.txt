@@ -1,3 +1,4 @@
+filtry do mapy - atrakcje, hotele, restauracje
 customize loading screen
 przy dodawaniu ogloszenia napis "dodaj" + ma³a pinezka
 tap again to exit

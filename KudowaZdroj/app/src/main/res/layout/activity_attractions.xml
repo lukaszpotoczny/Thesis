@@ -27,7 +27,7 @@
                     android:id="@+id/attr_image_1"
                     android:layout_width="wrap_content"
                     android:layout_height="160dp"
-                    android:src="@drawable/kaplica_czaszek"
+                    android:src="@drawable/about_kudowa_image_1"
                     android:scaleType="centerCrop"
                     android:layout_marginTop="16dp"
                     android:padding="8dp"/>
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="260dp"
                 android:layout_below="@+id/attr_text_1"
-                android:src="@drawable/news"
+                android:src="@drawable/about_kudowa_image_2"
                 android:scaleType="centerCrop"
                 android:layout_margin="16dp"
                 android:padding="8dp"/>

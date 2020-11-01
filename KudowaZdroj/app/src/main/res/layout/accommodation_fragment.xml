@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.accommodation.AccommodationActivity"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true" />
 
     <GridView
         android:id="@+id/gridAccommodation"
@@ -13,4 +16,4 @@
         android:numColumns="1"></GridView>
 
 
-</LinearLayout>
+</RelativeLayout>

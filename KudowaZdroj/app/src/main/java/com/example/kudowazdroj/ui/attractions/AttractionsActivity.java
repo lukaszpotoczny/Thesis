@@ -7,9 +7,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kudowazdroj.LoadingDialog;
 import com.example.kudowazdroj.R;
-import com.example.kudowazdroj.ui.news.NewsActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +17,6 @@ public class AttractionsActivity extends AppCompatActivity {
     TextView title;
     TextView content;
     ArrayList<ImageView> imageViews;
-    final LoadingDialog loadingDialog = new LoadingDialog(AttractionsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

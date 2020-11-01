@@ -33,7 +33,7 @@
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/kaplica_czaszek" />
+                    android:src="@drawable/about_kudowa_image_1" />
 
             </LinearLayout>
 

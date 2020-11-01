@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/corkboard"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ProgressBar
+        android:id="@+id/progressBar3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <GridView
             android:id="@+id/gridAd"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:numColumns="1"
             android:stretchMode="columnWidth">
@@ -30,10 +36,10 @@
                 android:id="@+id/ad_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="15dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:elevation="15dp"
                 android:ems="10"
                 android:gravity="center"
                 android:text="DODAJ OGŁOSZENIE"
@@ -44,7 +50,6 @@
         </LinearLayout>
 
 
-
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

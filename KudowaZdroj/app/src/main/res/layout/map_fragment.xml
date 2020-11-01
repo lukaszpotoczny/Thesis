@@ -1,77 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" 
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:map="http://schemas.android.com/apk/res-auto">
 
-
-    <EditText
-        android:id="@+id/edit1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit1"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit2"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit3"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit4"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit5"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/edit7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/edit6"
-        android:text="" />
-
-    <Button
-        android:id="@+id/add_stuff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit7"
-        android:text="ADD" />
-
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/mapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:cameraTargetLat="50.442456"
+        map:cameraTargetLng="16.241783"
+        map:cameraTilt="10"
+        map:cameraZoom="15"
+        map:mapType="normal"
+   />
 
 </RelativeLayout>
