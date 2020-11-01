@@ -51,7 +51,7 @@ public class AccommodationAdapter extends BaseAdapter {
         TextView rating = view.findViewById(R.id.accommodation_text_2);
 
         name.setText(accommodations.get(position).getName());
-        rating.setText(accommodations.get(position).getRating());
+        rating.setText(accommodations.get(position).getRating() + " / 5");
 
         String url = accommodations.get(position).getImage();
         if(!url.equals("")) Picasso.with(context).load(url).into(imageView);

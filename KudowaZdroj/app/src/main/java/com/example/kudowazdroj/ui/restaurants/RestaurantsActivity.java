@@ -3,9 +3,13 @@ package com.example.kudowazdroj.ui.restaurants;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -51,7 +55,22 @@ public class RestaurantsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String key = extras.getString(ARG_RESTAURANT_KEY);
 
+        info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        info1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String search = title.getText().toString();
+                search = search.replaceAll(" ", "+");
+                Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
 
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        info2.setMovementMethod(LinkMovementMethod.getInstance());
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Restaurants").child(key);
         databaseReference.addValueEventListener(new ValueEventListener() {

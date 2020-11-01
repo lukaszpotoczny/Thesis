@@ -87,6 +87,7 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
+                        android:textColor="@color/colorLocation"
                         android:text="ul. Zdrojowa 8"/>
 
                     <ImageView
@@ -125,10 +126,12 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/restaurant_info_2"
                         android:layout_toRightOf="@id/imageWebsite"
-                        android:textStyle="bold"
+                        android:textStyle="normal"
                         android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="15sp"
+                        android:autoLink="web"
+                        android:textColorLink="@color/colorTitle"
                         android:text="www.restauracja.pl"/>
 
                     <ImageView

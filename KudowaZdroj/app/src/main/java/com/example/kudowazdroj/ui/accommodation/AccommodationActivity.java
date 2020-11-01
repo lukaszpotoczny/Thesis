@@ -3,7 +3,12 @@ package com.example.kudowazdroj.ui.accommodation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +44,22 @@ public class AccommodationActivity extends AppCompatActivity {
         content = findViewById(R.id.accommodation_text_1);
         imageView = findViewById(R.id.accommodation_image_1);
 
+        info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        info1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String search = title.getText().toString();
+                search = search.replaceAll(" ", "+");
+                Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        info2.setMovementMethod(LinkMovementMethod.getInstance());
+
         Bundle extras = getIntent().getExtras();
         String key = extras.getString(ARG_ACCOMMODATION_KEY);
 
@@ -47,9 +68,9 @@ public class AccommodationActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 title.setText(snapshot.child("name").getValue().toString());
-                info0.setText(snapshot.child("rating").getValue().toString());
+                info0.setText(snapshot.child("rating").getValue().toString() + " / 5");
                 info1.setText(snapshot.child("address").getValue().toString());
-                info2.setText(snapshot.child("website").getValue().toString() + " / 5");
+                info2.setText(snapshot.child("website").getValue().toString());
                 info3.setText(snapshot.child("email").getValue().toString());
                 info4.setText(snapshot.child("phone").getValue().toString());
                 content.setText(snapshot.child("content").getValue().toString());
@@ -60,5 +81,10 @@ public class AccommodationActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        //TextView t2 = (TextView) findViewById(R.id.text2);
+
+
+
     }
 }

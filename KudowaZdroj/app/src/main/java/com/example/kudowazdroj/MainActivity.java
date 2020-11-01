@@ -16,6 +16,7 @@ import com.example.kudowazdroj.ui.accommodation.AccommodationFragment;
 import com.example.kudowazdroj.ui.ad.AdFragment;
 import com.example.kudowazdroj.ui.attractions.AttractionsFragment;
 import com.example.kudowazdroj.ui.main.AboutKudowaFragment;
+import com.example.kudowazdroj.ui.map.MapFragment;
 import com.example.kudowazdroj.ui.news.NewsFragment;
 import com.example.kudowazdroj.ui.restaurants.RestaurantsFragment;
 import com.example.kudowazdroj.ui.trips.TripsFragment;
@@ -123,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_message8:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccommodationFragment()).commit();
+                break;
+            case R.id.nav_message9:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
                 break;
         }
 

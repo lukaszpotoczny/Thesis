@@ -62,7 +62,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         name.setText(restaurants.get(position).getName());
         address.setText(restaurants.get(position).getAddress());
-        rating.setText(restaurants.get(position).getRating());
+        rating.setText(restaurants.get(position).getRating() + " / 5");
 
         String url = restaurants.get(position).getImage();
         if(!url.equals("")) Picasso.with(context).load(url).into(imageView);

@@ -9,4 +9,5 @@
     <color name="colorCardBackground">#E8ECF6</color>
     <color name="colorCardBackgroundDark">#D5DEF4</color>
     <color name="colorTitle">#1E70D3</color>
+    <color name="colorLocation">#FFA731</color>
 </resources>

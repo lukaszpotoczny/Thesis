@@ -16,4 +16,10 @@
         map:mapType="normal"
    />
 
+    <ImageView
+        android:id="@+id/loadResources"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
 </RelativeLayout>
