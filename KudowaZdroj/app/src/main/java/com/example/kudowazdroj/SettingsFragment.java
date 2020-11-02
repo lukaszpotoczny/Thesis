@@ -38,42 +38,97 @@ public class SettingsFragment extends Fragment {
         editText8 = root.findViewById(R.id.edit8);
         button = root.findViewById(R.id.do_stuff);
 
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Accommodation");
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Markers");
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
                 int id = Integer.valueOf(editText1.getText().toString());
                 String name = editText2.getText().toString();
-                String address = editText3.getText().toString();
-                String rating = editText4.getText().toString();
-                String phone = editText5.getText().toString();
-                String website = editText6.getText().toString();
-                String content = editText7.getText().toString();
-                String image = editText8.getText().toString();
-                Rest rest = new Rest(id, name, address, rating, phone, website,content, image, content);
-*/
+                double lat = Double.valueOf(editText3.getText().toString());
+                double lng = Double.valueOf(editText4.getText().toString());
+                String tag = editText5.getText().toString();
+                String image = editText6.getText().toString();
+             //   String content = editText7.getText().toString();
+             //   String image = editText8.getText().toString();
+                Mark mark = new Mark(id, name, lat, lng, tag, image);
 
-                //reference.child(name).setValue(rest);
+                reference.child(name).setValue(mark);
 
-                String a = "Verde Montana Wellness and Spa";
-                a = a.replaceAll(" ", "+");
-                Uri uri = Uri.parse("https://www.google.com/maps/place/Hotel+Verde+Montana+Wellness+%26+Spa/@50.4437799,16.2481353,17z/data=!3m1!4b1!4m9!3m8!1s0x470e6f38faf423c3:0x444371570b6d500c!5m3!1s2021-03-18!4m1!1i2!8m2!3d50.4437799!4d16.250324");
-                uri = Uri.parse("https://www.google.com/maps/search/" + a);
-
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-               // intent.setData(Uri.parse("geo:19,70"));
-               // Intent chooser = Intent.createChooser(intent, "Launch Maps");
-                intent.setPackage("com.google.android.apps.maps");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
 
 
             }
         });
 
         return root;
+    }
+
+    public class Mark{
+        public int id;
+        public String name;
+        public Double lat;
+        public Double lng;
+        public String tag;
+        public String image;
+
+        public Mark(){}
+
+        public Mark(int id, String n, double a, double b, String t, String i){
+            this.id = id;
+            this.name = n;
+            this.lat = a;
+            this.lng = b;
+            this.tag = t;
+            this.image = i;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Double getLat() {
+            return lat;
+        }
+
+        public void setLat(Double lat) {
+            this.lat = lat;
+        }
+
+        public Double getLng() {
+            return lng;
+        }
+
+        public void setLng(Double lng) {
+            this.lng = lng;
+        }
+
+        public String getTag() {
+            return tag;
+        }
+
+        public void setTag(String tag) {
+            this.tag = tag;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
     }
 
     public class Rest{

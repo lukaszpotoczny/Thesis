@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,14 @@ public class AdActivity extends AppCompatActivity {
         content = findViewById(R.id.ad_text_1);
         author = findViewById(R.id.ad_text_2);
         contact = findViewById(R.id.ad_text_3);
+
+        CardView cardView = findViewById(R.id.cardAdGoBack);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         String key = extras.getString(ARG_AD_ID);

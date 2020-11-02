@@ -1,6 +1,7 @@
 package com.example.kudowazdroj.ui.ad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,14 @@ public class AddAdActivity extends AppCompatActivity {
         edit3 = findViewById(R.id.add_ad_edit_3);
         edit4 = findViewById(R.id.add_ad_edit_4);
         button = findViewById(R.id.add_ad_button);
+
+        CardView cardView = findViewById(R.id.cardAdGoBack);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Announcement");
 

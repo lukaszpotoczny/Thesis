@@ -82,7 +82,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginRight="12dp"
                     android:layout_marginBottom="16dp"
-                    android:src="@drawable/star_icon" />
+                    android:src="@drawable/full_star_icon" />
 
             </RelativeLayout>
 

@@ -7,6 +7,38 @@
     android:background="@color/colorCardBackgroundDark"
     tools:context=".ui.accommodation.AccommodationActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackground"
+        app:cardCornerRadius="35dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/colorTitle"
+        android:layout_width="52dp"
+        android:layout_height="52dp">
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAccGoBack"
+        app:cardCornerRadius="35dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#F3F3F3"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/back_arrow"/>
+
+    </androidx.cardview.widget.CardView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,7 +106,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="28dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/full_star_icon" />
 
                     <TextView
                         android:id="@+id/accommodation_info_0"
@@ -125,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/accommodation_info_1"
                         android:layout_toRightOf="@id/imageTime"
-                        android:textStyle="normal"
+                        android:textStyle="bold"
                         android:layout_marginTop="23dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
@@ -152,6 +184,8 @@
                         android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
+                        android:autoLink="email"
+                        android:textColorLink="@color/colorTitle"
                         android:text="verde@gmail.com"/>
 
                     <ImageView
@@ -173,6 +207,8 @@
                         android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
+                        android:autoLink="phone"
+                        android:textColorLink="@color/colorTitle"
                         android:text="721 231 341"/>
 
                     <TextView

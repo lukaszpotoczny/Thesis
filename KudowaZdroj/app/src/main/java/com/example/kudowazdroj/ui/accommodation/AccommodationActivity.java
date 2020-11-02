@@ -2,6 +2,7 @@ package com.example.kudowazdroj.ui.accommodation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Paint;
@@ -28,6 +29,7 @@ public class AccommodationActivity extends AppCompatActivity {
 
     TextView title, info0, info1, info2, info3, info4, content;
     ImageView imageView;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,14 @@ public class AccommodationActivity extends AppCompatActivity {
         info4 = findViewById(R.id.accommodation_info_4);
         content = findViewById(R.id.accommodation_text_1);
         imageView = findViewById(R.id.accommodation_image_1);
+        cardView = findViewById(R.id.cardAccActivity);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
         info1.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +69,34 @@ public class AccommodationActivity extends AppCompatActivity {
             }
         });
         info2.setMovementMethod(LinkMovementMethod.getInstance());
+
+        info3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] TO = {"lukipot1998@gmail.com"};
+                String[] CC = {"xyz@gmail.com"};
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.setType("text/plain");
+
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                    finish();
+                } catch (android.content.ActivityNotFoundException ex) {
+                }
+            }
+        });
+
+        info4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri number = Uri.parse("tel:" + info4.getText());
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         String key = extras.getString(ARG_ACCOMMODATION_KEY);

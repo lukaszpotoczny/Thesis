@@ -9,17 +9,11 @@
         android:id="@+id/mapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        map:cameraTargetLat="50.442456"
-        map:cameraTargetLng="16.241783"
+        map:cameraTargetLat="50.44533901285034"
+        map:cameraTargetLng="16.243497356772423"
         map:cameraTilt="10"
         map:cameraZoom="15"
         map:mapType="normal"
    />
-
-    <ImageView
-        android:id="@+id/loadResources"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
 
 </RelativeLayout>

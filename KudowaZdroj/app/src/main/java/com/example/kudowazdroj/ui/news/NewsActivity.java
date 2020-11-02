@@ -1,6 +1,7 @@
 package com.example.kudowazdroj.ui.news;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class NewsActivity extends AppCompatActivity {
     TextView date;
     ImageView imageView1, imageView2, imageView3;
     ProgressBar progressBar;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,14 @@ public class NewsActivity extends AppCompatActivity {
         imageView2 = findViewById(R.id.news_image_2);
         imageView3 = findViewById(R.id.news_image_3);
         progressBar = findViewById(R.id.newsProgressBar2);
+        cardView = findViewById(R.id.cardNewsGoBack);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         downloadJSON("https://kudowa.pl/get_news.php");
 

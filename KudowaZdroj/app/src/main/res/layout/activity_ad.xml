@@ -7,6 +7,37 @@
     android:background="@drawable/corkboard"
     tools:context=".ui.ad.AdActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackground"
+        app:cardCornerRadius="35dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginLeft="24dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/colorTitle"
+        android:layout_width="52dp"
+        android:layout_height="52dp">
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAdGoBack"
+        app:cardCornerRadius="32dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="25dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#F3F3F3"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/back_arrow"/>
+    </androidx.cardview.widget.CardView>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,9 +50,11 @@
 
             <ImageView
                 android:id="@+id/ad_image_pin"
-                android:layout_width="80dp"
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:elevation="15dp"
+                android:layout_centerHorizontal="true"
+                android:paddingRight="50dp"
                 android:src="@drawable/pin"/>
 
             <androidx.cardview.widget.CardView

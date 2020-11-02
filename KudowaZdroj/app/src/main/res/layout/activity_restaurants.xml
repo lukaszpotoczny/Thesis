@@ -7,6 +7,37 @@
     android:background="@color/colorCardBackgroundDark"
     tools:context=".ui.restaurants.RestaurantsActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackground"
+        app:cardCornerRadius="35dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/colorTitle"
+        android:layout_width="52dp"
+        android:layout_height="52dp">
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardRestGoBack"
+        app:cardCornerRadius="32dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#F3F3F3"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/back_arrow"/>
+
+    </androidx.cardview.widget.CardView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,7 +79,7 @@
                             android:id="@+id/restaurant_image_1"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            android:src="@drawable/white_image"
+                            android:src="@drawable/about_kudowa_image_1"
                             android:scaleType="centerCrop" />
 
 
@@ -68,54 +99,91 @@
 
                     </RelativeLayout>
 
+
                     <ImageView
-                        android:id="@+id/imageLocation"
+                        android:id="@+id/imageStar"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_below="@+id/rest_layout_1"
+                        android:layout_toLeftOf="@+id/imageStar2"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/location_icon" />
+                        android:src="@drawable/full_star_icon" />
+
+                    <ImageView
+                        android:id="@+id/imageStar2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/rest_layout_1"
+                        android:layout_toLeftOf="@+id/imageStar3"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/full_star_icon" />
+                    <ImageView
+                        android:id="@+id/imageStar3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/rest_layout_1"
+                        android:layout_toLeftOf="@+id/imageStar4"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/full_star_icon" />
+                    <ImageView
+                        android:id="@+id/imageStar4"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/rest_layout_1"
+                        android:layout_toLeftOf="@+id/imageStar5"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/full_star_icon" />
+                    <ImageView
+                        android:id="@+id/imageStar5"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/rest_layout_1"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/full_star_icon" />
 
                     <TextView
                         android:id="@+id/restaurant_info_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rest_layout_1"
+                        android:layout_below="@+id/imageStar"
+                        android:layout_alignParentRight="true"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="25dp"
+                        android:textSize="16sp"
+                        android:text="4.5 / 5"/>
+
+                    <ImageView
+                        android:id="@+id/imageLocation"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@+id/imageStar"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/location_icon" />
+
+                    <TextView
+                        android:id="@+id/restaurant_info_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageStar"
                         android:layout_toRightOf="@id/imageLocation"
                         android:textStyle="bold"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="23dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
                         android:textColor="@color/colorLocation"
                         android:text="ul. Zdrojowa 8"/>
 
                     <ImageView
-                        android:id="@+id/imageStar"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_below="@+id/imageLocation"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/star_icon" />
-
-                    <TextView
-                        android:id="@+id/restaurant_info_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/restaurant_info_1"
-                        android:layout_toRightOf="@id/imageStar"
-                        android:textStyle="bold"
-                        android:layout_marginTop="23dp"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="16sp"
-                        android:text="12:00 - 23:00"/>
-
-                    <ImageView
                         android:id="@+id/imageWebsite"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_below="@+id/imageStar"
+                        android:layout_below="@+id/imageLocation"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:src="@drawable/www_icon" />
@@ -126,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/restaurant_info_2"
                         android:layout_toRightOf="@id/imageWebsite"
-                        android:textStyle="normal"
+                        android:textStyle="bold"
                         android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="15sp"
@@ -153,6 +221,9 @@
                         android:layout_marginTop="23dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
+                        android:autoLink="phone"
+                        android:textColor="@color/colorTitle"
+                        android:textColorLink="@color/colorTitle"
                         android:text="721 231 341"/>
 
                     <TextView

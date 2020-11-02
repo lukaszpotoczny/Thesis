@@ -12,6 +12,37 @@
         android:layout_height="60dp"
         android:layout_centerInParent="true" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackground"
+        app:cardCornerRadius="32dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="15dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/colorTitle"
+        android:layout_width="52dp"
+        android:layout_height="52dp">
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNewsGoBack"
+        app:cardCornerRadius="32dp"
+        app:cardMaxElevation="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#F3F3F3"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/back_arrow"/>
+
+    </androidx.cardview.widget.CardView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +76,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_below="@+id/news_date"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:textSize="30sp"
                 android:textColor="@color/colorTitle"
                 android:text=" "/>
