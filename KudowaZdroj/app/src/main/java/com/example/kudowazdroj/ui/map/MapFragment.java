@@ -1,7 +1,10 @@
 package com.example.kudowazdroj.ui.map;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -28,6 +32,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -47,56 +52,76 @@ import java.util.ArrayList;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
-   private GoogleMap gMap;
+    private GoogleMap gMap;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
-   ArrayList<Location> locations = new ArrayList<Location>();
+    private boolean locationPermissionGranted = false;
 
+    ArrayList<Location> locations = new ArrayList<Location>();
+
+    @SuppressLint("MissingPermission")
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.map_fragment, container, false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_4);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_4);
+
+        getLocationPermission();
+
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Markers");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 locations.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Location location = dataSnapshot.getValue(Location.class);
                     locations.add(location);
 
                 }
+                //  if(locationPermissionGranted) {
                 SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapFragment);
                 supportMapFragment.getMapAsync(MapFragment.this);
 
+                //}
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
+
         return root;
-        
+
     }
 
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         gMap = googleMap;
+        //gMap.setMyLocationEnabled(true);
         gMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style));
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.custom_info_window, null);
         ImageView imageView = view.findViewById(R.id.mapInfoImage);
 
-        for(int i=0; i<locations.size(); i++){
+        for (int i = 0; i < locations.size(); i++) {
             if (locations.get(i).getImage() != null) {
                 Picasso.with(getContext())
                         .load(locations.get(i).getImage())
                         .into(imageView);
             }
             System.out.println(i);
+        }
+        if (locationPermissionGranted) {
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            gMap.setMyLocationEnabled(true);
         }
 
         gMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
@@ -204,6 +229,35 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         Canvas canvas = new Canvas(bitmap);
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    public void getLocationPermission(){
+        String permissions[] = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        if(ContextCompat.checkSelfPermission(this.getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this.getContext(), COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) locationPermissionGranted = true;
+            else ActivityCompat.requestPermissions(this.getActivity(), permissions, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+        else ActivityCompat.requestPermissions(this.getActivity(), permissions, LOCATION_PERMISSION_REQUEST_CODE);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        locationPermissionGranted = false;
+        switch (requestCode){
+            case LOCATION_PERMISSION_REQUEST_CODE:{
+                if(grantResults.length>0) {
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                            locationPermissionGranted = false;
+                            return;
+                        }
+                    }
+                    locationPermissionGranted = true;
+                }
+
+            }
+        }
     }
 
 }

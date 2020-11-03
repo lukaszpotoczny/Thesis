@@ -1,11 +1,8 @@
 [
   {
-    "featureType": "poi",
-    "elementType": "labels",
+    "featureType": "poi.attraction",
     "stylers": [
-      {
-        "visibility": "off"
-      }
+      { "visibility": "off" }
     ]
   }
 ]

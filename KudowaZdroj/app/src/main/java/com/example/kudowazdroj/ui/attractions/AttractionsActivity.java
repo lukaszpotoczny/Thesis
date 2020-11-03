@@ -1,8 +1,10 @@
 package com.example.kudowazdroj.ui.attractions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +26,13 @@ public class AttractionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attractions);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        CardView cardView = findViewById(R.id.cardAttractionsGoBack);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }

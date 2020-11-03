@@ -47,7 +47,8 @@ public class AccommodationActivity extends AppCompatActivity {
         imageView = findViewById(R.id.accommodation_image_1);
         cardView = findViewById(R.id.cardAccActivity);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+        CardView cardViewBack = findViewById(R.id.cardAccGoBack);
+        cardViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
