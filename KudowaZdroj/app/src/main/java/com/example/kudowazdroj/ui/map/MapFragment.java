@@ -39,6 +39,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -136,6 +138,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     // .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
                     .icon(setMarkerImage(getContext(), R.drawable.map_pin)));
                 }
+                Polyline polyline1 = gMap.addPolyline(new PolylineOptions()
+                        .clickable(true)
+                        .add(
+                                new LatLng(-35.016, 143.321),
+                                new LatLng(-34.747, 145.592),
+                                new LatLng(-34.364, 147.891),
+                                new LatLng(-33.501, 150.217),
+                                new LatLng(-32.306, 149.248),
+                                new LatLng(-32.491, 147.309)));
             }
         });
 
@@ -176,7 +187,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
-                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
+                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 16));
                 marker.showInfoWindow();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {

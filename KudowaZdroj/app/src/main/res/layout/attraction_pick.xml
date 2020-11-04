@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="@color/colorCardBackgroundDark"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAttractionPick"
+            app:cardCornerRadius="20dp"
+            app:cardMaxElevation="20dp"
+            android:layout_margin="8dp"
+            android:elevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:id="@+id/imageAttractionPick"
+                    android:scaleType="centerCrop"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/about_kudowa_image_1" />
+
+                <TextView
+                    android:id="@+id/attractionPick_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/imageAttractionPick"
+                    android:layout_toLeftOf="@+id/checkBox"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="14dp"
+                    android:textSize="19sp"
+                    android:maxLines="1"
+                    android:autoSizeTextType="uniform"
+                    android:textColor="@color/colorTitle"
+                    android:text="Czeska Restauracja Zdrojowa"/>
+
+                <TextView
+                    android:id="@+id/attractionPick_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageAttractionPick"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="14sp"
+                    android:text="Czas zwiedzania: 30 min"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:scaleX="1.9"
+                    android:scaleY="1.9"
+                    android:layout_marginRight="8dp"
+                    android:buttonTint="@color/colorTitle"
+                     />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

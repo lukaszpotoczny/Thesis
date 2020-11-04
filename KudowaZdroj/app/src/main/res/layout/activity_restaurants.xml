@@ -197,8 +197,11 @@
                         android:textStyle="bold"
                         android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="8dp"
                         android:textSize="15sp"
                         android:autoLink="web"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
                         android:textColorLink="@color/colorTitle"
                         android:text="www.restauracja.pl"/>
 

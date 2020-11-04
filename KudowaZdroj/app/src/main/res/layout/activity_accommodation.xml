@@ -162,6 +162,8 @@
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
                         android:autoLink="web"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
                         android:textColorLink="@color/colorTitle"
                         android:text="verde.pl"/>
 

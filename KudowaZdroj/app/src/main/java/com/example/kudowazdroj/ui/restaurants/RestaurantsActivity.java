@@ -63,6 +63,8 @@ public class RestaurantsActivity extends AppCompatActivity {
             }
         });
 
+
+
         Bundle extras = getIntent().getExtras();
         String key = extras.getString(ARG_RESTAURANT_KEY);
 

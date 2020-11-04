@@ -11,4 +11,6 @@
     <color name="colorTitle">#1E70D3</color>
     <color name="colorLocation">#FFA731</color>
     <color name="mapInfoBackground">#E5E5E5</color>
+    <color name="colorGreen">#01E300</color>
+    <color name="cardGray">#F3F3F3</color>
 </resources>

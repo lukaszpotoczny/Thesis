@@ -6,5 +6,9 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="BlueCheckBox">
+        <item name="colorAccent">#1E70D3</item>
+    </style>
+
 
 </resources>
