@@ -82,12 +82,14 @@ public class AttractionsFragment extends Fragment {
                 attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
                 gridView.setAdapter(attractionsAdapter);
 
+                final String finalPhoto = photo;
                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Attraction attraction = attractions.get(i);
                         Intent intent = new Intent(getActivity(), AttractionsActivity.class);
                         intent.putExtra(AttractionsActivity.ARG_ATTRACTION_ID, attraction.getId());
+                        intent.putExtra(AttractionsActivity.ARG_ATTRACTION_PHOTO, attraction.getImages().get(0));
                         startActivity(intent);
                     }
                 });

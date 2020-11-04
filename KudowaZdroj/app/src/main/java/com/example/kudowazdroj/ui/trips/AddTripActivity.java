@@ -17,10 +17,11 @@ import android.widget.Toast;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.database.Restaurant;
 import com.example.kudowazdroj.ui.adapters.TripPickAdapter;
 import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
+import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.SphericalUtil;
 
 
 import java.util.ArrayList;
@@ -97,9 +98,8 @@ public class AddTripActivity extends AppCompatActivity {
                 System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
                 for(int a=0; a<selectedAttractions.size(); a++) System.out.println(selectedAttractions.get(a).getName());
 
-                double distance = SphericalUtil.computeDistanceBetween(uno, dos);
-                Toast.makeText(getApplicationContext()  , String.valueOf(distance), Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(getApplicationContext(), TripDetailsActivity.class);
+                startActivity(intent);
             }
         });
 

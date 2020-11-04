@@ -7,6 +7,16 @@
     android:background="@color/colorCardBackgroundDark"
     tools:context=".ui.attractions.AttractionsActivity">
 
+    <ProgressBar
+        android:id="@+id/newsProgressBar2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:padding="170dp"
+        android:background="@color/colorCardBackgroundDark"
+        android:layout_centerInParent="true" />
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardBackground"
         app:cardCornerRadius="35dp"
@@ -61,10 +71,10 @@
             android:layout_height="wrap_content">
 
 
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
 
             <RelativeLayout
                 android:id="@+id/attr_layout_1"
@@ -75,9 +85,9 @@
 
                 <ImageView
                     android:id="@+id/attr_image_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@drawable/about_kudowa_image_1"
+                    android:src="@drawable/white_image"
                     android:scaleType="centerCrop" />
 
 
@@ -118,58 +128,18 @@
                 android:textSize="16sp"
                 android:text="ul. Zdrojowa 8"/>
 
-            <ImageView
-                android:id="@+id/imageTime"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_below="@+id/imageLocation"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/time_icon" />
-
-            <TextView
-                android:id="@+id/attr_info_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/attr_info_1"
-                android:layout_toRightOf="@id/imageTime"
-                android:textStyle="bold"
-                android:layout_marginTop="23dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:text="12:00 - 23:00"/>
-
-            <ImageView
-                android:id="@+id/imageWebsite"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_below="@+id/imageTime"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/www_icon" />
-
-            <TextView
-                android:id="@+id/attr_info_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/attr_info_2"
-                android:layout_toRightOf="@id/imageWebsite"
-                android:textStyle="bold"
-                android:layout_marginTop="22dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:text="www.restauracja.pl"/>
-
             <TextView
                 android:id="@+id/attr_text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/attr_info_3"
+                android:layout_below="@id/attr_info_1"
                 android:justificationMode="inter_word"
-                android:layout_marginTop="20dp"
-                android:padding="12dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:textSize="16sp"
-                android:text="@string/news_txt"/>
+                android:text=" "/>
 
             <ImageView
                 android:id="@+id/attr_image_2"
@@ -178,8 +148,11 @@
                 android:layout_below="@+id/attr_text_1"
                 android:src="@drawable/about_kudowa_image_2"
                 android:scaleType="centerCrop"
-                android:layout_margin="16dp"
-                android:padding="8dp"/>
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/attr_image_3"
@@ -189,7 +162,52 @@
                 android:layout_margin="16dp"
                 android:layout_below="@+id/attr_image_2"
                 android:src="@drawable/about_kudowa_image_1"
-                android:padding="8dp"/>
+                android:visibility="gone"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/attr_image_4"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:layout_below="@+id/attr_image_3"
+                android:src="@drawable/about_kudowa_image_2"
+                android:scaleType="centerCrop"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/attr_image_5"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:scaleType="centerCrop"
+                android:layout_margin="16dp"
+                android:layout_below="@+id/attr_image_4"
+                android:src="@drawable/about_kudowa_image_1"
+                android:visibility="gone"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/attr_image_6"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:layout_below="@+id/attr_image_5"
+                android:src="@drawable/about_kudowa_image_2"
+                android:scaleType="centerCrop"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/attr_image_7"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:scaleType="centerCrop"
+                android:layout_margin="16dp"
+                android:layout_below="@+id/attr_image_6"
+                android:src="@drawable/about_kudowa_image_1"
+                android:visibility="gone"
+                android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
 
