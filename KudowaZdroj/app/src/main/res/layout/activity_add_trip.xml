@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:elevation="50dp"
             android:gravity="bottom"
             android:background="@color/colorCardBackgroundDark"
@@ -41,6 +41,7 @@
         android:id="@+id/layoutTripPick"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
         android:orientation="vertical">
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -117,116 +118,6 @@
 
         </ScrollView>
 
-
-
-
     </LinearLayout>
 
-   <!-- <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:scrollbars="none">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tripPickTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="WYBIERZ ATRAKCJE"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorTitle"
-                android:paddingTop="8dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:gravity="center"/>
-
-            <TextView
-                android:id="@+id/tripPickFav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tripPickTitle"
-                android:text="ULUBIONE:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:paddingTop="8dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:gravity="center"/>
-
-            <ListView
-                android:id="@+id/listTripPickFav"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/tripPickFav"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:numColumns="1"
-                android:stretchMode="columnWidth"></ListView>
-
-            <TextView
-                android:id="@+id/tripPickRest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/listTripPickFav"
-                android:text="POZOSTAŁE:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:paddingTop="8dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:gravity="center"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tripPickFav"
-                android:orientation="vertical">
-
-
-                <ListView
-                    android:id="@+id/listTripPick"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:numColumns="1"
-                    android:stretchMode="columnWidth"></ListView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/ad_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:elevation="15dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:text="DODAJ WYCIECZKĘ"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-</RelativeLayout>
-    </ScrollView>
--->
 </RelativeLayout>

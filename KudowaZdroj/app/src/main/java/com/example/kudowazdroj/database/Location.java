@@ -1,6 +1,10 @@
 package com.example.kudowazdroj.database;
 
-public class Location {
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class Location implements Serializable {
 
     private int id;
     private String name;
@@ -69,4 +73,16 @@ public class Location {
     public void setImage(String image) {
         this.image = image;
     }
+
+/*    public double calculateRouteDistance(double[][] distanceMatrix) {
+        double total = 0.0;
+
+        for(int i=0; i<miasta.size()-1; i++) {
+            total += tablicaOdleglosci[miasta.get(i).getNumer()-1][miasta.get(i+1).getNumer()-1];
+        }
+
+        total += tablicaOdleglosci[miasta.get(0).getNumer()-1][miasta.get(miasta.size()-1).getNumer()-1];
+
+        return new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
+    }*/
 }

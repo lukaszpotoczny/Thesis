@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.database.Location;
 import com.example.kudowazdroj.database.Trip;
 import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.ui.adapters.TripPickAdapter;
@@ -34,16 +35,15 @@ public class TripsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.trips_fragment, container, false);
-
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_5);
 
         gridView = root.findViewById(R.id.gridTrips);
         trips = new ArrayList<>();
-        // competitions = FootballManiaContract.getDbHelperInstance(getContext()).getCompetitionsList();
 
-        trips.add(new Trip(1, "ABC"));
-        trips.add(new Trip(1, "ABC"));
-        trips.add(new Trip(1, "ABC"));
+        ArrayList<Location> locations = new ArrayList<>();
+        trips.add(new Trip(1, "ABC", locations, ""));
+        trips.add(new Trip(1, "ABC", locations, ""));
+        trips.add(new Trip(1, "ABC", locations, ""));
 
         tripsAdapter = new TripsAdapter(getActivity().getApplicationContext(), trips);
         gridView.setAdapter(tripsAdapter);

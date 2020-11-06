@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.database.Location;
 import com.example.kudowazdroj.database.Restaurant;
 import com.squareup.picasso.Picasso;
 
@@ -22,11 +23,11 @@ import java.util.ArrayList;
 public class TripPickAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Attraction> attractions;
-    ArrayList<Attraction> selectedAttractions;
+    ArrayList<Location> attractions;
+    ArrayList<Location> selectedAttractions;
     LayoutInflater inflater;
 
-    public TripPickAdapter(Context context, ArrayList<Attraction> attractions, ArrayList<Attraction> selectedAttractions){
+    public TripPickAdapter(Context context, ArrayList<Location> attractions, ArrayList<Location> selectedAttractions){
         this.context = context;
         this.attractions = attractions;
         this.selectedAttractions = selectedAttractions;
@@ -57,7 +58,7 @@ public class TripPickAdapter extends BaseAdapter {
         TextView time = view.findViewById(R.id.attractionPick_text_2);
         final CheckBox checkBox = view.findViewById(R.id.checkBox);
 
-        CardView cardView = view.findViewById(R.id.cardAttractionPick);
+/*        CardView cardView = view.findViewById(R.id.cardAttractionPick);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,7 @@ public class TripPickAdapter extends BaseAdapter {
                 if(checkBox.isChecked()) checkBox.setChecked(false);
                 else checkBox.setChecked(true);
             }
-        });
+        });*/
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -78,7 +79,7 @@ public class TripPickAdapter extends BaseAdapter {
         name.setText(attractions.get(position).getName());
       //  time.setText(attractions.get(position).getName());
 
-        String url = attractions.get(position).getImages().get(0);
+        String url = attractions.get(position).getImage();
         if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
 
         return view;
