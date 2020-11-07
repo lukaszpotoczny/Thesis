@@ -72,7 +72,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         getLocationPermission();
 
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Markers");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,7 +132,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 for(int i=0; i<locations.size(); i++){
                     Marker mark = gMap.addMarker(new MarkerOptions()
                     .position(new LatLng(locations.get(i).getLat(), locations.get(i).getLng()))
-                    .title(locations.get(i).getId() + "/" + locations.get(i).getName())
+                    .title(locations.get(i).getName())
                     .snippet(locations.get(i).getImage())
                     // .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
                     .icon(setMarkerImage(getContext(), R.drawable.map_pin)));
@@ -148,7 +147,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 View view = inflater.inflate(R.layout.custom_info_window, null);
                 ImageView imageView = view.findViewById(R.id.mapInfoImage);
                 final TextView title = view.findViewById(R.id.mapInfoTitle);
-                title.setText(marker.getTitle().split("/")[1]);
+                title.setText(marker.getTitle());
                 title.post(new Runnable() {
                     @Override
                     public void run() {
@@ -195,10 +194,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         gMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                int id = Integer.parseInt(marker.getTitle().split("/")[0]);
+                String key = marker.getTitle();
                 Intent intent = new Intent(getActivity(), AttractionsActivity.class);
-                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_ID, id);
+                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, key);
                 startActivity(intent);
+            }
+        });
+
+        gMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                System.out.println(latLng);
             }
         });
 

@@ -1,8 +1,12 @@
 package com.example.kudowazdroj.ui.attractions;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +16,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.kudowazdroj.R;
+import com.example.kudowazdroj.database.Attraction;
+import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
@@ -26,13 +37,13 @@ import java.util.ArrayList;
 
 public class AttractionsActivity extends AppCompatActivity {
 
-    public static final String ARG_ATTRACTION_ID = "id";
-    public static final String ARG_ATTRACTION_PHOTO = "photo";
-    TextView title, content;
+    public static final String ARG_ATTRACTION_KEY = "key";
+    TextView title, content, info1, info2;
     ImageView titleImage;
     ImageView[] imageViews;
     ProgressBar progressBar;
-    String photo;
+
+    ArrayList<String> images = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,8 @@ public class AttractionsActivity extends AppCompatActivity {
         title = findViewById(R.id.attr_name);
         content = findViewById(R.id.attr_text_1);
         titleImage = findViewById(R.id.attr_image_1);
+        info1 = findViewById(R.id.attr_info_1);
+        info2 = findViewById(R.id.attr_info_2);
 
         imageViews = new ImageView[6];
         imageViews[0] = findViewById(R.id.attr_image_2);
@@ -54,6 +67,21 @@ public class AttractionsActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.newsProgressBar2);
 
+        info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        info1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String search = title.getText().toString();
+                search = search.replaceAll(" ", "+");
+                Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
         CardView cardView = findViewById(R.id.cardAttractionsGoBack);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,94 +90,35 @@ public class AttractionsActivity extends AppCompatActivity {
             }
         });
 
+        Bundle extras = getIntent().getExtras();
+        String key = extras.getString(ARG_ATTRACTION_KEY);
 
-        downloadJSON("https://kudowa.pl/get_attraction.php");
-
-
-    }
-
-    private void downloadJSON(final String urlWebService) {
-
-        class DownloadJSON extends AsyncTask<Void, Void, String> {
-
-            public String fixContent(String s){
-                s = s.replaceAll("[\\[\\]\\<\\>]","SPLIT_PLACE");
-                String data[] = s.split("SPLIT_PLACE");
-                String result = "";
-                for(int i=0; i<data.length; i++){
-                    if(i%2 == 0) result += data[i];
-                }
-                result = result.replaceAll("This is a custom heading element.", "");
-                result = result.replaceAll("\n\n\n\n", "\n\n");
-                result = result.replaceAll("\n\n\n", "\n\n");
-                return result;
-            }
-
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attractions").child(key);
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                title.setText(snapshot.child("name").getValue().toString());
+                content.setText(snapshot.child("content").getValue().toString());
+                info2.setText(snapshot.child("time").getValue().toString() + " min");
 
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                String[] data = s.split("<br>nextPart");
-                title.setText(data[0]);
-                content.setText(fixContent(data[1]));
+                String url = snapshot.child("photo").getValue().toString();
+                if(!url.equals("")) Picasso.with(AttractionsActivity.this).load(url).into(titleImage);
 
-                ArrayList<String> images = new ArrayList<String>();
-                for(int i=5; i<data.length; i+=3){
-                    if(data[i].contains(".jpg") || data[i].contains(".png")) {
-                        if(!data[i].contains("https")) {
-                            data[i] = data[i].replaceAll("http", "https");
-                        }
-                        images.add(data[i]);
-                    }
+                for(DataSnapshot dataSnapshot : snapshot.child("images").getChildren()){
+                    images.add(dataSnapshot.getValue().toString());
                 }
-                Picasso.with(getApplicationContext()).load(photo).into(titleImage);
+
                 for(int i=0; i<imageViews.length && i<images.size(); i++){
                     Picasso.with(getApplicationContext()).load(images.get(i)).into(imageViews[i]);
                     imageViews[i].setVisibility(View.VISIBLE);
                 }
-
                 progressBar.setVisibility(View.INVISIBLE);
             }
-
             @Override
-            protected String doInBackground(Void... voids) {
-                Bundle extras = getIntent().getExtras();
-                int newsID = extras.getInt(ARG_ATTRACTION_ID);
-                photo = extras.getString(ARG_ATTRACTION_PHOTO);
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    con.setRequestMethod("POST");
-                    con.setDoOutput(true);
-                    con.setDoInput(true);
-                    OutputStream outputStream = con.getOutputStream();
-                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                    String post_data = URLEncoder.encode("newsID", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(newsID), "UTF-8");
-                    bufferedWriter.write(post_data);
-                    bufferedWriter.flush();
-                    bufferedWriter.close();
-                    outputStream.close();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    con.disconnect();
-                    return sb.toString().trim();
-                } catch (Exception e) {
-                    return null;
-                }
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.INVISIBLE);
             }
-        }
-        DownloadJSON getJSON = new DownloadJSON();
-        getJSON.execute();
+        });
+
     }
-
-
-
 }

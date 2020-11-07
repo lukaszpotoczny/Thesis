@@ -99,6 +99,9 @@
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="25sp"
+                    android:maxLines="2"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMaxTextSize="26sp"
                     android:paddingBottom="4dp"
                     android:paddingTop="4dp"
                     android:background="#904f"
@@ -114,7 +117,7 @@
                 android:layout_below="@+id/attr_layout_1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/location_icon" />
+                android:src="@drawable/map_icon" />
 
             <TextView
                 android:id="@+id/attr_info_1"
@@ -126,20 +129,43 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
-                android:text="ul. Zdrojowa 8"/>
+                android:textColor="@color/colorLocation"
+                android:text="Zobacz na mapie"/>
+
+            <ImageView
+                android:id="@+id/imageClock"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/imageLocation"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/time_icon" />
+
+            <TextView
+                android:id="@+id/attr_info_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/attr_info_1"
+                android:layout_toRightOf="@id/imageLocation"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="12dp"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:text="30 min"/>
 
             <TextView
                 android:id="@+id/attr_text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/attr_info_1"
+                android:layout_below="@id/attr_info_2"
                 android:justificationMode="inter_word"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="30dp"
                 android:textSize="16sp"
-                android:text=" "/>
+                android:text="aaaaaaaaaaaaaaaaaaaaaa "/>
 
             <ImageView
                 android:id="@+id/attr_image_2"
