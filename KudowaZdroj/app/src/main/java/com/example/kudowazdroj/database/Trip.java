@@ -4,23 +4,25 @@ import java.util.ArrayList;
 
 public class Trip {
 
-    private int id;
+    private String  id;
     private String name;
-    private ArrayList<Location> locations;
+    private int duration;
+    private ArrayList<Attraction> attractions;
     private String mapLink;
 
-    public Trip(int id, String name, ArrayList<Location> locations, String mapLink){
+    public Trip(String id, String name, int duration, ArrayList<Attraction> attractions, String mapLink){
         this.id = id;
         this.name = name;
-        this.locations = locations;
+        this.duration = duration;
+        this.attractions = attractions;
         this.mapLink = mapLink;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -32,12 +34,20 @@ public class Trip {
         this.name = name;
     }
 
-    public ArrayList<Location> getLocations() {
-        return locations;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setLocations(ArrayList<Location> locations) {
-        this.locations = locations;
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public ArrayList<Attraction> getAttractions() {
+        return attractions;
+    }
+
+    public void setAttractions(ArrayList<Attraction> attractions) {
+        this.attractions = attractions;
     }
 
     public String getMapLink() {

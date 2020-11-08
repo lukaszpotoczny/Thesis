@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="106dp"
+        android:layout_height="98dp"
         android:background="@color/colorCardBackgroundDark"
         >
 
@@ -17,7 +17,7 @@
             android:id="@+id/cardTripPlan"
             app:cardCornerRadius="20dp"
             app:cardMaxElevation="20dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:elevation="10dp"
             android:layout_width="match_parent"
             android:layout_height="90dp">
@@ -43,7 +43,7 @@
                     android:layout_marginRight="16dp"
                     android:textStyle="bold"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="40dp"
                     android:autoSizeMaxTextSize="22sp"
                     android:maxLines="2"

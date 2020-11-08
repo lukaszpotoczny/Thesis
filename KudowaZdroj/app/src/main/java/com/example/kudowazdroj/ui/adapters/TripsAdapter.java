@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
 import com.example.kudowazdroj.database.Trip;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,22 +44,25 @@ public class TripsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View view = inflater.inflate(R.layout.trip, null);
-/*
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageTrip_1);
-        //TextView textView = (TextView) view.findViewById(R.id.competitionName);
+        Trip trip = trips.get(position);
 
-       String s = Utility.getCompetitionLogoFleName(competitions.get(position).getName());
+        TextView title = view.findViewById(R.id.tripTitle);
+        TextView duration = view.findViewById(R.id.trips_text_2);
+        TextView places = view.findViewById(R.id.trips_text_3);
+        ImageView[] imageViews = new ImageView[3];
+        imageViews[0] = view.findViewById(R.id.imageTrip_1);
+        imageViews[1] = view.findViewById(R.id.imageTrip_2);
+        imageViews[2] = view.findViewById(R.id.imageTrip_3);
 
-        int resID = context.getResources().getIdentifier(s, "drawable", context.getPackageName());
+        title.setText(trip.getName());
+        duration.setText(String.valueOf(trip.getDuration()) + " min");
+        places.setText(trip.getAttractions().size() + " atrakcje");
 
-        imageView.setImageResource(resID);
-        textView.setText(competitions.get(position).getName());
-
-        imageView.setImageResource(R.drawable.kaplica_czaszek);
-*/
+        for(int i=0; i<trip.getAttractions().size() && i<imageViews.length; i++){
+            Picasso.with(context).load(trip.getAttractions().get(i).getPhoto()).into(imageViews[i]);
+            imageViews[i].setVisibility(View.VISIBLE);
+        }
         return view;
-
     }
 }

@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -28,6 +30,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String ARG_FRAGMENT_ID = "id";
+    boolean doubleBackToExitPressedOnce = false;
 
     private DrawerLayout drawerLayout;
 
@@ -80,11 +85,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(MainActivity.this, "Authentication successful.",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -92,9 +92,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Bundle extras = getIntent().getExtras();
+        int id = 0;
+        if (extras != null) {
+            id = extras.getInt(ARG_FRAGMENT_ID);
+            selectFragment(id);
+        }
+
+    }
+
+    public void selectFragment(int id){
+        switch (id){
+            case 0:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutKudowaFragment()).commit();
+                break;
+            case 1:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit();
+                break;
+            case 2:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AttractionsFragment()).commit();
+                break;
+            case 3:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
+                break;
+            case 4:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TripsFragment()).commit();
+                break;
+            case 5:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AdFragment()).commit();
+                break;
+            case 6:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RestaurantsFragment()).commit();
+                break;
+            case 7:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccommodationFragment()).commit();
+                break;
+            case 8:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+                break;
+        }
     }
 
 
@@ -136,11 +175,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
+        }
+        else {
+            if (doubleBackToExitPressedOnce) {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Naciśnij ponownie, aby wyjść", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
         }
     }
 }

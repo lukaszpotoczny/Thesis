@@ -1,6 +1,7 @@
 package com.example.kudowazdroj.ui.trips;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +23,13 @@ import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.ui.adapters.TripPickAdapter;
 import com.example.kudowazdroj.ui.adapters.TripsAdapter;
 import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class TripsFragment extends Fragment {
 
@@ -40,10 +46,7 @@ public class TripsFragment extends Fragment {
         gridView = root.findViewById(R.id.gridTrips);
         trips = new ArrayList<>();
 
-        ArrayList<Location> locations = new ArrayList<>();
-        trips.add(new Trip(1, "ABC", locations, ""));
-        trips.add(new Trip(1, "ABC", locations, ""));
-        trips.add(new Trip(1, "ABC", locations, ""));
+        loadData();
 
         tripsAdapter = new TripsAdapter(getActivity().getApplicationContext(), trips);
         gridView.setAdapter(tripsAdapter);
@@ -69,4 +72,16 @@ public class TripsFragment extends Fragment {
 
         return root;
     }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("Trips", null);
+        Type type = new TypeToken<ArrayList<Trip>>() {}.getType();
+        trips = gson.fromJson(json, type);
+        if (trips == null) {
+            trips = new ArrayList<>();
+        }
+    }
+
 }

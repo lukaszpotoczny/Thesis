@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -125,5 +126,13 @@ public class AccommodationActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 7);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

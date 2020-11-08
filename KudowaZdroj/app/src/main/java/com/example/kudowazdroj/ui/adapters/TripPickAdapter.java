@@ -31,11 +31,11 @@ import java.util.ArrayList;
 public class TripPickAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Location> attractions;
-    ArrayList<Location> selectedAttractions;
+    ArrayList<Attraction> attractions;
+    ArrayList<Attraction> selectedAttractions;
     LayoutInflater inflater;
 
-    public TripPickAdapter(Context context, ArrayList<Location> attractions, ArrayList<Location> selectedAttractions){
+    public TripPickAdapter(Context context, ArrayList<Attraction> attractions, ArrayList<Attraction> selectedAttractions){
         this.context = context;
         this.attractions = attractions;
         this.selectedAttractions = selectedAttractions;
@@ -61,23 +61,10 @@ public class TripPickAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = inflater.inflate(R.layout.attraction_pick, null);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageAttractionPick);
+        ImageView imageView = view.findViewById(R.id.imageAttractionPick);
         TextView name = view.findViewById(R.id.attractionPick_text_1);
-        final TextView time = view.findViewById(R.id.attractionPick_text_2);
-        final CheckBox checkBox = view.findViewById(R.id.checkBox);
-
-/*        CardView cardView = view.findViewById(R.id.cardAttractionPick);
-
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                Location location = attractions.get(position);
-                Intent intent = new Intent(context, AttractionsActivity.class);
-                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, location.getName());
-                startActivity(intent);
-            }
-        });*/
+        TextView time = view.findViewById(R.id.attractionPick_text_2);
+        CheckBox checkBox = view.findViewById(R.id.checkBox);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -87,24 +74,12 @@ public class TripPickAdapter extends BaseAdapter {
             }
         });
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attractions").child(attractions.get(position).getName());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                time.setText(snapshot.child("time").getValue().toString() + " min");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
         name.setText(attractions.get(position).getName());
+        time.setText(attractions.get(position).getTime() + " min");
 
-        String url = attractions.get(position).getImage();
+        String url = attractions.get(position).getPhoto();
         if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
 
         return view;
-
     }
 }

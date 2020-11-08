@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Restaurant;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -134,5 +135,12 @@ public class RestaurantsActivity extends AppCompatActivity {
         if(rating < 0.25) star1.setImageResource(R.drawable.empty_star_icon);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 6);
+        startActivity(intent);
+        super.onBackPressed();
+    }
 
 }

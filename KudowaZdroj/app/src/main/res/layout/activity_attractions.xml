@@ -111,22 +111,44 @@
             </RelativeLayout>
 
             <ImageView
+                android:id="@+id/imageHeart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_below="@+id/attr_layout_1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/heart_border" />
+
+            <TextView
+                android:id="@+id/attr_info_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/attr_layout_1"
+                android:layout_toRightOf="@id/imageHeart"
+                android:textStyle="normal"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/heartColor"
+                android:text="Dodaj do ulubionych"/>
+
+            <ImageView
                 android:id="@+id/imageLocation"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_below="@+id/attr_layout_1"
+                android:layout_below="@+id/imageHeart"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/map_icon" />
 
             <TextView
                 android:id="@+id/attr_info_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/attr_layout_1"
+                android:layout_below="@+id/attr_info_0"
                 android:layout_toRightOf="@id/imageLocation"
                 android:textStyle="bold"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:textColor="@color/colorLocation"

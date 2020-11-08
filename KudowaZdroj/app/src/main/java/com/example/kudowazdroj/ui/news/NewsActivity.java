@@ -3,6 +3,7 @@ package com.example.kudowazdroj.ui.news;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.squareup.picasso.Picasso;
 
@@ -155,5 +157,13 @@ public class NewsActivity extends AppCompatActivity {
         }
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 1);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

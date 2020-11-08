@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.ui.main.AboutKudowaFragment;
 import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
@@ -85,5 +87,13 @@ public class AdActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

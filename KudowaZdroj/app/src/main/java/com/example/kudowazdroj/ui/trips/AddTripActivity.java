@@ -1,9 +1,11 @@
 package com.example.kudowazdroj.ui.trips;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +15,9 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
+import com.example.kudowazdroj.database.Attraction;
 import com.example.kudowazdroj.database.Location;
 import com.example.kudowazdroj.ui.adapters.TripPickAdapter;
 import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
@@ -22,13 +26,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AddTripActivity extends AppCompatActivity {
 
-    ArrayList<Location> attractions;
-    ArrayList<Location> selectedAttractions;
+    ArrayList<Attraction> favourites;
+    ArrayList<Attraction> test;
+    ArrayList<Attraction> rest;
+    ArrayList<Attraction> selectedAttractions;
+    ArrayList<Attraction> attractions;
+
     TripPickAdapter tripPickAdapterFav, tripPickAdapterRest;
 
     ListView listFav, listRest;
@@ -42,18 +54,30 @@ public class AddTripActivity extends AppCompatActivity {
         listFav = findViewById(R.id.listTripPickFav);
         listRest = findViewById(R.id.listTripPick);
 
+        test = new ArrayList<>();
+        favourites = new ArrayList<>();
+        rest = new ArrayList<>();
         attractions = new ArrayList<>();
         selectedAttractions = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Markers");
+        loadData();
+
+        tripPickAdapterFav = new TripPickAdapter(getApplicationContext(), test, selectedAttractions);
+        tripPickAdapterRest = new TripPickAdapter(getApplicationContext(), rest, selectedAttractions);
+
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attractions");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 attractions.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Location location = dataSnapshot.getValue(Location.class);
-                    attractions.add(location);
+                    Attraction attraction = dataSnapshot.getValue(Attraction.class);
+                    rest.add(attraction);
+                    attractions.add(attraction);
                 }
+                Collections.sort(attractions);
+                setLists();
                 setAdapters();
             }
 
@@ -78,9 +102,9 @@ public class AddTripActivity extends AppCompatActivity {
         listFav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Location location = attractions.get(i);
+                Attraction attraction = test.get(i);
                 Intent intent = new Intent(getApplicationContext(), AttractionsActivity.class);
-                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, location.getName());
+                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, attraction.getName());
                 startActivity(intent);
             }
         });
@@ -88,19 +112,56 @@ public class AddTripActivity extends AppCompatActivity {
         listRest.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Location location = attractions.get(i);
+                Attraction attraction = rest.get(i);
                 Intent intent = new Intent(getApplicationContext(), AttractionsActivity.class);
-                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, location.getName());
+                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, attraction.getName());
                 startActivity(intent);
             }
         });
     }
 
-    public void setAdapters(){
-        tripPickAdapterFav = new TripPickAdapter(getApplicationContext(), attractions, selectedAttractions);
-        listFav.setAdapter(tripPickAdapterFav);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+        setLists();
+        setAdapters();
+        tripPickAdapterFav.notifyDataSetChanged();
+        tripPickAdapterRest.notifyDataSetChanged();
 
-        tripPickAdapterRest = new TripPickAdapter(getApplicationContext(), attractions, selectedAttractions);
+    }
+
+    private void setLists(){
+        selectedAttractions.clear();
+        test.clear();
+        rest.clear();
+        rest.addAll(attractions);
+        for(int i=0; i<attractions.size(); i++){
+            for(Attraction a : favourites){
+                if(attractions.get(i).getId() == a.getId() && !favourites.contains(attractions.get(i))){
+                    rest.remove(attractions.get(i));
+                    test.add(attractions.get(i));
+                    break;
+                }
+            }
+        }
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<Attraction>>() {}.getType();
+        favourites = gson.fromJson(json, type);
+        if (favourites == null) {
+            favourites = new ArrayList<>();
+        }
+
+    }
+
+    public void setAdapters(){
+
+        listFav.setAdapter(tripPickAdapterFav);
         listRest.setAdapter(tripPickAdapterRest);
 
         ListUtils.setDynamicHeight(listFav);
@@ -126,5 +187,13 @@ public class AddTripActivity extends AppCompatActivity {
             mListView.setLayoutParams(params);
             mListView.requestLayout();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 4);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

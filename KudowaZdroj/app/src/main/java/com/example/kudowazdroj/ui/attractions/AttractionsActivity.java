@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
 import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
@@ -23,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
@@ -30,20 +35,26 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AttractionsActivity extends AppCompatActivity {
 
     public static final String ARG_ATTRACTION_KEY = "key";
-    TextView title, content, info1, info2;
-    ImageView titleImage;
+
+    TextView title, content, info0, info1, info2;
+    ImageView titleImage, heartImage;
     ImageView[] imageViews;
     ProgressBar progressBar;
 
     ArrayList<String> images = new ArrayList<>();
+    ArrayList<Attraction> favourites;
+    Attraction attraction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +65,8 @@ public class AttractionsActivity extends AppCompatActivity {
         title = findViewById(R.id.attr_name);
         content = findViewById(R.id.attr_text_1);
         titleImage = findViewById(R.id.attr_image_1);
+        heartImage = findViewById(R.id.imageHeart);
+        info0 = findViewById(R.id.attr_info_0);
         info1 = findViewById(R.id.attr_info_1);
         info2 = findViewById(R.id.attr_info_2);
 
@@ -66,6 +79,25 @@ public class AttractionsActivity extends AppCompatActivity {
         imageViews[5] = findViewById(R.id.attr_image_7);
 
         progressBar = findViewById(R.id.newsProgressBar2);
+
+
+
+
+        info0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(info0.getText().equals("Ulubione")) removeFromFavourite();
+                else addToFavourite();
+            }
+        });
+
+        heartImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(info0.getText().equals("Ulubione")) removeFromFavourite();
+                else addToFavourite();
+            }
+        });
 
         info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
         info1.setOnClickListener(new View.OnClickListener() {
@@ -97,11 +129,14 @@ public class AttractionsActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                title.setText(snapshot.child("name").getValue().toString());
-                content.setText(snapshot.child("content").getValue().toString());
-                info2.setText(snapshot.child("time").getValue().toString() + " min");
+                attraction = new Attraction(Integer.parseInt(snapshot.child("id").getValue().toString()), snapshot.child("name").getValue().toString(),
+                        snapshot.child("content").getValue().toString(), Integer.parseInt(snapshot.child("time").getValue().toString()), snapshot.child("photo").getValue().toString());
 
-                String url = snapshot.child("photo").getValue().toString();
+                title.setText(attraction.getName());
+                content.setText(attraction.getContent());
+                info2.setText(attraction.getTime() + " min");
+
+                String url = attraction.getPhoto();
                 if(!url.equals("")) Picasso.with(AttractionsActivity.this).load(url).into(titleImage);
 
                 for(DataSnapshot dataSnapshot : snapshot.child("images").getChildren()){
@@ -112,6 +147,7 @@ public class AttractionsActivity extends AppCompatActivity {
                     Picasso.with(getApplicationContext()).load(images.get(i)).into(imageViews[i]);
                     imageViews[i].setVisibility(View.VISIBLE);
                 }
+                loadData();
                 progressBar.setVisibility(View.INVISIBLE);
             }
             @Override
@@ -120,5 +156,59 @@ public class AttractionsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void addToFavourite(){
+        info0.setText("Ulubione");
+        info0.setTextSize(17);
+        info0.setTypeface(Typeface.DEFAULT_BOLD);
+        heartImage.setImageResource(R.drawable.heart);
+        favourites.add(attraction);
+        saveData();
+    }
+
+    private void removeFromFavourite(){
+        info0.setText("Dodaj do ulubionych");
+        info0.setTextSize(16);
+        info0.setTypeface(Typeface.DEFAULT);
+        heartImage.setImageResource(R.drawable.heart_border);
+        for(int i=0; i<favourites.size(); i++) if(favourites.get(i).getId() == attraction.getId()) favourites.remove(i);
+        saveData();
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(favourites);
+        editor.putString("task list", json);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<Attraction>>() {}.getType();
+        favourites = gson.fromJson(json, type);
+        if (favourites == null) {
+            favourites = new ArrayList<>();
+        }
+        for(int i=0; i<favourites.size(); i++) {
+            if(favourites.get(i).getId() == attraction.getId()) {
+                info0.setText("Ulubione");
+                info0.setTextSize(17);
+                info0.setTypeface(Typeface.DEFAULT_BOLD);
+                heartImage.setImageResource(R.drawable.heart);
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 2);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

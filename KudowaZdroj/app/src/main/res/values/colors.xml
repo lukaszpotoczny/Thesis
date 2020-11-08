@@ -13,4 +13,6 @@
     <color name="mapInfoBackground">#E5E5E5</color>
     <color name="colorGreen">#01E300</color>
     <color name="cardGray">#F3F3F3</color>
+    <color name="heartColor">#ED000F</color>
+    <color name="colorBlack">#000000</color>
 </resources>

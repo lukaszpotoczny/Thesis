@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kudowazdroj.R;
-import com.example.kudowazdroj.database.Location;
+import com.example.kudowazdroj.database.Attraction;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 public class TripRouteAdapter extends RecyclerView.Adapter<TripRouteAdapter.TripViewHolder> {
 
     private Context context;
-    private ArrayList<Location> locations;
+    private ArrayList<Attraction> attractions;
 
-    public TripRouteAdapter(Context context, ArrayList<Location> l){
+    public TripRouteAdapter(Context context, ArrayList<Attraction> a){
         this.context = context;
-        this.locations = l;
+        this.attractions = a;
     }
 
     @NonNull
@@ -36,19 +36,18 @@ public class TripRouteAdapter extends RecyclerView.Adapter<TripRouteAdapter.Trip
 
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
-        Location location = locations.get(position);
+        Attraction attraction = attractions.get(position);
 
-        holder.title.setText(location.getName());
+        holder.title.setText(attraction.getName());
+        holder.time.setText(attraction.getTime() + " min");
 
-        String url = location.getImage();
+        String url = attraction.getPhoto();
         if(!url.equals("")) Picasso.with(context).load(url).into(holder.image);
-
-
     }
 
     @Override
     public int getItemCount() {
-        return locations.size();
+        return attractions.size();
     }
 
     public static class TripViewHolder extends RecyclerView.ViewHolder{

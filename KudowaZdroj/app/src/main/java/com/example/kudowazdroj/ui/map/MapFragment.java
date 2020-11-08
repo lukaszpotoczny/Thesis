@@ -80,7 +80,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Location location = dataSnapshot.getValue(Location.class);
                     locations.add(location);
-
                 }
                 //  if(locationPermissionGranted) {
                 SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapFragment);
@@ -148,13 +147,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 ImageView imageView = view.findViewById(R.id.mapInfoImage);
                 final TextView title = view.findViewById(R.id.mapInfoTitle);
                 title.setText(marker.getTitle());
-                title.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println(title.getLineCount() + "aaaaaaaaaaaaaaaaaaaaaaaaaa");
-                        while(title.getLineCount() > 1) title.setTextSize(title.getTextSize() - 1);
-                    }
-                });
 
                 String url = marker.getSnippet();
                 if (url != null) {

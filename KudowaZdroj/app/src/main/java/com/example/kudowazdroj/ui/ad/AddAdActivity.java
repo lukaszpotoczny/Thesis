@@ -3,12 +3,14 @@ package com.example.kudowazdroj.ui.ad;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Ad;
 import com.google.firebase.database.DatabaseReference;
@@ -56,8 +58,20 @@ public class AddAdActivity extends AppCompatActivity {
                 Ad ad = new Ad(id, title, date, content, author, contact);
 
                 reference.child(id).setValue(ad);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
+                startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

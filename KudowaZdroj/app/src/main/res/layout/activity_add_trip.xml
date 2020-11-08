@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dip"
-                    android:background="#B29090" >
+                    android:divider="@null">
                 </ListView>
 
                 <TextView
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:background="#4A9C67" >
+                    android:divider="@null">
                 </ListView>
             </LinearLayout>
 
