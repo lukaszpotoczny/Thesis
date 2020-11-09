@@ -122,17 +122,6 @@ public class AccommodationActivity extends AppCompatActivity {
             }
         });
 
-        //TextView t2 = (TextView) findViewById(R.id.text2);
-
-
-
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 7);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

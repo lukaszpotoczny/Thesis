@@ -203,12 +203,4 @@ public class AttractionsActivity extends AppCompatActivity {
             }
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 2);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

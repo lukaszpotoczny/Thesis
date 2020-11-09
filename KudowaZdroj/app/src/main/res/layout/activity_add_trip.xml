@@ -7,6 +7,15 @@
     android:background="@color/colorCardBackgroundDark"
     tools:context=".ui.trips.AddTripActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:padding="170dp"
+        android:background="@color/colorCardBackgroundDark"
+        android:layout_centerInParent="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,26 +23,33 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:elevation="50dp"
             android:gravity="bottom"
-            android:background="@color/colorCardBackgroundDark"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/ad_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="115dp"
+            <ImageView
+                android:id="@+id/cancel_button"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:adjustViewBounds="true"
                 android:layout_gravity="center"
-                android:text="DALEJ"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_marginLeft="40dp"
+                android:src="@drawable/button_anuluj"/>
+
+            <ImageView
+                android:id="@+id/confirm_button"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:adjustViewBounds="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/button_dalej"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -41,7 +57,7 @@
         android:id="@+id/layoutTripPick"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="68dp"
         android:orientation="vertical">
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -76,7 +92,7 @@
                     android:layout_below="@+id/tripPickTitle"
                     android:text="ULUBIONE:"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     android:textColor="#000"
                     android:paddingTop="8dp"
                     android:paddingBottom="16dp"
@@ -99,9 +115,9 @@
                     android:layout_below="@+id/listTripPickFav"
                     android:text="POZOSTAŁE:"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     android:textColor="#000"
-                    android:paddingTop="8dp"
+                    android:paddingTop="20dp"
                     android:paddingBottom="16dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"

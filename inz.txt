@@ -1,24 +1,11 @@
 filtry do mapy - atrakcje, hotele, restauracje
 customize loading screen
 przy dodawaniu ogloszenia napis "dodaj" + ma³a pinezka
-tap again to exit
-dodaj atrakcje do ulubionych
 eksport i import wycieczek
 lokalnie zapisuje id ogloszenia i porownuje z tym w firebase, co daje opcje usuniecia
 
-zapisane wycieczki
-zmieniaj ikonke auto, czlowiek, rower w wycieczkach
 -----------------------------------
 
-o kodowie
-aktualnosci/wydarzenia
-atrakcje
-mapa
-ogloszenia
-zakwaterowanie
-restauracje
-zaplanuj wycieczke/moje wycieczki
-(kamery online)
 ustawienia - gdzie indziej
 kontakt???
 -follow us?
@@ -27,30 +14,3 @@ kontakt???
 jezyki - pl, eng, cz
 duzy tekst dla starych dziadow
 -------------------------------------
-		FIREBASE
-
-Restauracje:
--id
--nazwa
--lokalizacja
--otwarcie
--zamkniecie
--opis
--telefon
--strona
-
-noclegi
--id
--nazwa
--lokalizacja
--opis
--telefon
--strona
-
-Og³oszenie:
--id
--tytu³
--treœæ
--data
--u¿ytkownik
--kontakt?

@@ -99,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/news_image_1"
                 android:justificationMode="inter_word"
-                android:layout_marginTop="16dp"
                 android:padding="16dp"
                 android:textSize="16sp"
                 android:text=" "/>

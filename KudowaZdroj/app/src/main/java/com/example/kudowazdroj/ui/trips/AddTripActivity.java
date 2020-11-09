@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +15,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
@@ -44,6 +50,8 @@ public class AddTripActivity extends AppCompatActivity {
     TripPickAdapter tripPickAdapterFav, tripPickAdapterRest;
 
     ListView listFav, listRest;
+    ProgressBar progressBar;
+    ImageView buttonCancel, buttonConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,9 @@ public class AddTripActivity extends AppCompatActivity {
 
         listFav = findViewById(R.id.listTripPickFav);
         listRest = findViewById(R.id.listTripPick);
+        progressBar = findViewById(R.id.progressBar);
+        buttonCancel = findViewById(R.id.cancel_button);
+        buttonConfirm = findViewById(R.id.confirm_button);
 
         test = new ArrayList<>();
         favourites = new ArrayList<>();
@@ -79,6 +90,7 @@ public class AddTripActivity extends AppCompatActivity {
                 Collections.sort(attractions);
                 setLists();
                 setAdapters();
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -86,15 +98,31 @@ public class AddTripActivity extends AppCompatActivity {
             }
         });
 
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-        Button button = findViewById(R.id.ad_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddTripActivity.this, TripDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("attractions", selectedAttractions);
                 intent.putExtras(bundle);
+
+                BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context arg0, Intent intent) {
+                        String action = intent.getAction();
+                        if (action.equals("finish_activity")) {
+                            finish();
+                        }
+                    }
+                };
+                registerReceiver(broadcastReceiver, new IntentFilter("finish_activity"));
                 startActivity(intent);
             }
         });
@@ -128,7 +156,7 @@ public class AddTripActivity extends AppCompatActivity {
         setAdapters();
         tripPickAdapterFav.notifyDataSetChanged();
         tripPickAdapterRest.notifyDataSetChanged();
-
+//        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void setLists(){
@@ -189,11 +217,4 @@ public class AddTripActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 4);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

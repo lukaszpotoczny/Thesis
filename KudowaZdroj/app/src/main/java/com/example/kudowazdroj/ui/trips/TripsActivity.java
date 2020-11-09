@@ -86,9 +86,7 @@ public class TripsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         trips.remove(trip);
                         saveData();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 4);
-                        startActivity(intent);
+                        finish();
                     }
                 })
                 .setNegativeButton("Nie", new DialogInterface.OnClickListener() {
@@ -124,11 +122,4 @@ public class TripsActivity extends AppCompatActivity {
         for (Trip t : trips) if(t.getId().equals(id)) trip = t;
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 4);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

@@ -56,22 +56,11 @@ public class AddAdActivity extends AppCompatActivity {
                 String contact = edit4.getText().toString();
                 String date = Calendar.getInstance().getTime().toString();
                 Ad ad = new Ad(id, title, date, content, author, contact);
-
                 reference.child(id).setValue(ad);
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
-                startActivity(intent);
+                finish();
             }
         });
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
-        startActivity(intent);
-        super.onBackPressed();
     }
 }

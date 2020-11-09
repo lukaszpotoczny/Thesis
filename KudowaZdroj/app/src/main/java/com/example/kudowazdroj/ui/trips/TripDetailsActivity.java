@@ -280,9 +280,9 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
         trips.add(trip);
         saveData();
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 4);
-        startActivity(intent);
+        Intent intent = new Intent("finish_activity");
+        sendBroadcast(intent);
+        finish();
     }
 
     private void saveData() {

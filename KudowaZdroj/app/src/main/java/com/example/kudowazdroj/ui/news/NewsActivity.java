@@ -159,11 +159,4 @@ public class NewsActivity extends AppCompatActivity {
         getJSON.execute();
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 1);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

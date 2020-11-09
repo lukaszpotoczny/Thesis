@@ -88,12 +88,4 @@ public class AdActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.ARG_FRAGMENT_ID, 5);
-        startActivity(intent);
-        super.onBackPressed();
-    }
 }

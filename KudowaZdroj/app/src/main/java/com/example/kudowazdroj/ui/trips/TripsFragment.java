@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,12 +38,15 @@ public class TripsFragment extends Fragment {
     TripsAdapter tripsAdapter;
     GridView gridView;
 
+    ImageView addTrip;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.trips_fragment, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_5);
 
+        addTrip = root.findViewById(R.id.addTripImage);
         gridView = root.findViewById(R.id.gridTrips);
         trips = new ArrayList<>();
 
@@ -61,8 +65,8 @@ public class TripsFragment extends Fragment {
             }
         });
 
-        Button addButton = root.findViewById(R.id.ad_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
+
+        addTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AddTripActivity.class);
@@ -71,6 +75,15 @@ public class TripsFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+        tripsAdapter = new TripsAdapter(getActivity().getApplicationContext(), trips);
+        gridView.setAdapter(tripsAdapter);
+        tripsAdapter.notifyDataSetChanged();
     }
 
     private void loadData() {

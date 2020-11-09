@@ -95,45 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onResume() {
         super.onResume();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Bundle extras = getIntent().getExtras();
-        int id = 0;
-        if (extras != null) {
-            id = extras.getInt(ARG_FRAGMENT_ID);
-            selectFragment(id);
-        }
-
-    }
-
-    public void selectFragment(int id){
-        switch (id){
-            case 0:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutKudowaFragment()).commit();
-                break;
-            case 1:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit();
-                break;
-            case 2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AttractionsFragment()).commit();
-                break;
-            case 3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
-                break;
-            case 4:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TripsFragment()).commit();
-                break;
-            case 5:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AdFragment()).commit();
-                break;
-            case 6:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RestaurantsFragment()).commit();
-                break;
-            case 7:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccommodationFragment()).commit();
-                break;
-            case 8:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-                break;
-        }
     }
 
 
