@@ -57,6 +57,7 @@
                     android:layout_below="@+id/ad_text_2"
                     android:textSize="20sp"
                     android:textColor="#1E70D3"
+                    android:maxLines="1"
                     android:text="Zgubiono szalik!!!"/>
 
                 <TextView
@@ -70,7 +71,8 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
+                    android:maxLines="4"
                     android:textSize="14sp"
                     android:text="Poprzedniej soboty zgubiono czerwony szalik w okolicach ..."/>
 
@@ -106,6 +108,8 @@
                         android:textStyle="bold"
                         android:layout_marginTop="12dp"
                         android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:text="Adam K."/>
 
@@ -119,6 +123,8 @@
                         android:textStyle="bold"
                         android:layout_marginTop="18dp"
                         android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:text="501 231 123"/>
                 </RelativeLayout>

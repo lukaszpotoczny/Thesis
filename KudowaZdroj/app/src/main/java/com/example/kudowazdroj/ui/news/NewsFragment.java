@@ -64,8 +64,8 @@ public class NewsFragment extends Fragment {
                     if(i%2 == 0) result += data[i];
                 }
                 result = result.replaceAll("This is a custom heading element.", "");
-                result = result.replaceAll("\n", " ");
-               // if(result.length() > 67) result = result.substring(0, 64) + "...";
+                result = result.replaceAll("\n", "");
+                result = result.replaceAll("&nbsp;", "");
                 return result;
             }
 

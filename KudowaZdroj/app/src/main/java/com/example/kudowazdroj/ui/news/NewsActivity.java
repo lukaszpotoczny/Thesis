@@ -76,6 +76,7 @@ public class NewsActivity extends AppCompatActivity {
                 result = result.replaceAll("This is a custom heading element.", "");
                 result = result.replaceAll("Pobierz \\(PDF\\)", "");
                 result = result.replaceAll("Deklaracja \\(PDF\\)", "");
+                result = result.replaceAll("&nbsp;", "");
                 return result;
             }
 

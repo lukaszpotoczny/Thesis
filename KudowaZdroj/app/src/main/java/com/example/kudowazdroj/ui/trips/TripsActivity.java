@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
@@ -31,7 +32,7 @@ public class TripsActivity extends AppCompatActivity {
     private ArrayList<Trip> trips;
     private Trip trip;
 
-    Button mapButton, deleteButton;
+    ImageView mapButton, deleteButton;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -43,8 +44,8 @@ public class TripsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trips);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mapButton = findViewById(R.id.button_map);
-        deleteButton = findViewById(R.id.button_delete);
+        mapButton = findViewById(R.id.imageMap);
+        deleteButton = findViewById(R.id.imageDelete);
         recyclerView = findViewById(R.id.recyclerView);
 
         trips = new ArrayList<>();
@@ -55,6 +56,7 @@ public class TripsActivity extends AppCompatActivity {
         adapter = new TripRouteAdapter(this, trip.getAttractions());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
 
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override

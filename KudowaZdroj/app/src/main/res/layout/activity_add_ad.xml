@@ -166,14 +166,16 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/add_ad_button"
+            <ImageView
+                android:id="@+id/imageAddAd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cardAddAdActivity"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="32dp"
-                android:text="Dodaj"/>
+                android:layout_below="@+id/cardAddAdActivity"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/button_add_ad"/>
 
         </RelativeLayout>
     </ScrollView>

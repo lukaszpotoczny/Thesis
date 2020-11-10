@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kudowazdroj.MainActivity;
@@ -66,7 +67,7 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
     Place[] places;
     double[][] distanceMatrix;
 
-    Button mapButton, saveButton;
+    ImageView mapButton, saveButton;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -78,8 +79,8 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
         setContentView(R.layout.activity_trip_details);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mapButton = findViewById(R.id.button_map);
-        saveButton = findViewById(R.id.button_save);
+        mapButton = findViewById(R.id.imageMap);
+        saveButton = findViewById(R.id.imageSave);
         recyclerView = findViewById(R.id.recyclerView);
 
         chosenRoute = new ArrayList<>();

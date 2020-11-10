@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class AdFragment extends Fragment {
     AdAdapter adAdapter;
     GridView gridView;
 
-    Button addButton;
+    ImageView addButton;
     ProgressBar progressBar;
 
     @Nullable
@@ -64,7 +65,7 @@ public class AdFragment extends Fragment {
             }
         });
 
-        addButton = root.findViewById(R.id.ad_button);
+        addButton = root.findViewById(R.id.imageAddAd);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,10 +81,6 @@ public class AdFragment extends Fragment {
                 ads.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Ad ad = dataSnapshot.getValue(Ad.class);
-                    if(ad.getTitle().length() > 50) ad.setTitle(ad.getTitle().substring(0, 47) + "...");
-                    if(ad.getContent().length() > 80) ad.setContent(ad.getContent().substring(0, 77) + "...");
-                    if(ad.getContact().length() > 16) ad.setContact(ad.getContact().substring(0, 13) + "...");
-                    if(ad.getAuthor().length() > 16) ad.setAuthor(ad.getAuthor().substring(0, 13) + "...");
                     ads.add(ad);
                 }
                 Collections.sort(ads);

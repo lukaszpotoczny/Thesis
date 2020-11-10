@@ -31,7 +31,8 @@
                     android:gravity="center"
                     android:layout_marginTop="16dp"
                     android:textSize="27sp"
-                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textColor="#FABD2C"
                     android:text="Trasa wycieczki:"/>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -52,37 +53,32 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:gravity="bottom"
             android:background="@color/colorCardBackgroundDark"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button_delete"
+            <ImageView
+                android:id="@+id/imageDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="60dp"
+                android:adjustViewBounds="true"
                 android:layout_gravity="center"
-                android:text="Usuń"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/button_delete"/>
 
-            <Button
-                android:id="@+id/button_map"
+            <ImageView
+                android:id="@+id/imageMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="100dp"
+                android:adjustViewBounds="true"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:text="Mapa"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_marginRight="20dp"
+                android:src="@drawable/button_map"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>

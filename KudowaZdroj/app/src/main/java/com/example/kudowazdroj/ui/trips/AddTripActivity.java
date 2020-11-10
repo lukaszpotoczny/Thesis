@@ -62,8 +62,8 @@ public class AddTripActivity extends AppCompatActivity {
         listFav = findViewById(R.id.listTripPickFav);
         listRest = findViewById(R.id.listTripPick);
         progressBar = findViewById(R.id.progressBar);
-        buttonCancel = findViewById(R.id.cancel_button);
-        buttonConfirm = findViewById(R.id.confirm_button);
+        buttonCancel = findViewById(R.id.imageCancel);
+        buttonConfirm = findViewById(R.id.imageConfirm);
 
         test = new ArrayList<>();
         favourites = new ArrayList<>();

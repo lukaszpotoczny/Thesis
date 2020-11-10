@@ -4,25 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Ad;
+import com.example.kudowazdroj.database.Trip;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
 public class AddAdActivity extends AppCompatActivity {
 
     EditText edit1, edit2, edit3, edit4;
-    Button button;
+    ImageView addButton;
+    ArrayList<Ad> myAds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,7 @@ public class AddAdActivity extends AppCompatActivity {
         edit2 = findViewById(R.id.add_ad_edit_2);
         edit3 = findViewById(R.id.add_ad_edit_3);
         edit4 = findViewById(R.id.add_ad_edit_4);
-        button = findViewById(R.id.add_ad_button);
+        addButton = findViewById(R.id.imageAddAd);
 
         CardView cardView = findViewById(R.id.cardAdGoBack);
         cardView.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +54,7 @@ public class AddAdActivity extends AppCompatActivity {
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Announcement");
 
-        button.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String id = UUID.randomUUID().toString();
@@ -57,10 +65,32 @@ public class AddAdActivity extends AppCompatActivity {
                 String date = Calendar.getInstance().getTime().toString();
                 Ad ad = new Ad(id, title, date, content, author, contact);
                 reference.child(id).setValue(ad);
-
+                loadData();
+                myAds.add(ad);
+                saveData();
                 finish();
             }
         });
 
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(myAds);
+        editor.putString("myAds", json);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("myAds", null);
+        Type type = new TypeToken<ArrayList<Ad>>() {}.getType();
+        myAds = gson.fromJson(json, type);
+        if (myAds == null) {
+            myAds = new ArrayList<>();
+        }
     }
 }
