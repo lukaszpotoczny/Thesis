@@ -11,6 +11,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/trips_fragment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:maxLines="2"
+            android:autoSizeTextType="uniform"
+            android:textStyle="italic"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="32dp"
+            android:textColor="#000"
+            android:text="Nie masz jeszcze żadnej wycieczki w planach."/>
+
 
         <GridView
             android:id="@+id/gridTrips"

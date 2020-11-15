@@ -96,17 +96,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:maxLines="2"
-                    android:autoSizeTextType="uniform"
                     android:autoSizeMaxTextSize="26sp"
-                    android:paddingBottom="4dp"
-                    android:paddingTop="4dp"
+                    android:autoSizeTextType="uniform"
                     android:background="#904f"
+                    android:fontFamily="@font/playfair_display"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Kaplica Czaszek"
                     android:textColor="#ffffff"
-                    android:text="Kaplica Czaszek"/>
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -124,13 +125,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/attr_layout_1"
-                android:layout_toRightOf="@id/imageHeart"
-                android:textStyle="normal"
-                android:layout_marginTop="24dp"
                 android:layout_marginLeft="10dp"
-                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:layout_toRightOf="@id/imageHeart"
+                android:fontFamily="@font/playfair_display"
+                android:text="Dodaj do ulubionych"
                 android:textColor="@color/heartColor"
-                android:text="Dodaj do ulubionych"/>
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <ImageView
                 android:id="@+id/imageLocation"
@@ -146,13 +148,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/attr_info_0"
-                android:layout_toRightOf="@id/imageLocation"
-                android:textStyle="bold"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
-                android:textSize="16sp"
+                android:layout_marginTop="19dp"
+                android:layout_toRightOf="@id/imageLocation"
+                android:fontFamily="@font/playfair_display"
+                android:text="Zobacz na mapie"
                 android:textColor="@color/colorLocation"
-                android:text="Zobacz na mapie"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageClock"
@@ -168,26 +171,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/attr_info_1"
-                android:layout_toRightOf="@id/imageLocation"
-                android:textStyle="bold"
-                android:layout_marginTop="14dp"
                 android:layout_marginLeft="12dp"
-                android:textSize="16sp"
+                android:layout_marginTop="14dp"
+                android:layout_toRightOf="@id/imageLocation"
+                android:fontFamily="@font/playfair_display"
+                android:text="30 min"
                 android:textColor="#000"
-                android:text="30 min"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/attr_text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/attr_info_2"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="30dp"
                 android:justificationMode="inter_word"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="30dp"
-                android:textSize="16sp"
-                android:text="aaaaaaaaaaaaaaaaaaaaaa "/>
+                android:text="@string/news_txt"
+                android:fontFamily="@font/open_sans"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/attr_image_2"

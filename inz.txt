@@ -1,8 +1,10 @@
 filtry do mapy - atrakcje, hotele, restauracje
 customize loading screen
-przy dodawaniu ogloszenia napis "dodaj" + ma³a pinezka
 eksport i import wycieczek
-lokalnie zapisuje id ogloszenia i porownuje z tym w firebase, co daje opcje usuniecia
+pobrac zdj atrakcji - wtedy wywalic picasso i wszystko bedzie zaladowane
+
+poi:
+https://developers.google.com/maps/documentation/android-sdk/style-reference?authuser=1
 
 -----------------------------------
 

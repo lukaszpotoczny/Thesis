@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fillViewport="true" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -29,21 +29,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:textSize="27sp"
+                    android:layout_marginTop="32dp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
-                    android:textColor="#FABD2C"
+                    android:textColor="#FF8B00"
+                    android:fontFamily="@font/playfair_display"
                     android:text="Sugerowana trasa:"/>
+
+                <ImageView
+                    android:id="@+id/imageInfo"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_below="@+id/tripDetailsTitle"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_baseline_info_24"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/imageInfo"
+                    android:layout_below="@+id/tripDetailsTitle"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Zmień kolejność przesuwając elementy"/>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tripDetailsTitle"
-                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/imageInfo"
+                    android:layout_marginTop="8dp"
                     android:padding="4dp"/>
 
-            </LinearLayout>
+            </RelativeLayout>
          </ScrollView>
     </LinearLayout>
 

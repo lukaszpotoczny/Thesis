@@ -57,7 +57,11 @@ public class TripsAdapter extends BaseAdapter {
 
         title.setText(trip.getName());
         duration.setText(String.valueOf(trip.getDuration()) + " min");
-        places.setText(trip.getAttractions().size() + " atrakcje");
+        int placeCount = trip.getAttractions().size();
+        if(placeCount>4 && placeCount<22) places.setText(placeCount + " miejsc");
+        else if(placeCount % 10 >4 || placeCount % 10 == 0) places.setText(placeCount + " miejsc");
+        else places.setText(placeCount + " miejsca");
+
 
         for(int i=0; i<trip.getAttractions().size() && i<imageViews.length; i++){
             Picasso.with(context).load(trip.getAttractions().get(i).getPhoto()).into(imageViews[i]);

@@ -73,7 +73,7 @@ public class RestaurantsActivity extends AppCompatActivity {
         info2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String search = title.getText().toString();
+                String search = title.getText().toString() + "+Kudowa+Zdrój";
                 search = search.replaceAll(" ", "+");
                 Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
 

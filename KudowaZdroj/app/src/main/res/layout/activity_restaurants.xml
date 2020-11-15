@@ -88,14 +88,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="25sp"
-                            android:paddingBottom="4dp"
-                            android:paddingTop="4dp"
                             android:background="#904f"
+                            android:fontFamily="@font/playfair_display"
+                            android:gravity="center"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Czeska Restauracja Zdrojowa"
                             android:textColor="#ffffff"
-                            android:text="Czeska Restauracja Zdrojowa"/>
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -155,6 +156,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="25dp"
                         android:textSize="16sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="4.5 / 5"/>
 
                     <ImageView
@@ -177,6 +179,7 @@
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
                         android:textColor="@color/colorLocation"
+                        android:fontFamily="@font/playfair_display"
                         android:text="ul. Zdrojowa 8"/>
 
                     <ImageView
@@ -195,7 +198,7 @@
                         android:layout_below="@+id/restaurant_info_2"
                         android:layout_toRightOf="@id/imageWebsite"
                         android:textStyle="bold"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="23dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="8dp"
                         android:textSize="15sp"
@@ -203,6 +206,7 @@
                         android:maxLines="1"
                         android:autoSizeTextType="uniform"
                         android:textColorLink="@color/colorTitle"
+                        android:fontFamily="@font/playfair_display"
                         android:text="www.restauracja.pl"/>
 
                     <ImageView
@@ -221,12 +225,13 @@
                         android:layout_below="@+id/restaurant_info_3"
                         android:layout_toRightOf="@id/imagePhone"
                         android:textStyle="bold"
-                        android:layout_marginTop="23dp"
+                        android:layout_marginTop="24dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="16sp"
                         android:autoLink="phone"
                         android:textColor="@color/colorTitle"
                         android:textColorLink="@color/colorTitle"
+                        android:fontFamily="@font/playfair_display"
                         android:text="721 231 341"/>
 
                     <TextView
@@ -238,6 +243,7 @@
                         android:layout_marginTop="10dp"
                         android:padding="16dp"
                         android:textSize="16sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="@string/rest_txt"/>
 
                 </RelativeLayout>

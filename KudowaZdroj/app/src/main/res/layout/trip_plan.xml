@@ -49,6 +49,7 @@
                     android:maxLines="2"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/colorTitle"
+                    android:fontFamily="@font/playfair_display"
                     android:text="Kaplica Czaszek"/>
 
                 <ImageView

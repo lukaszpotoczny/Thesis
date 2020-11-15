@@ -46,7 +46,19 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
                 android:layout_marginRight="20dp"
+                android:visibility="gone"
                 android:src="@drawable/button_dalej"/>
+
+            <ImageView
+                android:id="@+id/imageConfirmGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:clickable="false"
+                android:src="@drawable/button_dalej_gray"/>
 
         </RelativeLayout>
 
@@ -59,7 +71,7 @@
         android:layout_marginBottom="68dp"
         android:orientation="vertical">
 
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true" >
@@ -74,30 +86,32 @@
                     android:id="@+id/tripPickTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="WYBIERZ ATRAKCJE"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:textColor="#FABD2C"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="16dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:gravity="center"
                     android:paddingLeft="8dp"
+                    android:paddingTop="25dp"
                     android:paddingRight="8dp"
-                    android:gravity="center"/>
+                    android:paddingBottom="25dp"
+                    android:text="WYBIERZ ATRAKCJE"
+                    android:textColor="#FF8B00"
+                    android:textSize="31sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tripPickFav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tripPickTitle"
-                    android:text="ULUBIONE:"
-                    android:textSize="20sp"
-                    android:textStyle="italic"
-                    android:textColor="#000"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="16dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:gravity="center"
                     android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
                     android:paddingRight="8dp"
-                    android:gravity="center"/>
+                    android:paddingBottom="8dp"
+                    android:text="ULUBIONE:"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
 
                 <ListView
                     android:id="@+id/listTripPickFav"
@@ -112,15 +126,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/listTripPickFav"
-                    android:text="POZOSTAŁE:"
-                    android:textSize="20sp"
-                    android:textStyle="italic"
-                    android:textColor="#000"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="16dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:gravity="center"
                     android:paddingLeft="8dp"
+                    android:paddingTop="30dp"
                     android:paddingRight="8dp"
-                    android:gravity="center"/>
+                    android:paddingBottom="8dp"
+                    android:text="POZOSTAŁE:"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
 
                 <ListView
                     android:id="@+id/listTripPick"

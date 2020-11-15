@@ -36,6 +36,7 @@
                     android:maxLines="1"
                     android:textSize="20sp"
                     android:textColor="@color/colorTitle"
+                    android:fontFamily="@font/playfair_display"
                     android:text="Wycieczka na sobotę"/>
 
                 <TextView

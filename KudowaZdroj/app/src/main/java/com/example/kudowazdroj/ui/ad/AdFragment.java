@@ -85,6 +85,7 @@ public class AdFragment extends Fragment {
                 }
                 Collections.sort(ads);
                 adAdapter.notifyDataSetChanged();
+                addButton.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.INVISIBLE);
             }
             @Override

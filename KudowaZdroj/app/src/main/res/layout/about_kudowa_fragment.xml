@@ -29,31 +29,34 @@
                 android:id="@+id/about_kudowa_text_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about_kudowa_1"
                 android:layout_below="@id/about_kudowa_title"
-                android:justificationMode="inter_word"
-                android:textSize="16sp"
                 android:layout_marginTop="16dp"
-                android:padding="16dp"/>
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:text="@string/about_kudowa_1"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/about_kudowa_image_1"
                 android:layout_width="wrap_content"
                 android:layout_height="260dp"
                 android:layout_below="@+id/about_kudowa_text_1"
+                android:padding="8dp"
                 android:src="@drawable/about_kudowa_image_1"
-                android:padding="8dp"/>
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/about_kudowa_text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about_kudowa_2"
                 android:layout_below="@id/about_kudowa_image_1"
-                android:justificationMode="inter_word"
-                android:textSize="16sp"
                 android:layout_marginTop="8dp"
-                android:padding="16dp"/>
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:text="@string/about_kudowa_2"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/about_kudowa_image_2"
@@ -67,12 +70,13 @@
                 android:id="@+id/about_kudowa_text_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about_kudowa_3"
                 android:layout_below="@id/about_kudowa_image_2"
-                android:justificationMode="inter_word"
-                android:textSize="16sp"
                 android:layout_marginTop="8dp"
-                android:padding="16dp"/>
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:text="@string/about_kudowa_3"
+                android:textSize="16sp" />
 
 
         </RelativeLayout>

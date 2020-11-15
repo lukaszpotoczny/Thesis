@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,10 +36,11 @@ import static android.content.Context.MODE_PRIVATE;
 public class TripsFragment extends Fragment {
 
     ArrayList<Trip> trips;
+
     TripsAdapter tripsAdapter;
     GridView gridView;
-
     ImageView addTrip;
+    TextView textView;
 
     @Nullable
     @Override
@@ -48,6 +50,7 @@ public class TripsFragment extends Fragment {
 
         addTrip = root.findViewById(R.id.addTripImage);
         gridView = root.findViewById(R.id.gridTrips);
+        textView = root.findViewById(R.id.trips_fragment_text);
         trips = new ArrayList<>();
 
         loadData();
@@ -81,6 +84,8 @@ public class TripsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         loadData();
+        if(trips.size() > 0) textView.setVisibility(View.GONE);
+        else textView.setVisibility(View.VISIBLE);
         tripsAdapter = new TripsAdapter(getActivity().getApplicationContext(), trips);
         gridView.setAdapter(tripsAdapter);
         tripsAdapter.notifyDataSetChanged();

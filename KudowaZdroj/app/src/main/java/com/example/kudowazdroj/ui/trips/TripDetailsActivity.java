@@ -101,7 +101,7 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
             public void onClick(View view) {
                 search = "";
                 for(int i=0; i<chosenRoute.size(); i++){
-                   String s = chosenRoute.get(i).getName();
+                   String s = chosenRoute.get(i).getName() + "+Kudowa+Zdrój";
                    s = s.replaceAll(" ", "+");
                    search += s + "/";
                 }
@@ -119,7 +119,7 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
             public void onClick(View view) {
                 search = "";
                 for(int i=0; i<finalRoute.size(); i++){
-                    String s = finalRoute.get(i).getName();
+                    String s = finalRoute.get(i).getName() + "+Kudowa+Zdrój";
                     s = s.replaceAll(" ", "+");
                     search += s + "/";
                 }

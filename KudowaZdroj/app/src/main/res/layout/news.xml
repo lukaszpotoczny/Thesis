@@ -57,9 +57,9 @@
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
                     android:layout_below="@+id/news_text_2"
-                    android:layout_marginTop="2dp"
                     android:textSize="18sp"
                     android:textColor="#1E70D3"
+                    android:fontFamily="@font/playfair_display"
                     android:maxLines="2"
                     android:text="Dekarbonizacja aaaaaaa aaaaaaa aa  a aaa a aaaaaaaa a 2030"/>
 
@@ -70,7 +70,6 @@
                     android:layout_toRightOf="@id/imageNews"
                     android:layout_below="@+id/news_text_1"
                     android:layout_gravity="center_horizontal"
-                    android:justificationMode="inter_word"
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="4dp"

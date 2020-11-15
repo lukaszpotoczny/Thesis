@@ -51,7 +51,7 @@ public class AddTripActivity extends AppCompatActivity {
 
     ListView listFav, listRest;
     ProgressBar progressBar;
-    ImageView buttonCancel, buttonConfirm;
+    ImageView buttonCancel, buttonConfirm, buttonConfirmGray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,7 @@ public class AddTripActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         buttonCancel = findViewById(R.id.imageCancel);
         buttonConfirm = findViewById(R.id.imageConfirm);
+        buttonConfirmGray = findViewById(R.id.imageConfirmGray);
 
         test = new ArrayList<>();
         favourites = new ArrayList<>();
@@ -73,8 +74,8 @@ public class AddTripActivity extends AppCompatActivity {
 
         loadData();
 
-        tripPickAdapterFav = new TripPickAdapter(getApplicationContext(), test, selectedAttractions);
-        tripPickAdapterRest = new TripPickAdapter(getApplicationContext(), rest, selectedAttractions);
+        tripPickAdapterFav = new TripPickAdapter(getApplicationContext(), test, selectedAttractions, buttonConfirm, buttonConfirmGray);
+        tripPickAdapterRest = new TripPickAdapter(getApplicationContext(), rest, selectedAttractions, buttonConfirm, buttonConfirmGray);
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attractions");
@@ -146,6 +147,8 @@ public class AddTripActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     @Override
@@ -153,6 +156,14 @@ public class AddTripActivity extends AppCompatActivity {
         super.onResume();
         loadData();
         setLists();
+        if(selectedAttractions.size()>1){
+            buttonConfirmGray.setVisibility(View.GONE);
+            buttonConfirm.setVisibility(View.VISIBLE);
+        }
+        else{
+            buttonConfirm.setVisibility(View.GONE);
+            buttonConfirmGray.setVisibility(View.VISIBLE);
+        }
         setAdapters();
         tripPickAdapterFav.notifyDataSetChanged();
         tripPickAdapterRest.notifyDataSetChanged();

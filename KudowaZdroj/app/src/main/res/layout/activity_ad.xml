@@ -94,25 +94,27 @@
                         android:id="@+id/ad_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:gravity="center"
-                        android:textStyle="bold"
                         android:layout_below="@+id/ad_date"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
-                        android:textSize="30sp"
+                        android:fontFamily="@font/playfair_display"
+                        android:gravity="center"
+                        android:text="Zgubiono szalik"
                         android:textColor="@color/colorTitle"
-                        android:text="Zgubiono szalik"/>
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/ad_text_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/ad_title"
-                        android:justificationMode="inter_word"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:justificationMode="inter_word"
                         android:padding="16dp"
-                        android:textSize="16sp"
-                        android:text="aaaaaaaaa"/>
+                        android:text="aaaaaaaaa"
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/imageAuthor"
@@ -140,28 +142,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ad_text_1"
-                        android:layout_toLeftOf="@id/imageAuthor"
                         android:layout_gravity="center_horizontal"
-                        android:textStyle="bold"
                         android:layout_marginTop="15dp"
                         android:layout_marginRight="8dp"
-                        android:textSize="16sp"
+                        android:layout_toLeftOf="@id/imageAuthor"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Adam K."
                         android:textColor="@color/colorTitle"
-                        android:text="Adam K."/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/ad_text_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ad_text_2"
-                        android:layout_toLeftOf="@id/imageContact"
                         android:layout_gravity="center_horizontal"
-                        android:textStyle="bold"
                         android:layout_marginTop="19dp"
                         android:layout_marginRight="8dp"
-                        android:textSize="15sp"
+                        android:layout_toLeftOf="@id/imageContact"
+                        android:fontFamily="@font/open_sans"
+                        android:text="501 231 123"
                         android:textColor="@color/colorTitle"
-                        android:text="501 231 123"/>
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@ package com.example.kudowazdroj.ui.attractions;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -103,7 +104,7 @@ public class AttractionsActivity extends AppCompatActivity {
         info1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String search = title.getText().toString();
+                String search = title.getText().toString() + "+Kudowa+Zdrój";
                 search = search.replaceAll(" ", "+");
                 Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
 
@@ -161,7 +162,9 @@ public class AttractionsActivity extends AppCompatActivity {
     private void addToFavourite(){
         info0.setText("Ulubione");
         info0.setTextSize(17);
-        info0.setTypeface(Typeface.DEFAULT_BOLD);
+        Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.playfair_display);
+        info0.setTypeface(typeface);
+    //    info0.setTypeface(typeface.DEFAULT_BOLD);
         heartImage.setImageResource(R.drawable.heart);
         favourites.add(attraction);
         saveData();
@@ -171,6 +174,8 @@ public class AttractionsActivity extends AppCompatActivity {
         info0.setText("Dodaj do ulubionych");
         info0.setTextSize(16);
         info0.setTypeface(Typeface.DEFAULT);
+        Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.playfair_display);
+        info0.setTypeface(typeface);
         heartImage.setImageResource(R.drawable.heart_border);
         for(int i=0; i<favourites.size(); i++) if(favourites.get(i).getId() == attraction.getId()) favourites.remove(i);
         saveData();
@@ -198,7 +203,9 @@ public class AttractionsActivity extends AppCompatActivity {
             if(favourites.get(i).getId() == attraction.getId()) {
                 info0.setText("Ulubione");
                 info0.setTextSize(17);
-                info0.setTypeface(Typeface.DEFAULT_BOLD);
+                Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.playfair_display);
+                info0.setTypeface(typeface);
+           //     info0.setTypeface(Typeface.DEFAULT_BOLD);
                 heartImage.setImageResource(R.drawable.heart);
             }
         }

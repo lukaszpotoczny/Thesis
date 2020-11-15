@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -34,11 +36,14 @@ public class TripPickAdapter extends BaseAdapter {
     ArrayList<Attraction> attractions;
     ArrayList<Attraction> selectedAttractions;
     LayoutInflater inflater;
+    ImageView confirm, confirmGray;
 
-    public TripPickAdapter(Context context, ArrayList<Attraction> attractions, ArrayList<Attraction> selectedAttractions){
+    public TripPickAdapter(Context context, ArrayList<Attraction> attractions, ArrayList<Attraction> selectedAttractions, ImageView confirm, ImageView confirmGray){
         this.context = context;
         this.attractions = attractions;
         this.selectedAttractions = selectedAttractions;
+        this.confirm = confirm;
+        this.confirmGray = confirmGray;
         inflater = LayoutInflater.from(context);
     }
 
@@ -64,13 +69,31 @@ public class TripPickAdapter extends BaseAdapter {
         ImageView imageView = view.findViewById(R.id.imageAttractionPick);
         TextView name = view.findViewById(R.id.attractionPick_text_1);
         TextView time = view.findViewById(R.id.attractionPick_text_2);
-        CheckBox checkBox = view.findViewById(R.id.checkBox);
+        final CheckBox checkBox = view.findViewById(R.id.checkBox);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) selectedAttractions.add(attractions.get(position));
-                else  selectedAttractions.remove(attractions.get(position));
+                if(b) {
+                    if(selectedAttractions.size() > 24){
+                        Toast.makeText(context, "Wybierz maksymalnie 25 atrakcji", Toast.LENGTH_SHORT).show();
+                        checkBox.setChecked(false);
+                    }
+                    else{
+                        selectedAttractions.add(attractions.get(position));
+                        if(selectedAttractions.size() > 1){
+                            confirmGray.setVisibility(View.GONE);
+                            confirm.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+                else  {
+                    selectedAttractions.remove(attractions.get(position));
+                    if(selectedAttractions.size() < 2){
+                        confirm.setVisibility(View.GONE);
+                        confirmGray.setVisibility(View.VISIBLE);
+                    }
+                }
             }
         });
 

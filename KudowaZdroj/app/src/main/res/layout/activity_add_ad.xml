@@ -69,12 +69,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:gravity="center"
-                        android:textStyle="bold"
                         android:layout_marginTop="20dp"
-                        android:textSize="25sp"
+                        android:fontFamily="@font/playfair_display"
+                        android:gravity="center"
+                        android:text="Dodaj ogłoszenie"
                         android:textColor="@color/colorTitle"
-                        android:text="Dodaj ogłoszenie"/>
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/add_ad_info_2"
@@ -84,6 +85,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="30dp"
                         android:textSize="18sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="Tytuł:"/>
 
                     <EditText
@@ -105,6 +107,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
                         android:textSize="18sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="Treść ogłoszenia:"/>
 
                     <EditText
@@ -127,6 +130,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
                         android:textSize="18sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="Autor:"/>
 
                     <EditText
@@ -148,6 +152,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
                         android:textSize="18sp"
+                        android:fontFamily="@font/open_sans"
                         android:text="Dane kontaktowe:"/>
 
                     <EditText
