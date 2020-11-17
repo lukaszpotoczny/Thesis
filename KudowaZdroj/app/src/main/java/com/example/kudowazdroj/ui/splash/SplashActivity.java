@@ -44,7 +44,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-
                 Pair pair = new Pair<View,String>(logo, "logo");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pair);

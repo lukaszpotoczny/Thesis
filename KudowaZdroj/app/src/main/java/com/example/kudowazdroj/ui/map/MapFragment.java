@@ -25,23 +25,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Location;
-import com.example.kudowazdroj.database.Restaurant;
 import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
-import com.example.kudowazdroj.ui.restaurants.RestaurantsActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,11 +75,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     Location location = dataSnapshot.getValue(Location.class);
                     locations.add(location);
                 }
-                //  if(locationPermissionGranted) {
                 SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapFragment);
                 supportMapFragment.getMapAsync(MapFragment.this);
-
-                //}
             }
 
             @Override
@@ -93,16 +84,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-
         return root;
-
     }
 
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         gMap = googleMap;
-        //gMap.setMyLocationEnabled(true);
         gMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style));
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -115,7 +103,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         .load(locations.get(i).getImage())
                         .into(imageView);
             }
-            System.out.println(i);
         }
         if (locationPermissionGranted) {
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -127,13 +114,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         gMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
-                System.out.println(locations.size());
                 for(int i=0; i<locations.size(); i++){
                     Marker mark = gMap.addMarker(new MarkerOptions()
                     .position(new LatLng(locations.get(i).getLat(), locations.get(i).getLng()))
                     .title(locations.get(i).getName())
                     .snippet(locations.get(i).getImage())
-                    // .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
                     .icon(setMarkerImage(getContext(), R.drawable.map_pin)));
                 }
             }
@@ -155,8 +140,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                             .placeholder(R.color.mapInfoBackground)
                             .into(imageView, new MarkerCallback(marker));
                 }
-
-                System.out.println(url);
                 return view;
             }
 
@@ -190,13 +173,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 Intent intent = new Intent(getActivity(), AttractionsActivity.class);
                 intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, key);
                 startActivity(intent);
-            }
-        });
-
-        gMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                System.out.println(latLng);
             }
         });
 

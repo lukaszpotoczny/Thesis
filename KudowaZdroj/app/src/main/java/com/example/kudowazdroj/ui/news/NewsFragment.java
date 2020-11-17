@@ -1,6 +1,9 @@
 package com.example.kudowazdroj.ui.news;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,13 +48,25 @@ public class NewsFragment extends Fragment {
 
         news = new ArrayList<>();
         images = new ArrayList<>();
-        news.add(new News(1, "ABC", "a"));
 
-        downloadJSON("https://kudowa.pl/get_news_list.php");
-        downloadJSON("https://kudowa.pl/get_images.php");
+        if(checkConnection()){
+            downloadJSON("https://kudowa.pl/get_news_list.php");
+            downloadJSON("https://kudowa.pl/get_images.php");
+        }
+        else {
+            Toast.makeText(getContext(), "Brak połączenia Internetowego", Toast.LENGTH_SHORT).show();
+        }
+
 
         return root;
     }
+
+    private boolean checkConnection(){
+        ConnectivityManager cm = (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return (activeNetwork != null && activeNetwork.isConnectedOrConnecting());
+    }
+
 
     private void downloadJSON(final String urlWebService) {
 
@@ -90,10 +106,7 @@ public class NewsFragment extends Fragment {
                             id = Integer.parseInt(data[i]);
                             news.add(new News(id, title, content, date));
                         }
-                        else if(i%4 == 1) {
-                           // if(data[i].length() > 47) data[i] = data[i].substring(0, 44) + "...";
-                            title = data[i];
-                        }
+                        else if(i%4 == 1) title = data[i];
                         else if(i%4 == 2) content = fixContent(data[i]);
                         else date = data[i].substring(0, 10);
                     }
@@ -122,7 +135,6 @@ public class NewsFragment extends Fragment {
                     }
                     progressBar.setVisibility(View.INVISIBLE);
                 }
-
 
                 newsAdapter = new NewsAdapter(getActivity().getApplicationContext(), news);
                 gridView.setAdapter(newsAdapter);

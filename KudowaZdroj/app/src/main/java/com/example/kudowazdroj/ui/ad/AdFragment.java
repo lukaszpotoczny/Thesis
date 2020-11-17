@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -18,12 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Ad;
-import com.example.kudowazdroj.database.Attraction;
-import com.example.kudowazdroj.database.Restaurant;
 import com.example.kudowazdroj.ui.adapters.AdAdapter;
-import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
-import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
-import com.example.kudowazdroj.ui.restaurants.RestaurantsFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,9 +30,9 @@ import java.util.Collections;
 public class AdFragment extends Fragment {
 
     ArrayList<Ad> ads;
+
     AdAdapter adAdapter;
     GridView gridView;
-
     ImageView addButton;
     ProgressBar progressBar;
 

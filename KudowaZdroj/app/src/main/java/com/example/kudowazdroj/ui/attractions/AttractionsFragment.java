@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kudowazdroj.ui.adapters.AttrAdapter;
 import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
@@ -29,9 +32,13 @@ import java.util.Collections;
 public class AttractionsFragment extends Fragment {
 
     ArrayList<Attraction> attractions;
-    AttractionsAdapter attractionsAdapter;
-    GridView gridView;
+  //  AttractionsAdapter attractionsAdapter;
+  //  GridView gridView;
     ProgressBar progressBar;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Nullable
     @Override
@@ -39,13 +46,19 @@ public class AttractionsFragment extends Fragment {
         View root = inflater.inflate(R.layout.attractions_fragment, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.nav_menu_3);
 
-        gridView = root.findViewById(R.id.gridAttractions);
+       // gridView = root.findViewById(R.id.gridAttractions);
         progressBar = root.findViewById(R.id.progressBar);
+        recyclerView = root.findViewById(R.id.recyclerAttraction);
 
         attractions = new ArrayList<>();
 
-        attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
-        gridView.setAdapter(attractionsAdapter);
+/*        attractionsAdapter = new AttractionsAdapter(getActivity().getApplicationContext(), attractions);
+        gridView.setAdapter(attractionsAdapter);*/
+
+        adapter = new AttrAdapter(getContext(), attractions);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(adapter);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attractions");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,7 +70,7 @@ public class AttractionsFragment extends Fragment {
                     attractions.add(attraction);
                 }
                 Collections.sort(attractions);
-                attractionsAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -67,7 +80,7 @@ public class AttractionsFragment extends Fragment {
             }
         });
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+/*        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Attraction attraction = attractions.get(i);
@@ -75,7 +88,8 @@ public class AttractionsFragment extends Fragment {
                 intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, attraction.getName());
                 startActivity(intent);
             }
-        });
+        });*/
+
 
         return root;
     }

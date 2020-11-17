@@ -161,7 +161,6 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
                     totalTime += attraction.getTime();
                     chosenRoute.add(location);
                 }
-                System.out.println("ssssssssssssssssssssssss     " + chosenRoute.size());
                 distanceMatrix = generateDistanceMatrix(chosenRoute.size());
                 places = new Place[chosenRoute.size()];
                 for(int i=0; i<chosenRoute.size(); i++) places[i] = (new Place(i, chosenRoute.get(i)));

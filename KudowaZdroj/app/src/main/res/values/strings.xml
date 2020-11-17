@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KudowaZdroj</string>
+    <string name="app_name">Kudowa-Zdrój</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -13,7 +13,7 @@
     <string name="nav_menu_6">Ogłoszenia</string>
     <string name="nav_menu_7">Restauracje</string>
     <string name="nav_menu_8">Noclegi</string>
-    <string name="nav_menu_9">Ustawienia</string>
+    <string name="nav_menu_9">O aplikacji</string>
 
     <string name="title_1">Informacje</string>
     <string name="title_2">Pobyt</string>
@@ -23,33 +23,22 @@
     <string name="about_kudowa_1">W malowniczej dolinie, pomiędzy wzniesieniami Gór Orlickich i skalnymi platformami Gór Stołowych leży jedno z najstarszych europejskich uzdrowisk – miasto Kudowa-Zdrój. Kurort znany od wieków z leczniczych właściwości wód mineralnych, których źródła biją w samym sercu uzdrowiska – w Parku Zdrojowym. Przebogata i burzliwa historia miasta ujawnia się w wielu zabytkach, m.in. tajemniczej Kaplicy Czaszek. Badacze historii trafią tutaj na ślady słynnych osobistości którzy gościli w Kudowie, a z których wymienić należy: brytyjskiego premiera Winstona Churchilla, króla Prus Wilhelma III, pisarza Bruno Schulza czy papieża Jana Pawła II.</string>
     <string name="about_kudowa_2">Kudowa-Zdrój stwarza wiele możliwości aktywnego wypoczynku. Miłośnicy górskich wędrówek docenią fantastyczne krajobrazy Gór Stołowych i dotrą do tak znanych miejsc jak Błędne Skały czy Szczeliniec Wielki. Leżące na granicy miasto i jego okolicę oplata gęsta sieć szlaków rowerowych, doskonale skomunikowanych z trasami po stronie czeskiej. Dla pasjonatów rowerów górskich od 2019 roku przygotowaliśmy trasy typu singletrack, które dostarczą niezapomnianych wrażeń. Kudowa-Zdrój jest świetną bazą wypadową dla narciarzy, którzy mogą korzystać z oferty licznych ośrodków po stronie polskiej i czeskiej takich jak Zieleniec czy Destne v Orlickich Górach oraz gęstej sieci narciarskich tras biegowych.</string>
     <string name="about_kudowa_3">Miasto kryje wiele urokliwych miejsc, które warto zobaczyć. Należy do nich zabytkowy Park Zdrojowy, założony w XVIII w. na wzór ogrodów angielskich, z secesyjną Halą Spacerową, Pijalnią Wód czy najstarszym barokowym budynkiem sanatoryjnym „Zameczkiem”. Najmłodszych zachwyci muzeum „Bajka” ze wspaniałymi kolekcjami zabawek, a także park linowy, park rozrywki czy „Capitalna Zabawa” – wielki kryty plac zabaw, gdzie milusińscy będą mogli wyszaleć się do woli. Miłośnicy tradycji i imprez w stylu ludowym powinni odwiedzić skansen w Pstrążnej, w którym zwiedzą zabytkowe chaty, stodoły i potańczą w rytm muzyki ludowej.</string>
-    <string name="title_activity_accommodation">AccommodationActivity</string>
+
+    <string name="appInfo">Kudowa-Zdrój jest oficjalną aplikacją Urzędu Miasta w Kudowie-Zdroju. Możesz tu znaleźć informacje o lokalnych atrakcjach,
+        restauracjach i bogatej ofercie noclegowej. Aplikacja udostępnia również dostęp do interaktywnej mapy atrakcji, dzięki której będziesz w stanie lepiej
+        poznać miasto i ułatwić sobie zwiedzanie. Na podstawie najciekawszych lokalizacji możesz zaplanować pasjonującą wycieczkę dla Ciebie i bliskich. Gdy
+        już przyjedziesz do Kudowy, sprawdź uważnie zakładkę aktualności, aby być na czasie ze wszystkimi ważnymi wydarzeniami w mieście. Wiecej informacji
+        znajdziesz również na stronie <i>kudowa.pl</i>.</string>
+
+    <string name="appInfo2">Aplikacja powstała na rzecz Politechniki Wrocławskiej jako element pracy inżynierskiej. Autor:</string>
+    <string name="appInfo3">Łukasz Potoczny</string>
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
 
-
-    <string name="trips_button">Zaplanuj wycieczkę</string>
-
-
-    <string name="rest_txt">Znajdziesz tu przyjemne, klimatyczne miejsce i pyszne jedzenie oraz miłą, fachową obsługę.
-Restauracja Cafe Domek to nowoczesna, dwupoziomowa restauracja, która jest połączeniem restauracji - pizzerii - kawiarni.
-Naszą specjalnością są dania regionalne !
-Tylko u nas znajdziesz dania obiadowe, pizzę prosto z pieca, gyrosa, a także różnego rodzaju sałatki oraz masz możliwość delektowania się wspaniałymi deserami, aromatyczną kawą oraz przeróżnymi drinkami. Do każdego dania podchodzimy z pasją do gotowania, aby jak najlepiej trafić w Państwa gusta.</string>
-
-    <string name="news_txt">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa28 września 2020 roku w Wałbrzychu w Starej Kopalni spotkali się reprezentanci samorządów subregionu Wałbrzyskiego. Naszą Gminę reprezentowała Burmistrz Miasta Aneta Potoczna.
-
-Celem spotkania było podpisanie deklaracji o wspólnych działaniach na rzecz pozbycia się węgla z gmin. Deklaracja „Dekarbonizacja 2030” zawiera w sobie strategiczne cele tj:
-
-rozwój odnawialnych źródeł energii
-dążenie do samowystarczalności energetycznej gmin subregionu
-likwidacja ogrzewania opartego na węglu w budynkach użyteczności publicznej oraz w budynkach mieszkalnych
-wdrożenie zeroemisyjnego transportu publicznego z wykorzystaniem energii elektrycznej i wodoru
-stworzenie magazynów energii odnawialnej
-Autorem i pomysłodawcą deklaracji jest prezydent Wałbrzycha Roman Szełemej i w założeniu ma wykorzystać działania podejmowane w ramach Funduszu Sprawiedliwej Transformacji ustanowionego przez Unię Europejską.</string>
-    <string name="title_activity_maps">Map</string>
-
+   <string name="title_activity_maps">Map</string>
 
 </resources>

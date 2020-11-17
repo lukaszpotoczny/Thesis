@@ -74,8 +74,7 @@ public class NewsActivity extends AppCompatActivity {
                     if(i%2 == 0) result += data[i];
                 }
                 result = result.replaceAll("This is a custom heading element.", "");
-                result = result.replaceAll("Pobierz \\(PDF\\)", "");
-                result = result.replaceAll("Deklaracja \\(PDF\\)", "");
+                result = result.replaceAll("PDF", "PDF na stronie www.kudowa.pl");
                 result = result.replaceAll("&nbsp;", "");
                 return result;
             }

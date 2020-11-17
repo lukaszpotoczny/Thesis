@@ -167,7 +167,6 @@ public class AddTripActivity extends AppCompatActivity {
         setAdapters();
         tripPickAdapterFav.notifyDataSetChanged();
         tripPickAdapterRest.notifyDataSetChanged();
-//        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void setLists(){
@@ -195,14 +194,11 @@ public class AddTripActivity extends AppCompatActivity {
         if (favourites == null) {
             favourites = new ArrayList<>();
         }
-
     }
 
     public void setAdapters(){
-
         listFav.setAdapter(tripPickAdapterFav);
         listRest.setAdapter(tripPickAdapterRest);
-
         ListUtils.setDynamicHeight(listFav);
         ListUtils.setDynamicHeight(listRest);
     }
@@ -211,7 +207,6 @@ public class AddTripActivity extends AppCompatActivity {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();
             if (mListAdapter == null) {
-                // when adapter is null
                 return;
             }
             int height = 0;

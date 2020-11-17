@@ -60,7 +60,7 @@ public class AccommodationActivity extends AppCompatActivity {
         info1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String search = title.getText().toString();
+                String search = title.getText().toString() + "+Kudowa+Zdrój+" + info1.getText().toString();
                 search = search.replaceAll(" ", "+");
                 Uri uri = Uri.parse("https://www.google.com/maps/search/" + search);
 
@@ -75,12 +75,10 @@ public class AccommodationActivity extends AppCompatActivity {
         info3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] TO = {"lukipot1998@gmail.com"};
-                String[] CC = {"xyz@gmail.com"};
+                String[] TO = {""};
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
-
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 
                 try {

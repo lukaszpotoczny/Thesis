@@ -20,54 +20,44 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/mystery_quest"
-                android:text="O Kudowie"
+                android:text="O Kudowie "
+                android:layout_marginBottom="16dp"
                 android:textColor="#1E70D3"
                 android:textSize="36sp"
                 android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/about_kudowa_text_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/about_kudowa_title"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:justificationMode="inter_word"
-                android:padding="16dp"
-                android:text="@string/about_kudowa_1"
-                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/about_kudowa_image_1"
                 android:layout_width="wrap_content"
                 android:layout_height="260dp"
-                android:layout_below="@+id/about_kudowa_text_1"
+                android:layout_below="@+id/about_kudowa_title"
                 android:padding="8dp"
                 android:src="@drawable/about_kudowa_image_1"
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/about_kudowa_text_2"
+                android:id="@+id/about_kudowa_text_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/about_kudowa_image_1"
-                android:layout_marginTop="8dp"
                 android:fontFamily="@font/open_sans"
                 android:justificationMode="inter_word"
                 android:padding="16dp"
-                android:text="@string/about_kudowa_2"
-                android:textSize="16sp" />
+                android:textColor="#000"
+                android:text="@string/about_kudowa_1"
+                android:textSize="17sp" />
 
             <ImageView
                 android:id="@+id/about_kudowa_image_2"
                 android:layout_width="wrap_content"
                 android:layout_height="260dp"
-                android:layout_below="@+id/about_kudowa_text_2"
+                android:layout_below="@+id/about_kudowa_text_1"
+                android:padding="8dp"
                 android:src="@drawable/about_kudowa_image_2"
-                android:padding="8dp"/>
+                android:visibility="visible" />
 
             <TextView
-                android:id="@+id/about_kudowa_text_3"
+                android:id="@+id/about_kudowa_text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/about_kudowa_image_2"
@@ -75,8 +65,30 @@
                 android:fontFamily="@font/open_sans"
                 android:justificationMode="inter_word"
                 android:padding="16dp"
+                android:textColor="#000"
+                android:text="@string/about_kudowa_2"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/about_kudowa_image_3"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+                android:layout_below="@+id/about_kudowa_text_2"
+                android:src="@drawable/about_kudowa_image_3"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/about_kudowa_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_kudowa_image_3"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:textColor="#000"
                 android:text="@string/about_kudowa_3"
-                android:textSize="16sp" />
+                android:textSize="17sp" />
 
 
         </RelativeLayout>

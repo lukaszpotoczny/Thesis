@@ -7,13 +7,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.kudowazdroj.ui.appInfo.AppInfoFragment;
 import com.example.kudowazdroj.ui.accommodation.AccommodationFragment;
 import com.example.kudowazdroj.ui.ad.AdFragment;
 import com.example.kudowazdroj.ui.attractions.AttractionsFragment;
@@ -31,31 +31,26 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final String ARG_FRAGMENT_ID = "id";
-    boolean doubleBackToExitPressedOnce = false;
+    private boolean doubleBackToExitPressedOnce = false;
 
     private DrawerLayout drawerLayout;
 
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-
         mAuth = FirebaseAuth.getInstance();
 
+        drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -64,17 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutKudowaFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_message);
         }
-
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() != null){
-                    
-                }
-            }
-        };
-
-
 
         String email = "kudowa.app.user@gmail.com";
         String password = "cV=pPZg}#D)?q5WM";
@@ -126,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccommodationFragment()).commit();
                 break;
             case R.id.nav_message9:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AppInfoFragment()).commit();
                 break;
         }
 

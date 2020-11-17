@@ -190,7 +190,6 @@
                 android:justificationMode="inter_word"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:text="@string/news_txt"
                 android:fontFamily="@font/open_sans"
                 android:textSize="16sp" />
 

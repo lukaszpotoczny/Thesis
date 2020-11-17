@@ -81,9 +81,6 @@ public class AttractionsActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.newsProgressBar2);
 
-
-
-
         info0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +97,7 @@ public class AttractionsActivity extends AppCompatActivity {
             }
         });
 
-        info1.setPaintFlags(info1.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        info1.setPaintFlags(info1.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         info1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +161,6 @@ public class AttractionsActivity extends AppCompatActivity {
         info0.setTextSize(17);
         Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.playfair_display);
         info0.setTypeface(typeface);
-    //    info0.setTypeface(typeface.DEFAULT_BOLD);
         heartImage.setImageResource(R.drawable.heart);
         favourites.add(attraction);
         saveData();
@@ -205,7 +201,6 @@ public class AttractionsActivity extends AppCompatActivity {
                 info0.setTextSize(17);
                 Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.playfair_display);
                 info0.setTypeface(typeface);
-           //     info0.setTypeface(Typeface.DEFAULT_BOLD);
                 heartImage.setImageResource(R.drawable.heart);
             }
         }

@@ -69,6 +69,5 @@ public class NewsAdapter extends BaseAdapter {
             }
         });
         return view;
-
     }
 }

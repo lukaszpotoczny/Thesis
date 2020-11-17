@@ -54,11 +54,13 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:gravity="bottom"
+            android:gravity="center"
             android:background="@color/colorCardBackgroundDark"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -67,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
                 android:src="@drawable/button_delete"/>
 
             <ImageView
@@ -77,9 +80,10 @@
                 android:adjustViewBounds="true"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
                 android:src="@drawable/button_map"/>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

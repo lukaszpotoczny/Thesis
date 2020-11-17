@@ -46,7 +46,7 @@ public class AccommodationAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = inflater.inflate(R.layout.accommodation, null);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageAccommodation);
+        ImageView imageView = view.findViewById(R.id.imageAccommodation);
         TextView name = view.findViewById(R.id.accommodation_text_1);
         TextView rating = view.findViewById(R.id.accommodation_text_2);
 

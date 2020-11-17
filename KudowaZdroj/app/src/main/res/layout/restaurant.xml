@@ -35,23 +35,25 @@
                 <TextView
                     android:id="@+id/restaurant_text_1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_toRightOf="@+id/imageRestaurants"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
                     android:textStyle="bold"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:textSize="19sp"
                     android:maxLines="2"
                     android:autoSizeTextType="uniform"
+                    android:autoSizeMaxTextSize="19sp"
                     android:textColor="@color/colorTitle"
                     android:fontFamily="@font/playfair_display"
                     android:text="Czeska Restauracja Zdrojowa"/>
 
                 <TextView
                     android:id="@+id/restaurant_text_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/imageRestaurants"
                     android:layout_alignParentBottom="true"
@@ -59,6 +61,10 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="100dp"
+                    android:maxLines="1"
+                    android:autoSizeMaxTextSize="14sp"
+                    android:autoSizeTextType="uniform"
                     android:textSize="14sp"
                     android:text="ul. Zdrojowa 8"/>
 
@@ -73,8 +79,13 @@
                     android:layout_alignParentRight="true"
                     android:paddingRight="40dp"
                     android:gravity="end"
+                    android:layout_marginLeft="170dp"
                     android:layout_marginBottom="16dp"
                     android:textSize="16sp"
+                    android:maxLines="1"
+                    android:autoSizeMaxTextSize="16sp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/playfair_display"
                     android:text="4,3 / 5"/>
 
                 <ImageView

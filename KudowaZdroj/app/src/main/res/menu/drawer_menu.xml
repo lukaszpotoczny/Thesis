@@ -41,7 +41,7 @@
     <item android:title="@string/title_3">
         <menu>
             <item android:id="@+id/nav_message9"
-                android:icon="@drawable/settings_icon"
+                android:icon="@drawable/help_icon"
                 android:title="@string/nav_menu_9" />
         </menu>
 

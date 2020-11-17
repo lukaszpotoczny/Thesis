@@ -43,7 +43,6 @@ public class AttractionsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View view = inflater.inflate(R.layout.attraction, null);
 
         TextView textView = view.findViewById(R.id.textAttraction);
@@ -54,8 +53,6 @@ public class AttractionsAdapter extends BaseAdapter {
         String url = attractions.get(position).getPhoto();
         if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
 
-
         return view;
-
     }
 }

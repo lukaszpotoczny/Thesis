@@ -13,11 +13,11 @@
         android:layout_height="60dp"
         android:layout_centerInParent="true" />
 
-    <GridView
-        android:id="@+id/gridAttractions"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAttraction"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2"></GridView>
+        android:layout_height="match_parent" />
+
 
 
 </RelativeLayout>

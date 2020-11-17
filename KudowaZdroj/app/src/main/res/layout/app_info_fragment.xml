@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/app_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:paddingHorizontal="16dp"
+                android:textSize="32sp"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textStyle="bold|italic"
+                android:fontFamily="@font/playfair_display"
+                android:text="Aplikacja Kudowa-Zdrój"/>
+
+
+            <TextView
+                android:id="@+id/app_info_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_info_title"
+                android:layout_marginTop="32dp"
+                android:padding="20dp"
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:textColor="#000"
+                android:textSize="17sp"
+                android:text="@string/appInfo"/>
+
+            <TextView
+                android:id="@+id/app_info_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_info_text_1"
+                android:padding="20dp"
+                android:fontFamily="@font/open_sans"
+                android:justificationMode="inter_word"
+                android:textColor="#000"
+                android:textSize="17sp"
+                android:text="@string/appInfo2"/>
+
+            <TextView
+                android:id="@+id/app_info_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_info_text_2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:paddingRight="32dp"
+                android:fontFamily="@font/open_sans"
+                android:textStyle="italic|bold"
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:text="@string/appInfo3"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
