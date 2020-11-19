@@ -71,6 +71,8 @@ public class TripPickAdapter extends BaseAdapter {
         TextView time = view.findViewById(R.id.attractionPick_text_2);
         final CheckBox checkBox = view.findViewById(R.id.checkBox);
 
+        if(selectedAttractions.contains(attractions.get(position))) checkBox.setChecked(true);
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

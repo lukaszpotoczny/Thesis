@@ -3,14 +3,20 @@ package com.example.kudowazdroj.ui.news;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
@@ -32,9 +38,11 @@ public class NewsActivity extends AppCompatActivity {
     TextView title;
     TextView content;
     TextView date;
-    ImageView imageView1, imageView2, imageView3;
+    ImageView[] imageViews;
     ProgressBar progressBar;
     CardView cardView;
+
+    ArrayList <String> images;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +53,17 @@ public class NewsActivity extends AppCompatActivity {
         title = findViewById(R.id.news_title);
         content = findViewById(R.id.news_text_1);
         date = findViewById(R.id.news_date);
-        imageView1 = findViewById(R.id.news_image_1);
-        imageView2 = findViewById(R.id.news_image_2);
-        imageView3 = findViewById(R.id.news_image_3);
+        imageViews = new ImageView[5];
+        imageViews[0] = findViewById(R.id.news_image_1);
+        imageViews[1] = findViewById(R.id.news_image_2);
+        imageViews[2] = findViewById(R.id.news_image_3);
+        imageViews[3] = findViewById(R.id.news_image_4);
+        imageViews[4] = findViewById(R.id.news_image_5);
         progressBar = findViewById(R.id.newsProgressBar2);
         cardView = findViewById(R.id.cardNewsGoBack);
+
+        images = new ArrayList<String>();
+
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +72,18 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
 
-        downloadJSON("https://kudowa.pl/get_news.php");
+        if(checkConnection()) {
+            downloadJSON("https://kudowa.pl/get_news_photo.php");
+            downloadJSON("https://kudowa.pl/get_news.php");
+        }
 
+
+    }
+
+    private boolean checkConnection(){
+        ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return (activeNetwork != null && activeNetwork.isConnectedOrConnecting());
     }
 
     private void downloadJSON(final String urlWebService) {
@@ -67,15 +91,16 @@ public class NewsActivity extends AppCompatActivity {
         class DownloadJSON extends AsyncTask<Void, Void, String> {
 
             public String fixContent(String s){
-                s = s.replaceAll("[\\[\\]\\<\\>]","SPLIT_PLACE");
+                System.out.println(s);
+                s = s.replaceAll("[\\[\\]]","SPLIT_PLACE");
                 String data[] = s.split("SPLIT_PLACE");
                 String result = "";
                 for(int i=0; i<data.length; i++){
                     if(i%2 == 0) result += data[i];
                 }
+
                 result = result.replaceAll("This is a custom heading element.", "");
-                result = result.replaceAll("PDF", "PDF na stronie www.kudowa.pl");
-                result = result.replaceAll("&nbsp;", "");
+                result = result.replaceAll("PDF\\)", "PDF) na stronie kudowa.pl");
                 return result;
             }
 
@@ -88,38 +113,32 @@ public class NewsActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
+                if(urlWebService.equals("https://kudowa.pl/get_news_photo.php")){
+                    if(!s.equals("")) images.add(s);
+                    return;
+                }
                 String[] data = s.split("<br>nextPart");
                 title.setText(data[0]);
-                content.setText(fixContent(data[1]));
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    content.setText(Html.fromHtml(fixContent(data[1]), Html.FROM_HTML_MODE_LEGACY));
+                } else {
+                    content.setText(Html.fromHtml(fixContent(data[1])));
+                }
+                content.setMovementMethod(LinkMovementMethod.getInstance());
                 date.setText(data[2].substring(0, 10));
 
-                ArrayList<String> images = new ArrayList<String>();
                 for(int i=7; i<data.length; i=i+4){
                    if(data[i].contains(".jpg")) {
                        if(!data[i].contains("https")) {
                            data[i] = data[i].replaceAll("http", "https");
                        }
-                       images.add(data[i]);
+                       if(!images.contains(data[i])) images.add(data[i]);
                    }
                 }
 
-                if(images.size() > 2){
-                    Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
-                    Picasso.with(getApplicationContext()).load(images.get(1)).into(imageView2);
-                    Picasso.with(getApplicationContext()).load(images.get(2)).into(imageView3);
-                    imageView1.setVisibility(View.VISIBLE);
-                    imageView2.setVisibility(View.VISIBLE);
-                    imageView3.setVisibility(View.VISIBLE);
-                }
-                else if(images.size() == 2){
-                    Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
-                    Picasso.with(getApplicationContext()).load(images.get(1)).into(imageView2);
-                    imageView1.setVisibility(View.VISIBLE);
-                    imageView2.setVisibility(View.VISIBLE);
-                }
-                else if(images.size() == 1){
-                    Picasso.with(getApplicationContext()).load(images.get(0)).into(imageView1);
-                    imageView1.setVisibility(View.VISIBLE);
+                for(int i=0; i<imageViews.length && i<images.size(); i++){
+                    Picasso.with(getApplicationContext()).load(images.get(i)).into(imageViews[i]);
+                    imageViews[i].setVisibility(View.VISIBLE);
                 }
 
                 progressBar.setVisibility(View.INVISIBLE);

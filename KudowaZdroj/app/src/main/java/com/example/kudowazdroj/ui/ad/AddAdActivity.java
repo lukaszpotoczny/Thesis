@@ -3,14 +3,18 @@ package com.example.kudowazdroj.ui.ad;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
@@ -57,21 +61,32 @@ public class AddAdActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = UUID.randomUUID().toString();
-                String title = edit1.getText().toString();
-                String content = edit2.getText().toString();
-                String author = edit3.getText().toString();
-                String contact = edit4.getText().toString();
-                String date = Calendar.getInstance().getTime().toString();
-                Ad ad = new Ad(id, title, date, content, author, contact);
-                reference.child(id).setValue(ad);
-                loadData();
-                myAds.add(ad);
-                saveData();
-                finish();
+                if(checkConnection()) {
+                    String id = UUID.randomUUID().toString();
+                    String title = edit1.getText().toString();
+                    String content = edit2.getText().toString();
+                    String author = edit3.getText().toString();
+                    String contact = edit4.getText().toString();
+                    String date = Calendar.getInstance().getTime().toString();
+                    Ad ad = new Ad(id, title, date, content, author, contact);
+                    reference.child(id).setValue(ad);
+                    loadData();
+                    myAds.add(ad);
+                    saveData();
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Brak dostępu do Internetu", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+    }
+
+    private boolean checkConnection(){
+        ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return (activeNetwork != null && activeNetwork.isConnectedOrConnecting());
     }
 
     private void saveData() {

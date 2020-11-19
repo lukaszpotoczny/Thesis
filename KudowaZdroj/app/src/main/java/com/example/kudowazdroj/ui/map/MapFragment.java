@@ -93,17 +93,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         gMap = googleMap;
         gMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style));
 
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(R.layout.custom_info_window, null);
-        ImageView imageView = view.findViewById(R.id.mapInfoImage);
-
-        for (int i = 0; i < locations.size(); i++) {
-            if (locations.get(i).getImage() != null) {
-                Picasso.with(getContext())
-                        .load(locations.get(i).getImage())
-                        .into(imageView);
-            }
-        }
         if (locationPermissionGranted) {
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
@@ -115,10 +104,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onMapLoaded() {
                 for(int i=0; i<locations.size(); i++){
-                    Marker mark = gMap.addMarker(new MarkerOptions()
+                    gMap.addMarker(new MarkerOptions()
                     .position(new LatLng(locations.get(i).getLat(), locations.get(i).getLng()))
                     .title(locations.get(i).getName())
-                    .snippet(locations.get(i).getImage())
+                    .snippet(String.valueOf(locations.get(i).getId()))
                     .icon(setMarkerImage(getContext(), R.drawable.map_pin)));
                 }
             }
@@ -133,13 +122,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 final TextView title = view.findViewById(R.id.mapInfoTitle);
                 title.setText(marker.getTitle());
 
-                String url = marker.getSnippet();
-                if (url != null) {
-                    Picasso.with(getContext())
-                            .load(url)
-                            .placeholder(R.color.mapInfoBackground)
-                            .into(imageView, new MarkerCallback(marker));
-                }
+                String s = ("a" + marker.getSnippet());
+                int resID = getContext().getResources().getIdentifier(s, "drawable", getContext().getPackageName());
+                imageView.setImageResource(resID);
+
                 return view;
             }
 
@@ -154,14 +140,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public boolean onMarkerClick(final Marker marker) {
                 gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 16));
                 marker.showInfoWindow();
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //marker.hideInfoWindow();
-                        marker.showInfoWindow();
-                    }
-                }, 1000);
                 return true;
             }
         });
@@ -178,7 +156,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    public class MarkerCallback implements Callback {
+    /*public class MarkerCallback implements Callback {
         Marker marker=null;
 
         MarkerCallback(Marker marker) {
@@ -196,7 +174,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 marker.showInfoWindow();
             }
         }
-    }
+    }*/
 
     private BitmapDescriptor setMarkerImage(Context context, int resID){
         Drawable drawable = ContextCompat.getDrawable(context, resID);

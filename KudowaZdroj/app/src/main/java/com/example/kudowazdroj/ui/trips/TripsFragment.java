@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,13 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.kudowazdroj.R;
-import com.example.kudowazdroj.database.Attraction;
-import com.example.kudowazdroj.database.Location;
 import com.example.kudowazdroj.database.Trip;
-import com.example.kudowazdroj.ui.adapters.AttractionsAdapter;
-import com.example.kudowazdroj.ui.adapters.TripPickAdapter;
 import com.example.kudowazdroj.ui.adapters.TripsAdapter;
-import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

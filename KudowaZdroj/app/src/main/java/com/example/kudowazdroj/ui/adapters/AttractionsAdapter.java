@@ -1,58 +1,77 @@
 package com.example.kudowazdroj.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.kudowazdroj.R;
 import com.example.kudowazdroj.database.Attraction;
-import com.squareup.picasso.Picasso;
+import com.example.kudowazdroj.ui.attractions.AttractionsActivity;
 
 import java.util.ArrayList;
 
-public class AttractionsAdapter extends BaseAdapter {
+public class AttractionsAdapter extends RecyclerView.Adapter<AttractionsAdapter.AttractionViewHolder> {
 
-    Context context;
-    ArrayList<Attraction> attractions;
-    LayoutInflater inflater;
+    private Context context;
+    private ArrayList<Attraction> attractions;
 
-    public AttractionsAdapter(Context context, ArrayList<Attraction> attractions){
+    public AttractionsAdapter(Context context, ArrayList<Attraction> a){
         this.context = context;
-        this.attractions = attractions;
-        inflater = LayoutInflater.from(context);
+        this.attractions = a;
+    }
+
+    @NonNull
+    @Override
+    public AttractionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.attraction, parent, false);
+        AttractionViewHolder attractionViewHolder = new AttractionViewHolder(view);
+        return attractionViewHolder;
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull AttractionViewHolder holder, int position) {
+        final Attraction attraction = attractions.get(position);
+
+        holder.title.setText(attraction.getName());
+
+        String s = ("a" + attractions.get(position).getId());
+        int resID = context.getResources().getIdentifier(s, "drawable", context.getPackageName());
+        holder.image.setImageResource(resID);
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AttractionsActivity.class);
+                intent.putExtra(AttractionsActivity.ARG_ATTRACTION_KEY, attraction.getName());
+                view.getContext().startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
         return attractions.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return attractions.get(position);
-    }
+    public static class AttractionViewHolder extends RecyclerView.ViewHolder{
+        public TextView title;
+        public ImageView image;
+        public CardView cardView;
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = inflater.inflate(R.layout.attraction, null);
-
-        TextView textView = view.findViewById(R.id.textAttraction);
-        ImageView imageView = view.findViewById(R.id.imageAttraction);
-
-        textView.setText(attractions.get(position).getName());
-
-        String url = attractions.get(position).getPhoto();
-        if(!url.equals("")) Picasso.with(context).load(url).into(imageView);
-
-        return view;
+        public AttractionViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.textAttraction);
+            image = itemView.findViewById(R.id.imageAttraction);
+            cardView = itemView.findViewById(R.id.cardAttractions0);
+        }
     }
 }

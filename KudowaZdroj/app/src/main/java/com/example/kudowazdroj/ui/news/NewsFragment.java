@@ -53,10 +53,6 @@ public class NewsFragment extends Fragment {
             downloadJSON("https://kudowa.pl/get_news_list.php");
             downloadJSON("https://kudowa.pl/get_images.php");
         }
-        else {
-            Toast.makeText(getContext(), "Brak połączenia Internetowego", Toast.LENGTH_SHORT).show();
-        }
-
 
         return root;
     }

@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kudowazdroj.MainActivity;
 import com.example.kudowazdroj.R;
@@ -77,6 +81,17 @@ public class AdActivity extends AppCompatActivity {
         loadData();
 
         for(int i=0; i<myAds.size(); i++) if(myAds.get(i).getId().equals(key)) buttonDelete.setVisibility(View.VISIBLE);
+
+        contact.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("contactInfo", contact.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(), "Skopiowano do schowka", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
         final ValueEventListener valueEventListener = new ValueEventListener() {
             @Override

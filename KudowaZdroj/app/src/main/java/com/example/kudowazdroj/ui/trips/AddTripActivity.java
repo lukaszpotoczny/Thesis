@@ -170,7 +170,7 @@ public class AddTripActivity extends AppCompatActivity {
     }
 
     private void setLists(){
-        selectedAttractions.clear();
+       // selectedAttractions.clear();
         test.clear();
         rest.clear();
         rest.addAll(attractions);
