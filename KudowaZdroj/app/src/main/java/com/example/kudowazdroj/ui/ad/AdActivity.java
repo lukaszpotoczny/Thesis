@@ -14,6 +14,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -42,6 +44,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 
 public class AdActivity extends AppCompatActivity {
@@ -137,11 +140,21 @@ public class AdActivity extends AppCompatActivity {
                 .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        for(Ad ad : myAds) if(ad.getId().equals(key)) myAds.remove(ad);
+                        Iterator<Ad> iterator = myAds.iterator();
+                        while (iterator.hasNext()) {
+                            Ad ad = iterator.next();
+                            if(ad.getId().equals(key)) iterator.remove();
+                        }
+                        databaseReference.removeEventListener(valueEventListener);
                         saveData();
                         finish();
-                        databaseReference.removeEventListener(valueEventListener);
-                        databaseReference.removeValue();
+                        final Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                databaseReference.removeValue();
+                            }
+                        }, 200);
                     }
                 })
                 .setNegativeButton("Nie", new DialogInterface.OnClickListener() {

@@ -134,8 +134,12 @@ public class AttractionsActivity extends AppCompatActivity {
                 content.setText(attraction.getContent());
                 info2.setText(attraction.getTime() + " min");
 
-                String url = attraction.getPhoto();
-                if(!url.equals("")) Picasso.with(AttractionsActivity.this).load(url).into(titleImage);
+/*                String url = attraction.getPhoto();
+                if(!url.equals("")) Picasso.with(AttractionsActivity.this).load(url).into(titleImage);*/
+
+                String s = ("a" + attraction.getId());
+                int resID = getResources().getIdentifier(s, "drawable", getPackageName());
+                titleImage.setImageResource(resID);
 
                 for(DataSnapshot dataSnapshot : snapshot.child("images").getChildren()){
                     images.add(dataSnapshot.getValue().toString());

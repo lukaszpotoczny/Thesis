@@ -156,26 +156,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    /*public class MarkerCallback implements Callback {
-        Marker marker=null;
-
-        MarkerCallback(Marker marker) {
-            this.marker=marker;
-        }
-
-        @Override
-        public void onError() {
-        }
-
-        @Override
-        public void onSuccess() {
-            if (marker != null && marker.isInfoWindowShown()) {
-                marker.hideInfoWindow();
-                marker.showInfoWindow();
-            }
-        }
-    }*/
-
     private BitmapDescriptor setMarkerImage(Context context, int resID){
         Drawable drawable = ContextCompat.getDrawable(context, resID);
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth()/3*2, drawable.getIntrinsicHeight()/3*2);

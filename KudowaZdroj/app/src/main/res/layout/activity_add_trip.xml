@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:foregroundGravity="center"
@@ -38,7 +38,7 @@
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:src="@drawable/button_anuluj"/>
 
             <ImageView
@@ -48,9 +48,9 @@
                 android:adjustViewBounds="true"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:visibility="gone"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:src="@drawable/button_dalej"/>
 
             <ImageView
@@ -62,7 +62,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:clickable="false"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:src="@drawable/button_dalej_gray"/>
 
         </LinearLayout>
@@ -73,7 +73,7 @@
         android:id="@+id/layoutTripPick"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="55dp"
         android:orientation="vertical">
 
         <ScrollView
