@@ -68,12 +68,15 @@ public class AddAdActivity extends AppCompatActivity {
                     String author = edit3.getText().toString();
                     String contact = edit4.getText().toString();
                     String date = Calendar.getInstance().getTime().toString();
-                    Ad ad = new Ad(id, title, date, content, author, contact);
-                    reference.child(id).setValue(ad);
-                    loadData();
-                    myAds.add(ad);
-                    saveData();
-                    finish();
+                    if(isInputValid(title, content, author, contact)){
+                        Ad ad = new Ad(id, title, date, content, author, contact);
+                        reference.child(id).setValue(ad);
+                        loadData();
+                        myAds.add(ad);
+                        saveData();
+                        finish();
+                    }
+                    else Toast.makeText(getApplicationContext(), "Uzupełnij wszystkie pola", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Brak dostępu do Internetu", Toast.LENGTH_SHORT).show();
@@ -81,6 +84,11 @@ public class AddAdActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isInputValid(String title, String content, String author, String contact){
+        if(title.equals("") || content.equals("") || author.equals("") || contact.equals("")) return false;
+        return true;
     }
 
     private boolean checkConnection(){

@@ -179,7 +179,6 @@ public class TripDetailsActivity extends AppCompatActivity implements DialogTrip
     }
 
     public void saveTrip(){
-
         DialogTrip dialogTrip = new DialogTrip();
         dialogTrip.show(getSupportFragmentManager(), "trip dialog");
     }
